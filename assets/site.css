@@ -94,3 +94,4 @@ tr.roster ul{margin-top:2px}
 #team li{gap:14px}
 li i.fin{color:var(--ink);font-weight:700}
 li.drop i.fin{color:var(--muted)}
+sup.fn{font-size:.6em;margin-left:1px;vertical-align:super;line-height:0}

@@ -1,0 +1,325 @@
+{
+  "updated": "2026-09-29T18:58:43-04:00",
+  "players": [
+    {
+      "name": "Daniel Capo",
+      "school": "Annapolis",
+      "group": "4",
+      "total": 54,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Evan Lyman",
+      "school": "Annapolis",
+      "group": "7",
+      "total": 43,
+      "mark": "*",
+      "note": "Lost card",
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Drew Shallcross",
+      "school": "Annapolis",
+      "group": "10",
+      "total": 50,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Chase Fortescue",
+      "school": "Arundel",
+      "group": "1",
+      "total": 42,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Devin Crabbe",
+      "school": "Arundel",
+      "group": "2",
+      "total": null,
+      "status": "DNS",
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Aidan Pelkey",
+      "school": "Arundel",
+      "group": "7",
+      "total": 45,
+      "mark": "*",
+      "note": "Lost card",
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ava Shay",
+      "school": "Arundel",
+      "group": "3",
+      "total": 52,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Gavin Monaco",
+      "school": "Broadneck",
+      "group": "4",
+      "total": 45,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Christian Rubino",
+      "school": "Broadneck",
+      "group": "5",
+      "total": 46,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Liam Finnegan",
+      "school": "Chesapeake",
+      "group": "4",
+      "total": 37,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brayden Parker",
+      "school": "Chesapeake",
+      "group": "5",
+      "total": 40,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Eli Harley",
+      "school": "Chesapeake",
+      "group": "8",
+      "total": 42,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Jaden Broadie",
+      "school": "Chesapeake",
+      "group": "9",
+      "total": 55,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Mason Bombard",
+      "school": "Chesapeake",
+      "group": "10",
+      "total": 42,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Rhyan Archiaha",
+      "school": "Chesapeake Science",
+      "group": "8",
+      "total": 51,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Marissa Liverpool",
+      "school": "Crofton",
+      "group": "3",
+      "total": 51,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Charlie Ward",
+      "school": "Crofton",
+      "group": "1",
+      "total": 46,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Gianni Gallow",
+      "school": "Crofton",
+      "group": "2",
+      "total": 43,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Dylan Miller",
+      "school": "Crofton",
+      "group": "9",
+      "total": 53,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Aaryan Sripada",
+      "school": "Crofton",
+      "group": "10",
+      "total": 44,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Joseph Lopez",
+      "school": "North County",
+      "group": "9",
+      "total": 52,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Kaden Wyatt",
+      "school": "Northeast",
+      "group": "1",
+      "total": 50,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brian Hyde",
+      "school": "Northeast",
+      "group": "6",
+      "total": 56,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Mason Kolodziejski",
+      "school": "Northeast",
+      "group": "10",
+      "total": 57,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brandon Rochon",
+      "school": "Severn Run",
+      "group": "5",
+      "total": 55,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Kevin Flanagan",
+      "school": "Severna Park",
+      "group": null,
+      "total": 43,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Leo Sobocinski",
+      "school": "Severna Park",
+      "group": "6",
+      "total": 46,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Knoepfle",
+      "school": "Severna Park",
+      "group": "2",
+      "total": 45,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Sarah Valencia",
+      "school": "South River",
+      "group": "3",
+      "total": 44,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Brooks Bailey",
+      "school": "South River",
+      "group": "4",
+      "total": 43,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ethan Berry",
+      "school": "South River",
+      "group": "5",
+      "total": 44,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nate Adkins",
+      "school": "South River",
+      "group": "6",
+      "total": 42,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Marick Norton",
+      "school": "South River",
+      "group": "7",
+      "total": null,
+      "status": "DNS",
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Mason Lomax",
+      "school": "South River",
+      "group": "8",
+      "total": 49,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Luca Vendemia",
+      "school": "Southern",
+      "group": "2",
+      "total": 49,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Julian Figueroa",
+      "school": "Southern",
+      "group": "6",
+      "total": 45,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Colton Sutherland",
+      "school": "Southern",
+      "group": "7",
+      "total": 47,
+      "mark": "*",
+      "note": "Lost card",
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ryan Abell",
+      "school": "Southern",
+      "group": "8",
+      "total": 53,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Justin Fowler",
+      "school": "Southern",
+      "group": "9",
+      "total": 45,
+      "gender": "M",
+      "team": false
+    }
+  ]
+}

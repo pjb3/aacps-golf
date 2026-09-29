@@ -5,6 +5,7 @@ class GolfTest < Minitest::Test
   PARS = [5, 3, 4, 3, 4, 4, 5, 4, 4, 4, 3, 5, 3, 4, 4, 5, 4, 4].freeze
   COUNTY = File.expand_path("../sample/2026-09-29-county-championship.xlsx", __dir__)
   CHARTWELL = File.expand_path("../sample/2026-09-24-a-division-chartwell.xlsx", __dir__)
+  INVITE = File.expand_path("../sample/2026-09-15-40s-invite.xlsx", __dir__)
 
   def county
     @@county ||= Golf::Standings.new(Golf::Sheet.extract(COUNTY), pars: PARS)
@@ -58,6 +59,32 @@ class GolfTest < Minitest::Test
     assert_includes names, "Charlie Ward"
     assert_includes names, "Nate Fine"
     assert names.none? { |n| n.match?(/\(|\s\s|\A\s|\s\z/) }
+  end
+
+  def invite_players
+    @@invite_players ||= Golf::Sheet.extract(INVITE)
+  end
+
+  # An empty TEAM TOTALS list means individual only.
+  def test_invite_is_individual_only
+    board = Golf::Standings.new(invite_players).to_h
+    refute board["has_teams"]
+    assert_empty board["teams"]
+    assert board["gender_filter"]
+    assert_equal ["1", "Liam Finnegan", 37], board["individuals"].first.values_at("pos", "name", "strokes")
+  end
+
+  def test_invite_dns_and_lost_cards
+    board = Golf::Standings.new(invite_players).to_h
+    assert_equal [["Devin Crabbe", "DNS"], ["Marick Norton", "DNS"]], board["waiting"].map { |p| p.values_at("name", "status") }
+    lost = board["individuals"].select { |p| p["mark"] }.map { |p| p.values_at("name", "strokes") }
+    assert_equal [["Evan Lyman", 43], ["Aidan Pelkey", 45], ["Colton Sutherland", 47]], lost
+    assert_equal [{ "mark" => "*", "note" => "Lost card" }], board["footnotes"]
+  end
+
+  def test_school_names_are_cleaned
+    assert_equal "Severna Park", invite_players.find { |p| p["name"] == "Kevin Flanagan" }["school"]
+    assert_equal "Broadneck", invite_players.find { |p| p["name"] == "Gavin Monaco" }["school"]
   end
 
   def test_ties_share_a_position

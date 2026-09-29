@@ -46,11 +46,15 @@ The parser understands two sheet layouts, picked automatically:
 
 - **Hole by hole:** group tabs named like `1A`/`6B` with a score per hole.
 - **Final scores:** a RESULTS tab with a `Score` column and a TEAM TOTALS list.
+  An empty TEAM TOTALS list (the 30's and 40's Invites) means individual only,
+  and the page drops its Team view. Scores like `43*` keep their footnote from
+  the bottom of the tab (e.g. "Lost card"); entries like `DNS` are shown as-is.
 
 Both need an ENTRIES tab. A school's team is its first block of rows there,
 ending at a thick bottom border; players listed separately further down play
 as individuals. Names are cleaned up on the way in: notes in parentheses are
-dropped, extra spaces removed, and all-lowercase words capitalized.
+dropped, extra spaces removed, and all-lowercase words capitalized (school
+names too, e.g. "Severna park").
 
 To load scores from a downloaded file instead of the live sheet:
 

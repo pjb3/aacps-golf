@@ -12,7 +12,9 @@ module Golf
   #   scores in blocks that each start with a "Name" header row whose columns
   #   C..K give the hole numbers. Players get "scores" => {hole => strokes}.
   # - Totals (regular matches): the RESULTS tab lists each player's final
-  #   "Score". Players get "total" => strokes (nil if no score posted).
+  #   "Score". Players get "total" => strokes (nil if no score posted), plus
+  #   "status" for entries like "DNS" and "note" for footnoted scores ("43*").
+  #   Events with an empty TEAM TOTALS list are individual only.
   #
   # Tabs are read by their header labels ("First and Last Name", "School",
   # "M/F", "Score"), since column order varies between sheets.
@@ -60,16 +62,19 @@ module Golf
       raise "RESULTS: no Score column" unless score_c
 
       team_schools = read_team_totals(results, header, cols["Place"])
+      footnotes = read_footnotes(results, header, name_c)
       players = []
       results.each_with_index do |row, r|
         next if r <= header || row.nil?
         name = clean_name(cell(row, name_c))
-        school = norm(cell(row, school_c))
+        school = clean_school(cell(row, school_c))
         next if name.empty? || school.empty?
 
-        score = cell(row, score_c)
-        players << { "name" => name, "school" => school, "group" => groups[name.downcase],
-                     "total" => score.is_a?(Numeric) && score > 0 ? score.to_i : nil }
+        total, mark, status = parse_score(cell(row, score_c))
+        player = { "name" => name, "school" => school, "group" => groups[name.downcase], "total" => total }
+        player["status"] = status if status
+        player.merge!("mark" => mark, "note" => footnotes[mark]) if mark
+        players << player
       end
       roster = teams.select { |school, _| team_schools.include?(school) }
       players.map { |p| with_entry(p, genders, roster) }
@@ -89,7 +94,37 @@ module Golf
     # Drops notes like "(Needs to be in last group)", collapses spaces, and
     # capitalizes words typed all lowercase ("Nate fine" => "Nate Fine").
     def clean_name(value)
-      norm(value.to_s.gsub(/\([^)]*\)/, " ")).split(" ").map { |w| w.match?(/\A[a-z]+\z/) ? w.capitalize : w }.join(" ")
+      capitalize_lowercase(norm(value.to_s.gsub(/\([^)]*\)/, " ")))
+    end
+
+    # "Severna park" => "Severna Park"
+    def clean_school(value)
+      capitalize_lowercase(norm(value))
+    end
+
+    def capitalize_lowercase(text)
+      text.split(" ").map { |w| w.match?(/\A[a-z]+\z/) ? w.capitalize : w }.join(" ")
+    end
+
+    # A RESULTS score cell: 42, "43*" (footnoted, e.g. lost card) or a status
+    # like "DNS". Returns [strokes or nil, footnote mark or nil, status or nil].
+    def parse_score(value)
+      case value
+      when Numeric then [value.positive? ? value.to_i : nil, nil, nil]
+      when /\A\s*(\d+)\s*(\*+)?\s*\z/ then [$1.to_i, $2, nil]
+      when /\A\s*([A-Za-z]+)\s*\z/ then [nil, nil, $1.upcase]
+      else [nil, nil, nil]
+      end
+    end
+
+    # Footnote rows under the player list, e.g. "*Lost card*" => {"*" => "Lost card"}.
+    def read_footnotes(sheet, header, name_c)
+      notes = {}
+      sheet.each_with_index do |row, r|
+        next if r <= header || row.nil?
+        notes[$1] = $2.strip if norm(cell(row, name_c)) =~ /\A(\*+)\s*(.+?)\**\z/
+      end
+      notes
     end
 
     def tab(book, name)
@@ -124,7 +159,7 @@ module Golf
         name = clean_name(first)
         next unless holes && !name.empty? && !SKIP_NAMES.include?(name)
 
-        school = norm(row[1]&.value)
+        school = clean_school(row[1]&.value)
         player = players[[name, school]] ||= { "name" => name, "school" => school, "group" => sheet.sheet_name, "scores" => {} }
         holes.each_with_index do |hole, i|
           v = row[i + 2]&.value
@@ -144,7 +179,7 @@ module Golf
       sheet.each_with_index do |row, r|
         next if r <= header || row.nil?
         name = clean_name(cell(row, name_c))
-        school = norm(cell(row, school_c))
+        school = clean_school(cell(row, school_c))
         genders[name.downcase] = norm(cell(row, gender_c)).then { |g| g.empty? ? nil : g } unless name.empty?
         next if school.empty?
 
@@ -170,7 +205,7 @@ module Golf
       schools = Set.new
       sheet.each_with_index do |row, r|
         next if r <= header
-        school = norm(row && cell(row, place_c + 1))
+        school = clean_school(row && cell(row, place_c + 1))
         break if school.empty?
         schools << school
       end

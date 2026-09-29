@@ -4,7 +4,9 @@ module Golf
   #
   # Players come in one of two shapes (see Sheet):
   # - hole by hole: "scores" => {hole => strokes}; needs the per-hole pars.
-  # - totals: "total" => strokes, or nil if no score was posted.
+  # - totals: "total" => strokes, or nil if no score was posted; optionally
+  #   "status" (e.g. "DNS") when there's no score, or "mark" and "note" for a
+  #   footnoted score (e.g. "*" and "Lost card").
   #
   # Scoring rules:
   # - To par counts only the holes a player has completed (shotgun starts mean
@@ -33,6 +35,8 @@ module Golf
         "to_par" => !par.nil?,
         "cards" => cards?,
         "gender_filter" => (@players.map { |p| p["gender_key"] } & %w[boys girls]).size == 2,
+        "has_teams" => @players.any? { |p| p["team"] },
+        "footnotes" => @players.filter_map { |p| { "mark" => p["mark"], "note" => p["note"] } if p["mark"] }.uniq,
         "started_count" => started.size,
         "player_count" => @players.size,
         "individuals" => individuals,
