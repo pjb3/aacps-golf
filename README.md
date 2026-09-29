@@ -32,7 +32,7 @@ misspelled name, say) can go straight into it.
 ## Adding a tournament
 
 1. Create `_events/YYYY-MM-DD-short-name.md` (copy the existing one) with the
-   sheet ID, pars and `live: true`. The page URL is `/YYYY/short-name/`.
+   sheet ID, pars and `live: true`. The page URL is `/YYYY-MM-DD-short-name/`.
 2. Run `bundle exec bin/refresh` to pull scores, or wait for the scheduled build.
 3. After play ends, run a final refresh, set `live: false`, and commit.
 

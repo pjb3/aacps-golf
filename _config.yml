@@ -5,7 +5,7 @@ timezone: America/New_York
 collections:
   events:
     output: true
-    permalink: /:year/:slug/
+    permalink: /:name/
 
 exclude:
   - Gemfile
