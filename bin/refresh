@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# Download each live event's Google Sheet and write its raw scores to
+# _data/scores/<event file name>.json.
+#
+#   bin/refresh                         # every event with live: true
+#   bin/refresh 2026-09-29-county-championship
+#   bin/refresh --file sample/scores.xlsx 2026-09-29-county-championship
+#
+# The file is only rewritten when the scores change, so "updated" is the time
+# of the last change. In GitHub Actions, writes changed=true|false to
+# $GITHUB_OUTPUT.
+ENV["TZ"] = "America/New_York"
+
+require "date"
+require "json"
+require "open-uri"
+require "optparse"
+require "tempfile"
+require "yaml"
+require_relative "../lib/golf"
+
+ROOT = File.expand_path("..", __dir__)
+
+file = nil
+OptionParser.new do |o|
+  o.banner = "Usage: bin/refresh [--file scores.xlsx] [event ...]"
+  o.on("--file PATH", "Read this .xlsx instead of downloading the sheet (needs one event)") { |f| file = f }
+end.parse!
+
+events = Dir[File.join(ROOT, "_events", "*.md")].to_h do |path|
+  [File.basename(path, ".md"), YAML.safe_load_file(path, permitted_classes: [Date])]
+end
+
+names = ARGV.empty? ? events.select { |_, e| e["live"] }.keys : ARGV
+unknown = names - events.keys
+abort "Unknown event(s): #{unknown.join(", ")}. Choose from: #{events.keys.join(", ")}" if unknown.any?
+abort "--file needs exactly one event name" if file && names.size != 1
+puts "No live events." if names.empty?
+
+changed = false
+names.each do |name|
+  xlsx = file || Tempfile.create(["scores", ".xlsx"]).tap do |tmp|
+    id = events[name]["sheet_id"] or abort "#{name}: no sheet_id"
+    URI.open("https://docs.google.com/spreadsheets/d/#{id}/export?format=xlsx", "rb") { |io| IO.copy_stream(io, tmp) }
+    tmp.close
+  end.path
+
+  players = Golf::Sheet.extract(xlsx)
+  out = File.join(ROOT, "_data", "scores", "#{name}.json")
+  if File.exist?(out) && JSON.parse(File.read(out))["players"] == players
+    puts "#{name}: no change"
+    next
+  end
+
+  File.write(out, JSON.pretty_generate({ "updated" => Time.now.iso8601, "players" => players }) + "\n")
+  puts "#{name}: wrote #{players.size} players"
+  changed = true
+end
+
+File.write(ENV["GITHUB_OUTPUT"], "changed=#{changed}\n", mode: "a") if ENV["GITHUB_OUTPUT"]

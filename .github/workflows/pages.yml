@@ -1,0 +1,78 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  # Every 15 minutes: re-download the sheet for events marked live: true.
+  # GitHub may delay scheduled runs by several minutes; use "Run workflow" for an immediate refresh.
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write # commit refreshed scores back to the repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.decide.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: ruby/setup-ruby@v1 # version from .tool-versions
+        with:
+          bundler-cache: true
+
+      - name: Refresh live scores
+        id: refresh
+        run: bundle exec bin/refresh
+
+      - name: Commit updated scores
+        if: steps.refresh.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/scores
+          git commit -m "Update live scores"
+          git pull --rebase
+          git push
+
+      # Scheduled runs only redeploy when scores changed.
+      - name: Decide whether to deploy
+        id: decide
+        run: echo "deploy=${{ github.event_name != 'schedule' || steps.refresh.outputs.changed == 'true' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        if: steps.decide.outputs.deploy == 'true'
+        run: bundle exec rake test
+
+      - uses: actions/configure-pages@v5
+        if: steps.decide.outputs.deploy == 'true'
+        id: pages
+
+      - name: Build site
+        if: steps.decide.outputs.deploy == 'true'
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.decide.outputs.deploy == 'true'
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

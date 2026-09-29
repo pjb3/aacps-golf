@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<header><h1>AACPS Golf</h1><p class="sub">Leaderboards and results for Anne Arundel County Public Schools golf.</p></header>
+<div class="board">
+{%- assign events = site.events | sort: "date" | reverse %}
+{%- if events.size == 0 %}
+<p class="empty">No tournaments yet.</p>
+{%- else %}
+<ul class="events">
+{%- for e in events %}
+{%- assign b = e.board %}
+<li><a href="{{ e.url | relative_url }}">
+ <span class="when">{{ e.date | date: "%b" }}<b>{{ e.date | date: "%-d" }}</b>{{ e.date | date: "%Y" }}</span>
+ <span class="ev-name">{{ e.title | escape }}{% if e.live %} <span class="live">Live</span>{% endif %}</span>
+ <span class="ev-meta">{{ e.course | escape }}{% if b %} · par {{ b.par }} · {{ b.player_count }} players{% endif %}</span>
+ {%- if b and b.individuals.size > 0 %}
+ {%- assign p = b.individuals.first %}{% assign t = b.teams.first %}
+ <span class="ev-lead"><span>{% if e.live %}Leader{% else %}Medalist{% endif %}: {{ p.name | escape }} <b class="{{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</b></span>{% if t %}<span>{% if e.live %}Top team{% else %}Team champion{% endif %}: {{ t.school | escape }} <b class="{{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</b></span>{% endif %}</span>
+ {%- endif %}
+</a></li>
+{%- endfor %}
+</ul>
+{%- endif %}
+</div>

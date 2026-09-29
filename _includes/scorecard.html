@@ -1,0 +1,3 @@
+{%- for nine in include.player.card -%}
+<table class="sc"><tr><th>Hole</th>{% for h in nine.holes %}<th>{{ h.hole }}</th>{% endfor %}<th>{{ nine.label }}</th></tr><tr class="par"><th>Par</th>{% for h in nine.holes %}<td>{{ h.par }}</td>{% endfor %}<td>{{ nine.par }}</td></tr><tr class="me"><th>Score</th>{% for h in nine.holes %}{% if h.score %}<td><span class="s {{ h.mark }}">{{ h.score }}</span></td>{% else %}<td class="np">·</td>{% endif %}{% endfor %}<td class="t">{{ nine.total | default: "–" }}</td></tr></table>
+{%- endfor -%}
