@@ -3,22 +3,61 @@ require_relative "../lib/golf"
 
 class GolfTest < Minitest::Test
   PARS = [5, 3, 4, 3, 4, 4, 5, 4, 4, 4, 3, 5, 3, 4, 4, 5, 4, 4].freeze
-  SAMPLE = File.expand_path("../sample/scores.xlsx", __dir__)
+  COUNTY = File.expand_path("../sample/2026-09-29-county-championship.xlsx", __dir__)
+  CHARTWELL = File.expand_path("../sample/2026-09-24-a-division-chartwell.xlsx", __dir__)
 
-  def standings
-    @@standings ||= Golf::Standings.new(Golf::Sheet.extract(SAMPLE), PARS)
+  def county
+    @@county ||= Golf::Standings.new(Golf::Sheet.extract(COUNTY), pars: PARS)
   end
 
-  def test_sample_leaders
-    leader = standings.individuals.first
+  def chartwell_players
+    @@chartwell_players ||= Golf::Sheet.extract(CHARTWELL)
+  end
+
+  def chartwell
+    @@chartwell ||= Golf::Standings.new(chartwell_players, par: 36)
+  end
+
+  def test_county_leaders
+    leader = county.individuals.first
     assert_equal ["1", "Davis Balderston", -1], leader.values_at("pos", "name", "to_par")
 
-    team = standings.ranked_teams.first
+    team = county.ranked_teams.first
     assert_equal ["1", "Severna Park", 21], team.values_at("pos", "school", "to_par")
   end
 
-  def test_sample_counts
-    assert_equal 80, standings.to_h["player_count"]
+  def test_county_counts
+    assert_equal 80, county.to_h["player_count"]
+    assert county.to_h["cards"]
+  end
+
+  # Matches TEAM TOTALS on the sheet's RESULTS tab, except the sheet places
+  # Crofton 2nd (it's 3rd; Severna Park's 158 is 2nd).
+  def test_chartwell_team_totals
+    assert_equal [["1", "Broadneck", 156], ["2", "Severna Park", 158], ["3", "Crofton", 170], ["4", "South River", 172], ["5", "Chesapeake", 176]],
+                 chartwell.ranked_teams.map { |t| t.values_at("pos", "school", "strokes") }
+    assert_equal 12, chartwell.ranked_teams.first["to_par"]
+  end
+
+  def test_chartwell_individuals
+    top = chartwell.individuals.first(4).map { |p| p.values_at("pos", "name", "strokes", "to_par") }
+    assert_equal [["1", "Ty Swann", 34, -2], ["T2", "Colin Barry", 37, 1], ["T2", "James Jonker", 37, 1], ["4", "Michael Peterson", 38, 2]], top
+    refute chartwell.to_h["cards"]
+    refute chartwell.to_h["gender_filter"]
+  end
+
+  # Campbell Jones and Max Knoepfle are listed apart from Severna Park's team block.
+  def test_chartwell_second_block_plays_as_individuals
+    individuals = chartwell_players.reject { |p| p["team"] }.map { |p| p["name"] }
+    assert_equal ["Campbell Jones", "Max Knoepfle"], individuals
+  end
+
+  def test_names_are_cleaned
+    names = chartwell_players.map { |p| p["name"] }
+    assert_includes names, "Chase Connell"
+    assert_includes names, "Charlie Ward"
+    assert_includes names, "Nate Fine"
+    assert names.none? { |n| n.match?(/\(|\s\s|\A\s|\s\z/) }
   end
 
   def test_ties_share_a_position
@@ -28,15 +67,21 @@ class GolfTest < Minitest::Test
       { "name" => "C", "school" => "X", "group" => "1A", "scores" => { "1" => 6 } },
       { "name" => "D", "school" => "X", "group" => "2A", "scores" => {} }
     ]
-    s = Golf::Standings.new(players, PARS)
+    s = Golf::Standings.new(players, pars: PARS)
     assert_equal %w[T1 T1 3], s.individuals.map { |p| p["pos"] }
     assert_equal %w[D], s.waiting.map { |p| p["name"] }
   end
 
   def test_team_needs_four_scores
-    players = (1..5).map { |i| { "name" => "P#{i}", "school" => "X", "group" => "1A", "team" => true, "scores" => i < 4 ? { "1" => 5 } : {} } }
-    s = Golf::Standings.new(players, PARS)
+    players = (1..5).map { |i| { "name" => "P#{i}", "school" => "X", "group" => "1", "team" => true, "total" => i < 4 ? 40 : nil } }
+    s = Golf::Standings.new(players, par: 36)
     assert_empty s.ranked_teams
     assert_equal [["X", 3]], s.short_teams.map { |t| t.values_at("school", "scored") }
+  end
+
+  def test_totals_without_par_rank_by_strokes
+    players = [{ "name" => "A", "school" => "X", "total" => 45 }, { "name" => "B", "school" => "X", "total" => 41 }]
+    s = Golf::Standings.new(players)
+    assert_equal [["1", "B", nil], ["2", "A", nil]], s.individuals.map { |p| p.values_at("pos", "name", "to_par") }
   end
 end

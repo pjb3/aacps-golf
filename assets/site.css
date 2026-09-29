@@ -85,3 +85,5 @@ li.cnt+li.drop{margin-top:6px;padding-top:6px;border-top:1px dashed var(--rule)}
 .ev-lead span{white-space:nowrap}
 .ev-lead b{font:700 16px "Barlow Condensed",sans-serif}
 .events .live{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:#C21F2B;border-radius:3px;padding:4px 6px}
+td.num.strokes{font:700 24px/1 "Barlow Condensed",sans-serif;padding-top:12px;color:var(--ink)}
+li i.n{min-width:2em}

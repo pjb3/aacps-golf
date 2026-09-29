@@ -13,10 +13,10 @@ layout: default
 <li><a href="{{ e.url | relative_url }}">
  <span class="when">{{ e.date | date: "%b" }}<b>{{ e.date | date: "%-d" }}</b>{{ e.date | date: "%Y" }}</span>
  <span class="ev-name">{{ e.title | escape }}{% if e.live %} <span class="live">Live</span>{% endif %}</span>
- <span class="ev-meta">{{ e.course | escape }}{% if b %} · par {{ b.par }} · {{ b.player_count }} players{% endif %}</span>
+ <span class="ev-meta">{{ e.course | escape }}{% if b %}{% if b.par %} · par {{ b.par }}{% endif %} · {{ b.player_count }} players{% endif %}</span>
  {%- if b and b.individuals.size > 0 %}
  {%- assign p = b.individuals.first %}{% assign t = b.teams.first %}
- <span class="ev-lead"><span>{% if e.live %}Leader{% else %}Medalist{% endif %}: {{ p.name | escape }} <b class="{{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</b></span>{% if t %}<span>{% if e.live %}Top team{% else %}Team champion{% endif %}: {{ t.school | escape }} <b class="{{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</b></span>{% endif %}</span>
+ <span class="ev-lead"><span>{% if e.live %}Leader{% else %}Medalist{% endif %}: {{ p.name | escape }} {% if b.to_par %}<b class="{{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</b>{% else %}<b>{{ p.strokes }}</b>{% endif %}</span>{% if t %}<span>{% if e.live %}Top team{% else %}Team champion{% endif %}: {{ t.school | escape }} {% if b.to_par %}<b class="{{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</b>{% else %}<b>{{ t.strokes }}</b>{% endif %}</span>{% endif %}</span>
  {%- endif %}
 </a></li>
 {%- endfor %}

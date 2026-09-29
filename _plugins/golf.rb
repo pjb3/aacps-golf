@@ -13,7 +13,7 @@ module Golf
         doc.data["scores_key"] = name
         scores = site.data.dig("scores", name) or next
         doc.data["updated"] = scores["updated"]
-        doc.data["board"] = Standings.new(scores["players"], doc.data.fetch("pars")).to_h
+        doc.data["board"] = Standings.new(scores["players"], pars: doc.data["pars"], par: doc.data["par"]).to_h
       end
     end
   end

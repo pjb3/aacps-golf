@@ -4,7 +4,7 @@
 #
 #   bin/refresh                         # every event with live: true
 #   bin/refresh 2026-09-29-county-championship
-#   bin/refresh --file sample/scores.xlsx 2026-09-29-county-championship
+#   bin/refresh --file sample/2026-09-29-county-championship.xlsx 2026-09-29-county-championship
 #
 # The file is only rewritten when the scores change, so "updated" is the time
 # of the last change. In GitHub Actions, writes changed=true|false to

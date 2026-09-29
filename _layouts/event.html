@@ -2,40 +2,55 @@
 layout: default
 ---
 {%- assign b = page.board -%}
+{%- if b.cards %}{% assign cols = 5 %}{% else %}{% assign cols = 4 %}{% endif -%}
 <a class="back" href="{{ '/' | relative_url }}">← All tournaments</a>
-<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d, %Y" }}{% if b %}, par {{ b.par }}.{% if page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
+<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d, %Y" }}{% if b %}{% if b.par %}, par {{ b.par }}{% endif %}.{% if page.live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
 <div class="board">
 {%- unless b %}
 <p class="empty">Scores will appear here once play begins.</p>
 {%- else %}
 <div class="controls">
  <div class="seg" role="group" aria-label="Leaderboard"><button data-view="ind" aria-pressed="true">Individual</button><button data-view="team" aria-pressed="false">Team</button></div>
+ {%- if b.gender_filter %}
  <div class="seg" role="group" aria-label="Filter players" id="gfilter"><button data-g="all" aria-pressed="true">All</button><button data-g="boys" aria-pressed="false">Boys</button><button data-g="girls" aria-pressed="false">Girls</button></div>
+ {%- endif %}
 </div>
-<section id="ind"><div class="scroll"><table><thead><tr><th>Pos</th><th>Player</th><th class="r">To par</th><th class="r">Thru</th><th class="r">Strokes</th></tr></thead><tbody id="ibody">
+<section id="ind"><div class="scroll"><table><thead><tr><th>Pos</th><th>Player</th>{% if b.to_par %}<th class="r">To par</th>{% endif %}{% if b.cards %}<th class="r">Thru</th>{% endif %}<th class="r">Strokes</th></tr></thead><tbody id="ibody">
 {%- for p in b.individuals %}
-<tr data-g="{{ p.gender_key }}" class="pl" tabindex="0" role="button" aria-expanded="false" aria-controls="c{{ forloop.index }}"><td class="pos">{{ p.pos }}</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td><td class="tp {{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</td><td class="num">{% if p.thru == 18 %}F{% else %}{{ p.thru }}{% endif %}</td><td class="num dim">{{ p.strokes }}</td></tr>
-<tr data-g="{{ p.gender_key }}" class="cardrow" id="c{{ forloop.index }}" hidden><td colspan="5"><div class="scroll">{% include scorecard.html player=p %}</div><p class="legend">Starting hole {{ p.start_hole }}. <span class="s birdie">3</span> birdie or better, <span class="s bogey">5</span> bogey, <span class="s dbl">6</span> double or worse.</p></td></tr>
+{%- if b.cards %}
+<tr data-g="{{ p.gender_key }}" class="pl" tabindex="0" role="button" aria-expanded="false" aria-controls="c{{ forloop.index }}">
+{%- else %}
+<tr data-g="{{ p.gender_key }}">
+{%- endif %}<td class="pos">{{ p.pos }}</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp {{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</td>{% endif %}{% if b.cards %}<td class="num">{% if p.finished %}F{% else %}{{ p.thru }}{% endif %}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{{ p.strokes }}</td></tr>
+{%- if b.cards %}
+<tr data-g="{{ p.gender_key }}" class="cardrow" id="c{{ forloop.index }}" hidden><td colspan="{{ cols }}"><div class="scroll">{% include scorecard.html player=p %}</div><p class="legend">Starting hole {{ p.start_hole }}. <span class="s birdie">3</span> birdie or better, <span class="s bogey">5</span> bogey, <span class="s dbl">6</span> double or worse.</p></td></tr>
+{%- endif %}
 {%- endfor %}
 {%- for p in b.waiting %}
-<tr data-g="{{ p.gender_key }}" class="wait"><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td><td class="tp">–</td><td class="num">{{ p.group }}</td><td class="num dim">–</td></tr>
+<tr data-g="{{ p.gender_key }}" class="wait"><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp">–</td>{% endif %}{% if b.cards %}<td class="num">{{ p.group }}</td>{% endif %}<td class="num dim">–</td></tr>
 {%- endfor %}
 </tbody></table></div>
-<p class="note">{{ b.started_count }} of {{ b.player_count }} players have posted scores. Tap a player to see their scorecard. To par counts only the holes each player has finished. Boys/Girls uses the gender listed on the ENTRIES tab; players with none listed appear under All only.</p></section>
-<section id="team" hidden><div class="scroll"><table><thead><tr><th>Pos</th><th>School and counting scores</th><th class="r">To par</th><th class="r">Strokes</th></tr></thead><tbody>
+<p class="note">
+{%- if b.cards %}{{ b.started_count }} of {{ b.player_count }} players have posted scores. Tap a player to see their scorecard. To par counts only the holes each player has finished.
+{%- elsif b.waiting.size > 0 %}{{ b.started_count }} of {{ b.player_count }} players posted a score. Final scores only; no hole-by-hole scorecards for this event.
+{%- else %}Final scores only; no hole-by-hole scorecards for this event.{% endif %}
+{%- if b.gender_filter %} Boys/Girls uses the gender listed on the ENTRIES tab; players with none listed appear under All only.{% endif %}</p></section>
+<section id="team" hidden><div class="scroll"><table><thead><tr><th>Pos</th><th>School and counting scores</th>{% if b.to_par %}<th class="r">To par</th>{% endif %}<th class="r">Strokes</th></tr></thead><tbody>
 {%- for t in b.teams %}
-<tr class="team"><td class="pos">{{ t.pos }}</td><td class="nm">{{ t.school | escape }}<ul>{% for x in t.players %}<li class="{% if x.counting %}cnt{% else %}drop{% endif %}"><span>{{ x.name | escape }}</span>{% if x.thru > 0 %}<b class="{{ x.to_par | to_par_class }}">{{ x.to_par | to_par }}</b><i>thru {{ x.thru }}</i>{% else %}<b>–</b><i>not started</i>{% endif %}</li>{% endfor %}</ul></td><td class="tp {{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</td><td class="num dim">{{ t.strokes }}</td></tr>
+<tr class="team"><td class="pos">{{ t.pos }}</td><td class="nm">{{ t.school | escape }}<ul>{% for x in t.players %}<li class="{% if x.counting %}cnt{% else %}drop{% endif %}"><span>{{ x.name | escape }}</span>
+{%- if x.started %}{% if b.to_par %}<b class="{{ x.to_par | to_par_class }}">{{ x.to_par | to_par }}</b>{% endif %}{% if b.cards %}<i>{% if x.finished %}F{% else %}thru {{ x.thru }}{% endif %}</i>{% else %}<i class="n">{{ x.strokes }}</i>{% endif %}
+{%- else %}<b>–</b><i>{% if b.cards %}not started{% else %}no score{% endif %}</i>{% endif %}</li>{% endfor %}</ul></td>{% if b.to_par %}<td class="tp {{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{{ t.strokes }}</td></tr>
 {%- endfor %}
 </tbody></table></div>
-<p class="note">Each school's team is the six players listed above the divider on the ENTRIES tab; players below it compete as individuals only. Team score is the sum of the four best to-par scores, marked with a green bar.{% if b.short_teams.size > 0 %} Teams with fewer than four scores posted: {% for t in b.short_teams %}{{ t.school | escape }} ({{ t.scored }}){% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}</p></section>
+<p class="note">Each school's team is the first block of players listed for it on the ENTRIES tab; players listed separately compete as individuals only. Team score is the sum of the four best scores, marked with a green bar.{% if b.short_teams.size > 0 %} Teams with fewer than four scores posted: {% for t in b.short_teams %}{{ t.school | escape }} ({{ t.scored }}){% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}</p></section>
 {%- endunless %}
 </div>
 {%- if b %}
 <script>
-const views=document.querySelectorAll('[data-view]');
+const views=document.querySelectorAll('[data-view]'),gf=document.getElementById('gfilter');
 views.forEach(b=>b.onclick=()=>{views.forEach(x=>x.setAttribute('aria-pressed',x===b));
  document.getElementById('ind').hidden=b.dataset.view!=='ind';document.getElementById('team').hidden=b.dataset.view!=='team';
- document.getElementById('gfilter').style.visibility=b.dataset.view==='ind'?'visible':'hidden';});
+ if(gf)gf.style.visibility=b.dataset.view==='ind'?'visible':'hidden';});
 document.querySelectorAll('tr.pl').forEach(r=>{const t=()=>{const c=document.getElementById(r.getAttribute('aria-controls'));const o=r.getAttribute('aria-expanded')!=='true';r.setAttribute('aria-expanded',o);c.hidden=!o;};
  r.onclick=t;r.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}};});
 const gs=document.querySelectorAll('#gfilter button');
