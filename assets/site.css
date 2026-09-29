@@ -35,7 +35,7 @@ tr.wait td{color:var(--muted)}
 ul{list-style:none;margin:6px 0 0;padding:0;font-weight:400;font-size:14px}
 li{display:flex;gap:8px;color:var(--muted);padding:1px 0}
 li span{flex:1;color:var(--ink)} li b{font:600 15px "Barlow Condensed",sans-serif;min-width:2.4em;text-align:right;color:var(--ink)}
-li b.under{color:var(--red)} li i{font-style:normal;min-width:4.2em;text-align:right}
+li b.under{color:var(--red)} li i{font:500 15px "Barlow Condensed",sans-serif;font-style:normal;min-width:2.2em;text-align:right}
 .note{font-size:14px;color:var(--muted);padding:12px 16px;border-top:1px solid var(--rule);margin:0}
 tr.pl{cursor:pointer}
 tr.pl:hover td{background:color-mix(in srgb,var(--green) 6%,transparent)}
@@ -86,4 +86,11 @@ li.cnt+li.drop{margin-top:6px;padding-top:6px;border-top:1px dashed var(--rule)}
 .ev-lead b{font:700 16px "Barlow Condensed",sans-serif}
 .events .live{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:#C21F2B;border-radius:3px;padding:4px 6px}
 td.num.strokes{font:700 24px/1 "Barlow Condensed",sans-serif;padding-top:12px;color:var(--ink)}
-li i.n{min-width:2em}
+
+/* Team rosters sit in their own full-width row under each school */
+tr.team td{border-bottom:0;padding-bottom:2px}
+tr.roster>td{padding-top:0}
+tr.roster ul{margin-top:2px}
+#team li{gap:14px}
+li i.fin{color:var(--ink);font-weight:700}
+li.drop i.fin{color:var(--muted)}
