@@ -84,6 +84,4 @@ li.cnt+li.drop{margin-top:6px;padding-top:6px;border-top:1px dashed var(--rule)}
 .ev-lead{font-size:14px;display:flex;flex-wrap:wrap;gap:4px 16px}
 .ev-lead span{white-space:nowrap}
 .ev-lead b{font:700 16px "Barlow Condensed",sans-serif}
-.live{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--red);border-radius:3px;padding:4px 6px}
-:root[data-theme="dark"] .live{color:#0E1711}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .live{color:#0E1711}}
+.events .live{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:#C21F2B;border-radius:3px;padding:4px 6px}
