@@ -1,11 +1,11 @@
 {
-  "updated": "2026-09-30T14:19:13-04:00",
+  "updated": "2026-09-30T18:30:03-04:00",
   "players": [
     {
       "name": "Kallan Falls",
       "school": "Arundel",
       "group": null,
-      "total": null,
+      "total": 47,
       "gender": "M",
       "team": false
     },
@@ -69,7 +69,7 @@
       "name": "Brian Hyde",
       "school": "Northeast",
       "group": null,
-      "total": null,
+      "total": 46,
       "gender": "M",
       "team": false
     },
@@ -109,7 +109,7 @@
       "name": "Ethan Goughenour",
       "school": "Old Mill",
       "group": null,
-      "total": null,
+      "total": 50,
       "gender": "M",
       "team": false
     },
@@ -141,7 +141,7 @@
       "name": "Chase Youmans",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 39,
       "gender": "M",
       "team": false
     },
