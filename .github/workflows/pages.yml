@@ -3,10 +3,16 @@ name: Build and deploy
 on:
   push:
     branches: [main]
-  # Every 15 minutes: re-download the sheet for events marked live: true.
-  # GitHub may delay scheduled runs by several minutes; use "Run workflow" for an immediate refresh.
+  # Every 15 minutes: re-download the sheets for today's events (see
+  # Golf::Schedule.live?). GitHub may delay scheduled runs by several minutes;
+  # use "Run workflow" for an immediate refresh.
+  # Nightly, just after midnight Eastern (EDT and EST): add new matches from
+  # the results page, pull results still missing, and rebuild so the
+  # homepage's Today/Upcoming/Past sections roll over.
   schedule:
     - cron: "*/15 * * * *"
+    - cron: "5 4 * * *"
+    - cron: "5 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,6 +23,9 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: false
+
+env:
+  NIGHTLY: ${{ github.event_name == 'schedule' && github.event.schedule != '*/15 * * * *' }}
 
 jobs:
   build:
@@ -30,24 +39,32 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Refresh live scores
-        id: refresh
-        run: bundle exec bin/refresh
+      - name: Add new events from the results page
+        if: env.NIGHTLY == 'true'
+        run: bundle exec bin/import
 
-      - name: Commit updated scores
-        if: steps.refresh.outputs.changed == 'true'
+      - name: Refresh scores
+        run: bundle exec bin/refresh ${{ env.NIGHTLY == 'true' && '--missing' || '' }}
+
+      - name: Commit changes
+        id: commit
         run: |
+          if [ -z "$(git status --porcelain _data/scores _events)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add _data/scores
-          git commit -m "Update live scores"
+          git add _data/scores _events
+          git commit -m "Update scores and events"
           git pull --rebase
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      # Scheduled runs only redeploy when scores changed.
+      # 15-minute runs only redeploy when something changed.
       - name: Decide whether to deploy
         id: decide
-        run: echo "deploy=${{ github.event_name != 'schedule' || steps.refresh.outputs.changed == 'true' }}" >> "$GITHUB_OUTPUT"
+        run: echo "deploy=${{ github.event_name != 'schedule' || env.NIGHTLY == 'true' || steps.commit.outputs.changed == 'true' }}" >> "$GITHUB_OUTPUT"
 
       - name: Test
         if: steps.decide.outputs.deploy == 'true'

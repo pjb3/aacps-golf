@@ -4,10 +4,10 @@ layout: default
 {%- assign b = page.board -%}
 {%- if b.cards %}{% assign cols = 5 %}{% else %}{% assign cols = 4 %}{% endif -%}
 <a class="back" href="{{ '/' | relative_url }}">← All tournaments</a>
-<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d, %Y" }}{% if b %}{% if b.par %}, par {{ b.par }}{% endif %}.{% if page.live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
+<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d" }}{% if page.end_date %}–{{ page.end_date | date: "%-d" }}{% endif %}, {{ page.date | date: "%Y" }}{% assign par = b.par | default: page.par %}{% if par and page.cancelled != true %}, par {{ par }}{% endif %}.{% if b %}{% if page.is_live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
 <div class="board">
 {%- unless b %}
-<p class="empty">Scores will appear here once play begins.</p>
+<p class="empty">{% if page.cancelled %}This match was cancelled.{% elsif page.results_url %}Results are posted on the <a href="{{ page.results_url }}">MPSSAA site</a>.{% else %}Scores will appear here once play begins.{% endif %}</p>
 {%- else %}
 {%- if b.has_teams or b.gender_filter %}
 <div class="controls">
@@ -31,11 +31,11 @@ layout: default
 {%- endif %}
 {%- endfor %}
 {%- for p in b.waiting %}
-<tr data-g="{{ p.gender_key }}" class="wait"><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp">–</td>{% endif %}{% if b.cards %}<td class="num">{% if page.live %}{{ p.group }}{% else %}–{% endif %}</td>{% endif %}<td class="num dim">{{ p.status | default: "–" }}</td></tr>
+<tr data-g="{{ p.gender_key }}" class="wait"><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp">–</td>{% endif %}{% if b.cards %}<td class="num">{% if page.is_live %}{{ p.group }}{% else %}–{% endif %}</td>{% endif %}<td class="num dim">{{ p.status | default: "–" }}</td></tr>
 {%- endfor %}
 </tbody></table></div>
 <p class="note">
-{%- if b.cards %}{% if page.live %}{{ b.started_count }} of {{ b.player_count }} players have posted scores.{% elsif b.waiting.size > 0 %}{{ b.waiting.size }} of {{ b.player_count }} players have no score posted.{% endif %} Tap a player to see their scorecard. To par counts only the holes each player has finished.
+{%- if b.cards %}{% if page.is_live %}{{ b.started_count }} of {{ b.player_count }} players have posted scores.{% elsif b.waiting.size > 0 %}{{ b.waiting.size }} of {{ b.player_count }} players have no score posted.{% endif %} Tap a player to see their scorecard. To par counts only the holes each player has finished.
 {%- elsif b.waiting.size > 0 %}{{ b.started_count }} of {{ b.player_count }} players posted a score. Final scores only; no hole-by-hole scorecards for this event.
 {%- else %}Final scores only; no hole-by-hole scorecards for this event.{% endif %}
 {%- if b.gender_filter %} Boys/Girls uses the gender listed on the ENTRIES tab; players with none listed appear under All only.{% endif %}
@@ -65,7 +65,7 @@ const gs=document.querySelectorAll('#gfilter button');
 gs.forEach(b=>b.onclick=()=>{gs.forEach(x=>x.setAttribute('aria-pressed',x===b));const g=b.dataset.g;
  const rows=[...document.querySelectorAll('#ibody tr')];rows.forEach(r=>{const out=g!=='all'&&r.dataset.g!==g;
  if(r.classList.contains('cardrow')){const p=r.previousElementSibling;r.hidden=out||p.getAttribute('aria-expanded')!=='true';}else r.hidden=out;});});
-{%- if page.live %}
+{%- if page.is_live %}
 // Live events: add "(N min ago)" after the timestamp.
 const u=document.querySelector('time.updated');
 if(u){const s=document.createElement('span');u.after(s);const tick=()=>{const m=Math.round((Date.now()-new Date(u.dateTime))/60000);

@@ -1,0 +1,269 @@
+{
+  "updated": "2026-09-29T20:37:05-04:00",
+  "players": [
+    {
+      "name": "Emily Huus",
+      "school": "Crofton",
+      "group": "1",
+      "total": 57,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Marissa Liverpool",
+      "school": "Crofton",
+      "group": "2",
+      "total": 55,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Eliza Javri",
+      "school": "Crofton",
+      "group": "4",
+      "total": 62,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Claire Kerley",
+      "school": "Crofton",
+      "group": "5",
+      "total": 60,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Caroline Viscardi",
+      "school": "Broadneck",
+      "group": "1",
+      "total": 43,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Natalie Coe",
+      "school": "Broadneck",
+      "group": "2",
+      "total": 58,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Adelyn Jonker",
+      "school": "Broadneck",
+      "group": "4",
+      "total": 65,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Claire Pierpoint",
+      "school": "Broadneck",
+      "group": "5",
+      "total": 59,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Zoe Port",
+      "school": "Severna Park",
+      "group": "1",
+      "total": 58,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Quinn Makarovich",
+      "school": "Severna Park",
+      "group": "3",
+      "total": 60,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Camden Cater",
+      "school": "Severna Park",
+      "group": "6",
+      "total": 63,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Ella Gold",
+      "school": "Severna Park",
+      "group": "5",
+      "total": 66,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Bryn Calicoat",
+      "school": "Chesapeake",
+      "group": "1",
+      "total": 66,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Aubery Dilacovo",
+      "school": "Chesapeake",
+      "group": "3",
+      "total": 58,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Peyton Naylor",
+      "school": "Chesapeake",
+      "group": "4",
+      "total": 68,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Grace Stallings",
+      "school": "Chesapeake",
+      "group": "6",
+      "total": 66,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Sarah Valencia",
+      "school": "South River",
+      "group": "2",
+      "total": 49,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Audrey Nicely",
+      "school": "South River",
+      "group": "3",
+      "total": 51,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Lauren Finn",
+      "school": "South River",
+      "group": "4",
+      "total": 64,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Victoria Chan",
+      "school": "South River",
+      "group": null,
+      "total": 55,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Ava Shay",
+      "school": "Arundel",
+      "group": "2",
+      "total": 54,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Paige Morgan",
+      "school": "Arundel",
+      "group": "3",
+      "total": 52,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Kearslee Kamachi",
+      "school": "Arundel",
+      "group": "5",
+      "total": 71,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Anna Finch",
+      "school": "Arundel",
+      "group": "6",
+      "total": 64,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Sofia Biddle",
+      "school": "Glen Burnie",
+      "group": "8",
+      "total": 61,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Ameera Adesunbo",
+      "school": "Glen Burnie",
+      "group": "7",
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Jatziri Salinas",
+      "school": "Glen Burnie",
+      "group": null,
+      "total": 70,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Lily Slavy",
+      "school": "North County",
+      "group": "8",
+      "total": 70,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Madelyn Happel",
+      "school": "North County",
+      "group": "7",
+      "total": 70,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Reagan Rich",
+      "school": "North County",
+      "group": null,
+      "total": 69,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Reagan Norfolk",
+      "school": "Southern",
+      "group": "6",
+      "total": 55,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Molly Boyle",
+      "school": "Crofton",
+      "group": "7",
+      "total": 57,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Julie Goodwin",
+      "school": "Crofton",
+      "group": "8",
+      "total": 70,
+      "gender": null,
+      "team": true
+    }
+  ]
+}

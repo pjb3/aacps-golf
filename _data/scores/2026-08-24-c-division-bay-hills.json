@@ -1,0 +1,208 @@
+{
+  "updated": "2026-09-29T20:39:13-04:00",
+  "players": [
+    {
+      "name": "Rhyan Arciaga",
+      "school": "Chesapeake Science Point",
+      "group": "1",
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Dylan Morgan",
+      "school": "Chesapeake Science Point",
+      "group": "2",
+      "total": 49,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Saleem Mason",
+      "school": "Chesapeake Science Point",
+      "group": "3",
+      "total": null,
+      "status": "DNP",
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alex Kilbride",
+      "school": "Chesapeake Science Point",
+      "group": "4",
+      "total": 58,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Zach Nield",
+      "school": "Chesapeake Science Point",
+      "group": "5",
+      "total": 54,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nathaniel Brown",
+      "school": "Chesapeake Science Point",
+      "group": "6",
+      "total": 65,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Austin Sinclair",
+      "school": "Glen Burnie",
+      "group": "1",
+      "total": null,
+      "status": "DNP",
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Noah Dull",
+      "school": "Glen Burnie",
+      "group": "2",
+      "total": 56,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ti Thorne",
+      "school": "Glen Burnie",
+      "group": "3",
+      "total": null,
+      "status": "DNP",
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Titan Jackson",
+      "school": "Glen Burnie",
+      "group": "4",
+      "total": 55,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Devon Myers",
+      "school": "Glen Burnie",
+      "group": "5",
+      "total": 57,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Eli Morales",
+      "school": "Glen Burnie",
+      "group": "6",
+      "total": 68,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ryan Batcheldor",
+      "school": "Glen Burnie",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "James Posey",
+      "school": "North County",
+      "group": "1",
+      "total": 45,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alec Behegan",
+      "school": "North County",
+      "group": "2",
+      "total": 53,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nate Alimo",
+      "school": "North County",
+      "group": "3",
+      "total": 55,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Gavin Boritz",
+      "school": "North County",
+      "group": "4",
+      "total": 45,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Liam Hontz",
+      "school": "North County",
+      "group": "5",
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Joseph Lopez",
+      "school": "North County",
+      "group": "6",
+      "total": 52,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Reece Miguel",
+      "school": "Severn Run",
+      "group": "1",
+      "total": 56,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chris Mahnke",
+      "school": "Severn Run",
+      "group": "2",
+      "total": 45,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Garrett James",
+      "school": "Severn Run",
+      "group": "3",
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Connor Giest",
+      "school": "Severn Run",
+      "group": "4",
+      "total": 52,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Cam Kellner",
+      "school": "Severn Run",
+      "group": "5",
+      "total": 49,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brandon Rochon",
+      "school": "Severn Run",
+      "group": "6",
+      "total": 45,
+      "gender": "M",
+      "team": true
+    }
+  ]
+}

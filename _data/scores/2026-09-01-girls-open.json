@@ -1,0 +1,294 @@
+{
+  "updated": "2026-09-29T20:37:08-04:00",
+  "players": [
+    {
+      "name": "Sarah Valencia",
+      "school": "South River",
+      "group": "1",
+      "total": 45,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Nora Dunn",
+      "school": "Broadneck",
+      "group": "1",
+      "total": 64,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Emily Huus",
+      "school": "Crofton",
+      "group": "1",
+      "total": 63,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Paige Morgan",
+      "school": "Arundel",
+      "group": "1",
+      "total": 58,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lily Slavy",
+      "school": "North County",
+      "group": "2",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Eliza Loker",
+      "school": "South River",
+      "group": "2",
+      "total": 65,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Anna Finch",
+      "school": "Arundel",
+      "group": "2",
+      "total": 60,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Natalie Coe",
+      "school": "Broadneck",
+      "group": "2",
+      "total": 52,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Marissa Liverpool",
+      "school": "Crofton",
+      "group": "3",
+      "total": 46,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Elizabeth Schlossberg",
+      "school": "South River",
+      "group": "3",
+      "total": 53,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Kyra Trippett",
+      "school": "Severna Park",
+      "group": "3",
+      "total": 61,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Rylan Beard",
+      "school": "Arundel",
+      "group": "3",
+      "total": 69,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Bryn Calicoat",
+      "school": "Chesapeake",
+      "group": "4",
+      "total": 54,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lila Pietromica",
+      "school": "Broadneck",
+      "group": null,
+      "total": 58,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Zoey Tuttle",
+      "school": "Severn Run",
+      "group": "4",
+      "total": 70,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Claire Kerley",
+      "school": "Crofton",
+      "group": "4",
+      "total": 51,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lyla Flanders",
+      "school": "South River",
+      "group": "5",
+      "total": 67,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Emily Willis",
+      "school": "Severna Park",
+      "group": "5",
+      "total": 67,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Kearslee Kamachi",
+      "school": "Arundel",
+      "group": "5",
+      "total": 67,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Maddie Happel",
+      "school": "North County",
+      "group": "5",
+      "total": 68,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lauren Finn",
+      "school": "South River",
+      "group": "6",
+      "total": 60,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Audrey Nicley",
+      "school": "South River",
+      "group": "6",
+      "total": 48,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Annemarie Mitzel",
+      "school": "Severna Park",
+      "group": "6",
+      "total": 68,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Jatziri Salinas",
+      "school": "Glen Burnie",
+      "group": "6",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Reagan Rich",
+      "school": "North County",
+      "group": "7",
+      "total": 68,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Reagan Norfolk",
+      "school": "Southern",
+      "group": "7",
+      "total": 60,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Claire Pierpoint",
+      "school": "Broadneck",
+      "group": "7",
+      "total": null,
+      "status": "DNF",
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Eliza Jarvi",
+      "school": "Crofton",
+      "group": null,
+      "total": 57,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Taylor Gilligan",
+      "school": "Severna Park",
+      "group": "8",
+      "total": 60,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Peyton Naylor",
+      "school": "Chesapeake",
+      "group": "8",
+      "total": 63,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Addie Jonker",
+      "school": "Broadneck",
+      "group": "8",
+      "total": 62,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Sophia Biddle",
+      "school": "Glen Burnie",
+      "group": "8",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Grace Stallings",
+      "school": "Chesapeake",
+      "group": "9",
+      "total": 63,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lizzy Thibodeau",
+      "school": "Annapolis",
+      "group": "9",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Molly Boyle",
+      "school": "Crofton",
+      "group": "9",
+      "total": 54,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Aubrey Diiacovo",
+      "school": "Chesapeake",
+      "group": "9",
+      "total": 58,
+      "gender": "F",
+      "team": false
+    }
+  ]
+}

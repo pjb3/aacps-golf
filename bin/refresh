@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
-# Download each live event's Google Sheet and write its raw scores to
+# Download events' Google Sheets and write their raw scores to
 # _data/scores/<event file name>.json.
 #
-#   bin/refresh                         # every event with live: true
+#   bin/refresh                         # live events (today's, see Golf::Schedule)
+#   bin/refresh --missing               # past/today events with no scores file yet
 #   bin/refresh 2026-09-29-county-championship
 #   bin/refresh --file sample/2026-09-29-county-championship.xlsx 2026-09-29-county-championship
 #
@@ -22,8 +23,10 @@ require_relative "../lib/golf"
 ROOT = File.expand_path("..", __dir__)
 
 file = nil
+missing = false
 OptionParser.new do |o|
-  o.banner = "Usage: bin/refresh [--file scores.xlsx] [event ...]"
+  o.banner = "Usage: bin/refresh [--missing] [--file scores.xlsx] [event ...]"
+  o.on("--missing", "Also pull events up to today that have no scores file") { missing = true }
   o.on("--file PATH", "Read this .xlsx instead of downloading the sheet (needs one event)") { |f| file = f }
 end.parse!
 
@@ -31,13 +34,19 @@ events = Dir[File.join(ROOT, "_events", "*.md")].to_h do |path|
   [File.basename(path, ".md"), YAML.safe_load_file(path, permitted_classes: [Date])]
 end
 
-names = ARGV.empty? ? events.select { |_, e| e["live"] }.keys : ARGV
+scores_path = ->(name) { File.join(ROOT, "_data", "scores", "#{name}.json") }
+names = ARGV
+if names.empty?
+  names = events.select { |_, e| e["sheet_id"] && Golf::Schedule.live?(e) }.keys
+  names |= events.select { |n, e| e["sheet_id"] && !e["cancelled"] && Golf::Schedule.section(e) != "upcoming" && !File.exist?(scores_path[n]) }.keys if missing
+end
 unknown = names - events.keys
 abort "Unknown event(s): #{unknown.join(", ")}. Choose from: #{events.keys.join(", ")}" if unknown.any?
 abort "--file needs exactly one event name" if file && names.size != 1
-puts "No live events." if names.empty?
+puts "Nothing to refresh." if names.empty?
 
 changed = false
+failed = []
 names.each do |name|
   xlsx = file || Tempfile.create(["scores", ".xlsx"]).tap do |tmp|
     id = events[name]["sheet_id"] or abort "#{name}: no sheet_id"
@@ -45,8 +54,15 @@ names.each do |name|
     tmp.close
   end.path
 
-  players = Golf::Sheet.extract(xlsx)
-  out = File.join(ROOT, "_data", "scores", "#{name}.json")
+  # One unreadable sheet shouldn't stop the others from updating.
+  players = begin
+    Golf::Sheet.extract(xlsx)
+  rescue => e
+    warn "#{name}: couldn't read sheet: #{e.message}"
+    failed << name
+    next
+  end
+  out = scores_path[name]
   if File.exist?(out) && JSON.parse(File.read(out))["players"] == players
     puts "#{name}: no change"
     next
@@ -58,3 +74,4 @@ names.each do |name|
 end
 
 File.write(ENV["GITHUB_OUTPUT"], "changed=#{changed}\n", mode: "a") if ENV["GITHUB_OUTPUT"]
+warn "Failed: #{failed.join(", ")}" if failed.any?

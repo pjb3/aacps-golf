@@ -1,0 +1,221 @@
+{
+  "updated": "2026-09-29T20:33:24-04:00",
+  "players": [
+    {
+      "name": "Paige Morgan",
+      "school": "Arundel",
+      "group": "1",
+      "total": 58,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Caroline Viscardi",
+      "school": "Broadneck",
+      "group": "1",
+      "total": 45,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Zoe Port",
+      "school": "Severna Park",
+      "group": "1",
+      "total": 60,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Sarah Valencia",
+      "school": "South River",
+      "group": "1",
+      "total": 39,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Bryn Calicoat",
+      "school": "Chesapeake",
+      "group": "2",
+      "total": 57,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Emily Huus",
+      "school": "Crofton",
+      "group": "2",
+      "total": 58,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Anna Finch",
+      "school": "Arundel",
+      "group": "2",
+      "total": 54,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Natalie Coe",
+      "school": "Broadneck",
+      "group": "2",
+      "total": 64,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Taylor Gilligan",
+      "school": "Severna Park",
+      "group": "3",
+      "total": 63,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Audrey Nicely",
+      "school": "South River",
+      "group": "3",
+      "total": 50,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Aubrey Diiacovo",
+      "school": "Chesapeake",
+      "group": "3",
+      "total": 63,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Claire Kerley",
+      "school": "Crofton",
+      "group": "3",
+      "total": 54,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Rylan Beard",
+      "school": "Arundel",
+      "group": "4",
+      "total": 64,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Nora Dunn",
+      "school": "Broadneck",
+      "group": "4",
+      "total": 66,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Kyra Trippett",
+      "school": "Severna Park",
+      "group": "4",
+      "total": 59,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Lauren Finn",
+      "school": "South River",
+      "group": "4",
+      "total": 55,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Peyton Naylor",
+      "school": "Chesapeake",
+      "group": "5",
+      "total": 55,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Molly Boyle",
+      "school": "Crofton",
+      "group": "5",
+      "total": 63,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Evelyn Finn",
+      "school": "Arundel",
+      "group": "5",
+      "total": 64,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Harper Karanzalis",
+      "school": "Broadneck",
+      "group": "5",
+      "total": 66,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Quinn Makarovich",
+      "school": "Severna Park",
+      "group": "6",
+      "total": 59,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Victoria Chan",
+      "school": "South River",
+      "group": "6",
+      "total": 60,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Grace Stallings",
+      "school": "Chesapeake",
+      "group": "6",
+      "total": 60,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Eliza Jarvi",
+      "school": "Crofton",
+      "group": "6",
+      "total": 59,
+      "gender": null,
+      "team": true
+    },
+    {
+      "name": "Sophia Biddle",
+      "school": "Glen Burnie",
+      "group": "7",
+      "total": 64,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Jatziri Salinas",
+      "school": "Glen Burnie",
+      "group": "7",
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Josie McIntyre",
+      "school": "Chesapeake",
+      "group": "7",
+      "total": 64,
+      "gender": null,
+      "team": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29T17:32:16-04:00",
+  "updated": "2026-09-29T20:36:54-04:00",
   "players": [
     {
       "name": "Ty Swann",
@@ -926,7 +926,7 @@
     },
     {
       "name": "Rhyan Arciaga",
-      "school": "Chesapeake Science",
+      "school": "Chesapeake Science Point",
       "group": "15B",
       "scores": {
         "1": 5,
@@ -1844,7 +1844,7 @@
     },
     {
       "name": "Dylan Morgan",
-      "school": "Chesapeake Science",
+      "school": "Chesapeake Science Point",
       "group": "7B",
       "scores": {
         "1": 8,

@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+# Create an _events file for every match listed on the AACPS golf results page
+# that doesn't have one yet. Existing event files are never changed.
+#
+#   bin/import             # write new event files
+#   bin/import --dry-run   # just list what would be created
+#
+# Each line on the page looks like "8/17- C @ Eisenhower", optionally ending
+# in "- Cancelled", and links to the match's Google Sheet. Cancelled matches
+# get `cancelled: true` and no sheet. Then pull scores for past events with
+# `bin/refresh --missing`.
+ENV["TZ"] = "America/New_York"
+
+require "date"
+require "nokogiri"
+require "open-uri"
+require "optparse"
+require "yaml"
+
+ROOT = File.expand_path("..", __dir__)
+RESULTS_PAGE = "https://sites.google.com/aacps.org/golf/results"
+LINE = %r{\A(?<m>\d+)/(?<d>\d+)(?:\s*-\s*(?<m2>\d+)/(?<d2>\d+))?\s*-\s*(?<name>.+?)\s*@\s*(?<course>.*?)\s*(?<cancelled>-\s*Cancell?ed)?\s*\z}i
+
+dry_run = false
+OptionParser.new do |o|
+  o.banner = "Usage: bin/import [--dry-run]"
+  o.on("--dry-run", "List new events without writing files") { dry_run = true }
+end.parse!
+
+def slugify(text) = text.downcase.gsub("'", "").gsub(/[^a-z0-9]+/, "-").gsub(/\A-|-\z/, "")
+
+year = Date.today.year
+page = Nokogiri::HTML5(URI.open(RESULTS_PAGE, &:read).force_encoding("UTF-8"))
+
+existing = Dir[File.join(ROOT, "_events", "*.md")].map { |f| [File.basename(f, ".md"), YAML.safe_load_file(f, permitted_classes: [Date])] }
+known_sheets = existing.filter_map { |_, e| e["sheet_id"] }
+known_names = existing.map(&:first)
+
+created = 0
+page.css("a").select { |a| a["href"].to_s.start_with?("http") }.map { |a| a.ancestors("p").first }.compact.uniq.each do |para|
+  text = para.text.gsub(/\s+/, " ").strip
+  m = LINE.match(text) or next warn("skip: #{text.inspect}")
+  href = para.css("a").map { |a| a["href"] }.first
+  sheet_id = href[%r{docs\.google\.com/spreadsheets/d/([\w-]+)}, 1]
+
+  # Single letters are divisions; recurring matches get the course in their URL.
+  title = m[:name].match?(/\A[A-Z]\z/) ? "#{m[:name]} Division" : m[:name]
+  recurring = title.end_with?("Division") || title == "Girls Team"
+  date = Date.new(year, m[:m].to_i, m[:d].to_i)
+  name = [date.iso8601, slugify(title), (slugify(m[:course]) if recurring)].compact.join("-")
+
+  cancelled = !m[:cancelled].nil?
+  next if known_names.include?(name) || (!cancelled && sheet_id && known_sheets.include?(sheet_id))
+
+  data = { "title" => title, "date" => date, "course" => m[:course] }
+  data["end_date"] = Date.new(year, m[:m2].to_i, m[:d2].to_i) if m[:m2]
+  if cancelled
+    data["cancelled"] = true
+  elsif sheet_id
+    data["sheet_id"] = sheet_id
+  else
+    data["results_url"] = href
+  end
+
+  puts "#{dry_run ? "would create" : "create"} _events/#{name}.md (#{text})"
+  next if dry_run
+
+  File.write(File.join(ROOT, "_events", "#{name}.md"), YAML.dump(data).sub(/\A---\n/, "---\n") + "---\n")
+  known_names << name
+  created += 1
+end
+puts "#{created} new event(s)." unless dry_run

@@ -1,6 +1,8 @@
 title: AACPS Golf
 description: Live leaderboards and results for Anne Arundel County Public Schools golf.
 timezone: America/New_York
+# Upcoming events are dated in the future; publish them anyway.
+future: true
 
 collections:
   events:

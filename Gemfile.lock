@@ -157,6 +157,7 @@ DEPENDENCIES
   jekyll (~> 4.4)
   logger
   minitest
+  nokogiri
   rake
   rubyXL (~> 3.4)
   webrick

@@ -23,24 +23,43 @@ bundle exec rake test
 | `_data/scores/<same name>.json` | Raw scores pulled from the sheet (written by `bin/refresh`): hole by hole, or one total per player. |
 | `lib/golf/sheet.rb` | Reads the sheet's .xlsx export into player records. |
 | `lib/golf/standings.rb` | Scoring rules: to par over completed holes, ties, team best-four. |
+| `lib/golf/schedule.rb` | Which events are today / upcoming / past, and which are live. |
+| `lib/golf/schools.rb` | Canonical school names ("CSP", "SP", "Glen Birnie" → the real name). |
+| `_data/courses.yml` | Front-nine par by course. |
 | `_plugins/golf.rb` | Runs the standings at build time and exposes them to templates as `page.board`. |
 | `index.html`, `_layouts/event.html` | Homepage and tournament page templates. |
 
 The JSON is the source of truth once an event is over, so hand-fixes (a
 misspelled name, say) can go straight into it.
 
-## Adding a tournament
+## Adding tournaments
 
-1. Create `_events/YYYY-MM-DD-short-name.md` (copy an existing one) with the
-   title, course, sheet ID and par. The page URL is `/YYYY-MM-DD-short-name/`.
-   - Hole-by-hole events (like the County Championship) need `pars`, a list of
-     every hole's par, for the scorecards.
-   - Final-score events (regular matches) just need the course `par`, e.g.
-     `par: 36`. Leave it out to rank by strokes only.
-2. For an event in progress, set `live: true` and the scheduled build keeps it
-   updated. For a finished event, set `live: false` and pull the scores once:
-   `bundle exec bin/refresh YYYY-MM-DD-short-name`.
-3. After a live event ends, run a final refresh, set `live: false`, and commit.
+Matches come from the results page
+(https://sites.google.com/aacps.org/golf/results). The nightly build runs
+`bin/import`, which creates an event file for every match listed there that
+doesn't have one yet (lines ending "- Cancelled" become `cancelled: true`), and
+`bin/refresh --missing`, which pulls results for past matches. To do it by hand:
+
+```sh
+bundle exec bin/import --dry-run   # see what's new
+bundle exec bin/import
+bundle exec bin/refresh --missing
+```
+
+Event files can also be written or edited by hand:
+
+- `title`, `date` (and `end_date` for multi-day events), `course`.
+- `sheet_id`, or `results_url` for results hosted elsewhere.
+- `par` for the course, if it isn't in `_data/courses.yml` (front-nine pars
+  by course name). Hole-by-hole events (like the County Championship) need
+  `pars`, a list of every hole's par, for the scorecards.
+- `cancelled: true` shows the match struck through and not clickable.
+- `live: false` stops refreshing a match on its day (results confirmed final);
+  `live: true` keeps refreshing it on other days.
+
+The homepage splits events into Today, Upcoming and Past, opening on Today
+when there's a match that day. On a match day, the 15-minute build refreshes
+that day's sheets automatically.
 
 The parser understands two sheet layouts, picked automatically:
 
@@ -50,9 +69,10 @@ The parser understands two sheet layouts, picked automatically:
   and the page drops its Team view. Scores like `43*` keep their footnote from
   the bottom of the tab (e.g. "Lost card"); entries like `DNS` are shown as-is.
 
-Both need an ENTRIES tab. A school's team is its first block of rows there,
-ending at a thick bottom border; players listed separately further down play
-as individuals. Names are cleaned up on the way in: notes in parentheses are
+Both need an ENTRIES tab. A school's team is four to six players from its
+first block of rows there, ending at a thick bottom border; players below it
+or listed separately further down play as individuals. In final-score sheets,
+a player missing from ENTRIES (a late substitute) plays for their school. Names are cleaned up on the way in: notes in parentheses are
 dropped, extra spaces removed, and all-lowercase words capitalized (school
 names too, e.g. "Severna park").
 
@@ -68,7 +88,7 @@ after editing the Ruby code.
 ## Publishing
 
 `.github/workflows/pages.yml` builds and deploys on every push to `main`, on
-demand ("Run workflow"), and every 15 minutes. The scheduled run refreshes
-events marked `live: true`, commits the new scores, and redeploys only if
-something changed. In the repo settings, set **Pages → Source** to
+demand ("Run workflow"), every 15 minutes (refreshing today's matches; it
+redeploys only if scores changed), and nightly just after midnight Eastern
+(importing new matches and rolling the homepage over to the new day). In the repo settings, set **Pages → Source** to
 **GitHub Actions**.

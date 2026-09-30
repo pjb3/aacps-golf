@@ -1,0 +1,237 @@
+{
+  "updated": "2026-09-29T20:38:13-04:00",
+  "players": [
+    {
+      "name": "Chase Fortescue",
+      "school": "Arundel",
+      "group": "1",
+      "total": 41,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Aidan Pelkey",
+      "school": "Arundel",
+      "group": "3",
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ava Shay",
+      "school": "Arundel",
+      "group": "7",
+      "total": 48,
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Maxwell Morgan",
+      "school": "Arundel",
+      "group": null,
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Kallan Falls",
+      "school": "Arundel",
+      "group": "4",
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Auron Cuza",
+      "school": "Arundel",
+      "group": "5",
+      "total": 66,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Drew Shallcross",
+      "school": "Annapolis",
+      "group": "1",
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Daniel Capo",
+      "school": "Annapolis",
+      "group": "2",
+      "total": 53,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Evan Lyman",
+      "school": "Annapolis",
+      "group": "3",
+      "total": 45,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "William Meyer",
+      "school": "Annapolis",
+      "group": "4",
+      "total": 43,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Colt Jett",
+      "school": "Annapolis",
+      "group": "5",
+      "total": 48,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Owen Zelenakss",
+      "school": "Annapolis",
+      "group": null,
+      "total": 65,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Mason Kolodziejski",
+      "school": "Northeast",
+      "group": "1",
+      "total": 52,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brian Hyde",
+      "school": "Northeast",
+      "group": "2",
+      "total": 55,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Owen Hice",
+      "school": "Northeast",
+      "group": "3",
+      "total": 67,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Julian Hodges",
+      "school": "Northeast",
+      "group": "4",
+      "total": 61,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Greyson Rowe",
+      "school": "Northeast",
+      "group": "5",
+      "total": 66,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Guliana Turner",
+      "school": "Northeast",
+      "group": null,
+      "total": 69,
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Ethan Goughenour",
+      "school": "Old Mill",
+      "group": "2",
+      "total": 51,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Tenley Raymond",
+      "school": "Old Mill",
+      "group": "7",
+      "total": 57,
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Levani McVane",
+      "school": "Old Mill",
+      "group": "7",
+      "total": 69,
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Ewan Ivey",
+      "school": "Southern",
+      "group": "1",
+      "total": 37,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chase Youmans",
+      "school": "Southern",
+      "group": "3",
+      "total": 39,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Bryce Crandell",
+      "school": "Southern",
+      "group": "4",
+      "total": 40,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brody McCafferty",
+      "school": "Southern",
+      "group": "5",
+      "total": 43,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Owen Moon",
+      "school": "Southern",
+      "group": "6",
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Hunter Mahoney",
+      "school": "Southern",
+      "group": "6",
+      "total": 43,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Bubba Cramer",
+      "school": "Southern",
+      "group": "6",
+      "total": 49,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Oliver Agenbroad",
+      "school": "Southern",
+      "group": "6",
+      "total": 49,
+      "gender": "M",
+      "team": false
+    }
+  ]
+}

@@ -74,10 +74,10 @@ li.cnt+li.drop{margin-top:6px;padding-top:6px;border-top:1px dashed var(--rule)}
 .events span{flex:none;color:inherit}
 .events li{display:block;padding:0;color:inherit;border-bottom:1px solid var(--rule)}
 .events li:last-child{border-bottom:0}
-.events a{display:grid;grid-template-columns:4.2em 1fr;gap:4px 16px;padding:16px;color:inherit;text-decoration:none}
-.events a:hover{background:color-mix(in srgb,var(--green) 6%,transparent)}
-.events a:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
-.when{grid-row:span 3;text-align:center;font:600 14px/1.1 "Barlow Condensed",sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.events .ev{display:grid;grid-template-columns:4.2em 1fr;gap:4px 16px;padding:16px;color:inherit;text-decoration:none}
+.events a.ev:hover{background:color-mix(in srgb,var(--green) 6%,transparent)}
+.events a.ev:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+.when{grid-row:span 3;align-self:start;text-align:center;font:600 14px/1.1 "Barlow Condensed",sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .when b{display:block;min-width:0;text-align:center;font-size:30px;color:var(--ink);letter-spacing:0}
 .ev-name{font:700 22px/1.1 "Barlow Condensed",sans-serif;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .ev-meta{font-size:14px;color:var(--muted)}
@@ -95,3 +95,10 @@ tr.roster ul{margin-top:2px}
 li i.fin{color:var(--ink);font-weight:700}
 li.drop i.fin{color:var(--muted)}
 sup.fn{font-size:.6em;margin-left:1px;vertical-align:super;line-height:0}
+
+/* Cancelled matches: muted, struck through, not a link */
+.events li.cancelled .ev{opacity:.6}
+.events li.cancelled .ev-title{text-decoration:line-through;text-decoration-thickness:2px}
+.events .tag{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--rule);border-radius:3px;padding:3px 5px;text-decoration:none;display:inline-block}
+.board>.controls:only-child{border-bottom:0}
+section[hidden]{display:none}

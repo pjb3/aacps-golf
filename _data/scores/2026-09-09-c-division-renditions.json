@@ -1,0 +1,205 @@
+{
+  "updated": "2026-09-29T20:38:10-04:00",
+  "players": [
+    {
+      "name": "Rhyan Arciaga",
+      "school": "Chesapeake Science Point",
+      "group": "1",
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Dylan Morgan",
+      "school": "Chesapeake Science Point",
+      "group": "2",
+      "total": 51,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Saleem Mason",
+      "school": "Chesapeake Science Point",
+      "group": "3",
+      "total": 57,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alex Kilbride",
+      "school": "Chesapeake Science Point",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Zack Nield",
+      "school": "Chesapeake Science Point",
+      "group": "5",
+      "total": 55,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nathaniel Brown",
+      "school": "Chesapeake Science Point",
+      "group": "6",
+      "total": 68,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Noah Dull",
+      "school": "Glen Burnie",
+      "group": "1",
+      "total": 56,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Titan Jackson",
+      "school": "Glen Burnie",
+      "group": "2",
+      "total": 57,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nicholas Guillaume",
+      "school": "Glen Burnie",
+      "group": "3",
+      "total": 60,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Kaleb White",
+      "school": "Glen Burnie",
+      "group": "4",
+      "total": 64,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Devon Myers",
+      "school": "Glen Burnie",
+      "group": "5",
+      "total": 54,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Eli Morales",
+      "school": "Glen Burnie",
+      "group": "6",
+      "total": 72,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Raul Gonzalez",
+      "school": "Glen Burnie",
+      "group": "7",
+      "total": 72,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "James Posey",
+      "school": "North County",
+      "group": "1",
+      "total": 49,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Liam Hontz",
+      "school": "North County",
+      "group": "2",
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alec Behegan",
+      "school": "North County",
+      "group": "3",
+      "total": 49,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Joseph Lopez",
+      "school": "North County",
+      "group": "4",
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ethan Price",
+      "school": "North County",
+      "group": "5",
+      "total": 53,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Griffin Boritz",
+      "school": "North County",
+      "group": "6",
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Reece Miguel",
+      "school": "Severn Run",
+      "group": "1",
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Garrett James",
+      "school": "Severn Run",
+      "group": "2",
+      "total": 50,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chris Mahnke",
+      "school": "Severn Run",
+      "group": "3",
+      "total": 48,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Connor Giest",
+      "school": "Severn Run",
+      "group": "4",
+      "total": 53,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Cam Kellner",
+      "school": "Severn Run",
+      "group": "5",
+      "total": 49,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brandon Rochon",
+      "school": "Severn Run",
+      "group": "6",
+      "total": 48,
+      "gender": "M",
+      "team": true
+    }
+  ]
+}

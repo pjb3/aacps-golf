@@ -1,0 +1,18 @@
+{%- assign e = include.event -%}
+{%- assign b = e.board -%}
+{%- capture body -%}
+ <span class="when">{{ e.date | date: "%b" }}<b>{{ e.date | date: "%-d" }}{% if e.end_date %}–{{ e.end_date | date: "%-d" }}{% endif %}</b></span>
+ <span class="ev-name"><span class="ev-title">{{ e.title | escape }}</span>{% if e.is_live %} <span class="live">Live</span>{% endif %}{% if e.cancelled %} <span class="tag">Cancelled</span>{% endif %}</span>
+ <span class="ev-meta">{{ e.course | escape }}{% assign par = b.par | default: e.par %}{% if par and e.cancelled != true %} · par {{ par }}{% endif %}{% if b.player_count > 0 %} · {{ b.player_count }} players{% endif %}{% if e.results_url %} · results on MPSSAA ↗{% endif %}</span>
+ {%- if b and b.individuals.size > 0 %}
+ {%- assign p = b.individuals.first %}{% assign t = b.teams.first %}
+ <span class="ev-lead"><span>{% if e.is_live %}Leader{% else %}Medalist{% endif %}: {{ p.name | escape }} {% if b.to_par %}<b class="{{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</b>{% else %}<b>{{ p.strokes }}</b>{% endif %}</span>{% if t %}<span>{% if e.is_live %}Top team{% else %}Team champion{% endif %}: {{ t.school | escape }} {% if b.to_par %}<b class="{{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</b>{% else %}<b>{{ t.strokes }}</b>{% endif %}</span>{% endif %}</span>
+ {%- endif %}
+{%- endcapture -%}
+{%- if e.cancelled %}
+<li class="cancelled"><div class="ev" aria-label="{{ e.title | escape }} at {{ e.course | escape }}, {{ e.date | date: "%B %-d" }}: cancelled">{{ body }}</div></li>
+{%- elsif e.results_url %}
+<li><a class="ev" href="{{ e.results_url }}" target="_blank" rel="noopener">{{ body }}</a></li>
+{%- else %}
+<li><a class="ev" href="{{ e.url | relative_url }}">{{ body }}</a></li>
+{%- endif %}

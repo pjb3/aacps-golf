@@ -87,6 +87,29 @@ class GolfTest < Minitest::Test
     assert_equal "Broadneck", invite_players.find { |p| p["name"] == "Gavin Monaco" }["school"]
   end
 
+  def test_schedule_sections_and_live
+    today = Date.new(2026, 9, 29)
+    assert_equal "today", Golf::Schedule.section({ "date" => today }, today)
+    assert_equal "upcoming", Golf::Schedule.section({ "date" => Date.new(2026, 9, 30) }, today)
+    assert_equal "past", Golf::Schedule.section({ "date" => Date.new(2026, 9, 28) }, today)
+    assert_equal "today", Golf::Schedule.section({ "date" => Date.new(2026, 9, 28), "end_date" => Date.new(2026, 9, 30) }, today)
+
+    assert Golf::Schedule.live?({ "date" => today }, today)
+    refute Golf::Schedule.live?({ "date" => today, "live" => false }, today)
+    refute Golf::Schedule.live?({ "date" => today, "cancelled" => true }, today)
+    refute Golf::Schedule.live?({ "date" => Date.new(2026, 9, 28) }, today)
+  end
+
+  def test_school_names
+    assert_equal "Chesapeake Science Point", Golf::Schools.canonical("CSP")
+    assert_equal "Chesapeake Science Point", Golf::Schools.canonical("Chesapeake Science")
+    assert_equal "Severna Park", Golf::Schools.canonical("SP")
+    assert_equal "Glen Burnie", Golf::Schools.canonical("Glen Birnie")
+    assert_equal "South River", Golf::Schools.canonical("South RIver")
+    assert_equal "Chesapeake", Golf::Schools.canonical("Chesapeake")
+    assert_equal "Somewhere Else", Golf::Schools.canonical("Somewhere Else")
+  end
+
   def test_ties_share_a_position
     players = [
       { "name" => "A", "school" => "X", "group" => "1A", "scores" => { "1" => 4 } },

@@ -1,0 +1,261 @@
+{
+  "updated": "2026-09-29T20:38:11-04:00",
+  "players": [
+    {
+      "name": "James Jonker",
+      "school": "Broadneck",
+      "group": null,
+      "total": 35,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Michael Peterson",
+      "school": "Broadneck",
+      "group": null,
+      "total": 38,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Micah Gossard",
+      "school": "Broadneck",
+      "group": null,
+      "total": 39,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Max Harada",
+      "school": "Broadneck",
+      "group": null,
+      "total": 43,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Garrett Cardone-Luyben",
+      "school": "Broadneck",
+      "group": null,
+      "total": 41,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Will Robison",
+      "school": "Broadneck",
+      "group": null,
+      "total": 45,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alan Higgins",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 41,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nathan Reil",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 40,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Liam Finnegan",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 51,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Eli Harley",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brayden Parker",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Mason Bombard",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 39,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ty Swann",
+      "school": "Crofton",
+      "group": null,
+      "total": 35,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ben Cunningham",
+      "school": "Crofton",
+      "group": null,
+      "total": 47,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nate Fine",
+      "school": "Crofton",
+      "group": null,
+      "total": 40,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Gianni Gallow",
+      "school": "Crofton",
+      "group": null,
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Charlie Ward",
+      "school": "Crofton",
+      "group": null,
+      "total": 41,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Aaryan Sripada",
+      "school": "Crofton",
+      "group": null,
+      "total": 51,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Davis Balderston",
+      "school": "Severna Park",
+      "group": null,
+      "total": 36,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chase Connell",
+      "school": "Severna Park",
+      "group": null,
+      "total": 38,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chris Jenkins",
+      "school": "Severna Park",
+      "group": null,
+      "total": 46,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jack Peery",
+      "school": "Severna Park",
+      "group": null,
+      "total": 42,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "KJ Flanagan",
+      "school": "Severna Park",
+      "group": null,
+      "total": 42,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Max Knoepfle",
+      "school": "Severna Park",
+      "group": null,
+      "total": 41,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "CJ Burke",
+      "school": "South River",
+      "group": null,
+      "total": 38,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Paolo Maggio",
+      "school": "South River",
+      "group": null,
+      "total": 43,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Marick Norton",
+      "school": "South River",
+      "group": null,
+      "total": 56,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jaden Thompson",
+      "school": "South River",
+      "group": null,
+      "total": 44,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ethan Berry",
+      "school": "South River",
+      "group": null,
+      "total": 52,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brooks Bailey",
+      "school": "South River",
+      "group": null,
+      "total": 48,
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alex Kipikian",
+      "school": "Broadneck",
+      "group": null,
+      "total": 41,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Cooper Jackson",
+      "school": "Broadneck",
+      "group": null,
+      "total": 56,
+      "gender": "M",
+      "team": false
+    }
+  ]
+}

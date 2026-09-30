@@ -1,0 +1,10 @@
+# Front-nine par for each course, used when an event file doesn't set its own
+# `par` (or per-hole `pars`). Keys match the course names on the results page.
+Bay Hills: 35
+Chartwell: 36
+Compass Pointe: 36 # South/West front nine
+Crofton: 36
+Eisenhower: 35
+Navy: 35
+Renditions: 36
+South River: 36

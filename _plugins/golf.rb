@@ -1,19 +1,24 @@
 require_relative "../lib/golf"
 
 module Golf
-  # Attaches computed standings to each event page as page.board, from the raw
-  # scores in _data/scores/<event file name>.json. Events without a scores file
-  # (not started yet) get no board.
+  # For each event page, sets:
+  # - page.section: "today", "upcoming" or "past" (as of the build; the
+  #   scheduled workflow rebuilds shortly after midnight Eastern)
+  # - page.is_live: see Schedule.live?
+  # - page.par: from the event file, else the course's in _data/courses.yml
+  # - page.board: standings from _data/scores/<event file name>.json, if any
   class LeaderboardGenerator < Jekyll::Generator
     safe true
 
     def generate(site)
       site.collections["events"].docs.each do |doc|
-        name = doc.basename_without_ext
-        doc.data["scores_key"] = name
-        scores = site.data.dig("scores", name) or next
-        doc.data["updated"] = scores["updated"]
-        doc.data["board"] = Standings.new(scores["players"], pars: doc.data["pars"], par: doc.data["par"]).to_h
+        data = doc.data
+        data["section"] = Schedule.section(data)
+        data["is_live"] = Schedule.live?(data)
+        data["par"] ||= site.data.fetch("courses", {})[data["course"]] unless data["pars"]
+        scores = site.data.dig("scores", doc.basename_without_ext) or next
+        data["updated"] = scores["updated"]
+        data["board"] = Standings.new(scores["players"], pars: data["pars"], par: data["par"]).to_h
       end
     end
   end
