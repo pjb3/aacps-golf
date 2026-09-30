@@ -110,6 +110,15 @@ class GolfTest < Minitest::Test
     assert_equal "Somewhere Else", Golf::Schools.canonical("Somewhere Else")
   end
 
+  def test_corrections_disqualify_a_player
+    players = (1..5).map { |i| { "name" => "P#{i}", "school" => "X", "team" => true, "total" => 38 + i } }
+    fixed = Golf::Corrections.apply(players, { "P1" => { "status" => "DQ" } })
+    board = Golf::Standings.new(fixed, par: 36).to_h
+    assert_equal [["P1", "DQ"]], board["waiting"].map { |p| p.values_at("name", "status") }
+    assert_equal 40 + 41 + 42 + 43, board["teams"].first["strokes"]
+    assert_raises(ArgumentError) { Golf::Corrections.apply(players, { "Nobody" => { "status" => "DQ" } }) }
+  end
+
   def test_ties_share_a_position
     players = [
       { "name" => "A", "school" => "X", "group" => "1A", "scores" => { "1" => 4 } },

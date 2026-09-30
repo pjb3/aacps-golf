@@ -4,10 +4,10 @@ layout: default
 {%- assign b = page.board -%}
 {%- if b.cards %}{% assign cols = 5 %}{% else %}{% assign cols = 4 %}{% endif -%}
 <a class="back" href="{{ '/' | relative_url }}">← All tournaments</a>
-<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d" }}{% if page.end_date %}–{{ page.end_date | date: "%-d" }}{% endif %}, {{ page.date | date: "%Y" }}{% assign par = b.par | default: page.par %}{% if par and page.cancelled != true %}, par {{ par }}{% endif %}.{% if b %}{% if page.is_live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
+<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d" }}{% if page.end_date %}–{{ page.end_date | date: "%-d" }}{% endif %}, {{ page.date | date: "%Y" }}{% if page.makeup_for %} (makeup of the {{ page.makeup_for | date: "%B %-d" }} match){% endif %}{% assign par = b.par | default: page.par %}{% if par and page.cancelled != true %}, par {{ par }}{% endif %}.{% if b %}{% if page.is_live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
 <div class="board">
 {%- unless b %}
-<p class="empty">{% if page.cancelled %}This match was cancelled.{% elsif page.results_url %}Results are posted on the <a href="{{ page.results_url }}">MPSSAA site</a>.{% else %}Scores will appear here once play begins.{% endif %}</p>
+<p class="empty">{% if page.cancelled %}This match was cancelled.{% if page.made_up_on %} It was made up on {{ page.made_up_on | date: "%B %-d" }}.{% endif %}{% elsif page.results_url %}Results are posted on the <a href="{{ page.results_url }}">MPSSAA site</a>.{% else %}Scores will appear here once play begins.{% endif %}</p>
 {%- else %}
 {%- if b.has_teams or b.gender_filter %}
 <div class="controls">

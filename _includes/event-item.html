@@ -3,7 +3,7 @@
 {%- capture body -%}
  <span class="when">{{ e.date | date: "%b" }}<b>{{ e.date | date: "%-d" }}{% if e.end_date %}–{{ e.end_date | date: "%-d" }}{% endif %}</b></span>
  <span class="ev-name"><span class="ev-title">{{ e.title | escape }}</span>{% if e.is_live %} <span class="live">Live</span>{% endif %}{% if e.cancelled %} <span class="tag">Cancelled</span>{% endif %}</span>
- <span class="ev-meta">{{ e.course | escape }}{% assign par = b.par | default: e.par %}{% if par and e.cancelled != true %} · par {{ par }}{% endif %}{% if b.player_count > 0 %} · {{ b.player_count }} players{% endif %}{% if e.results_url %} · results on MPSSAA ↗{% endif %}</span>
+ <span class="ev-meta">{{ e.course | escape }}{% assign par = b.par | default: e.par %}{% if par and e.cancelled != true %} · par {{ par }}{% endif %}{% if b.player_count > 0 %} · {{ b.player_count }} players{% endif %}{% if e.results_url %} · results on MPSSAA ↗{% endif %}{% if e.made_up_on %} · made up {{ e.made_up_on | date: "%b %-d" }}{% endif %}{% if e.makeup_for %} · makeup of the {{ e.makeup_for | date: "%b %-d" }} match{% endif %}</span>
  {%- if b and b.individuals.size > 0 %}
  {%- assign p = b.individuals.first %}{% assign t = b.teams.first %}
  <span class="ev-lead"><span>{% if e.is_live %}Leader{% else %}Medalist{% endif %}: {{ p.name | escape }} {% if b.to_par %}<b class="{{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</b>{% else %}<b>{{ p.strokes }}</b>{% endif %}</span>{% if t %}<span>{% if e.is_live %}Top team{% else %}Team champion{% endif %}: {{ t.school | escape }} {% if b.to_par %}<b class="{{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</b>{% else %}<b>{{ t.strokes }}</b>{% endif %}</span>{% endif %}</span>

@@ -53,7 +53,12 @@ Event files can also be written or edited by hand:
 - `par` for the course, if it isn't in `_data/courses.yml` (front-nine pars
   by course name). Hole-by-hole events (like the County Championship) need
   `pars`, a list of every hole's par, for the scorecards.
-- `cancelled: true` shows the match struck through and not clickable.
+- `cancelled: true` shows the match struck through and not clickable. Add
+  `made_up_on: <date>` if it was replayed later, and `makeup_for: <date>` on
+  the replayed match.
+- `corrections` fix a player's result without touching the sheet, and survive
+  later refreshes, e.g. `Will Robison: { status: DQ }` (no score, not counted)
+  or `Jane Doe: { total: 41 }`.
 - `live: false` stops refreshing a match on its day (results confirmed final);
   `live: true` keeps refreshing it on other days.
 

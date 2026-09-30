@@ -6,7 +6,8 @@ module Golf
   #   scheduled workflow rebuilds shortly after midnight Eastern)
   # - page.is_live: see Schedule.live?
   # - page.par: from the event file, else the course's in _data/courses.yml
-  # - page.board: standings from _data/scores/<event file name>.json, if any
+  # - page.board: standings from _data/scores/<event file name>.json, with the
+  #   event file's `corrections` applied, if there are scores
   class LeaderboardGenerator < Jekyll::Generator
     safe true
 
@@ -18,7 +19,8 @@ module Golf
         data["par"] ||= site.data.fetch("courses", {})[data["course"]] unless data["pars"]
         scores = site.data.dig("scores", doc.basename_without_ext) or next
         data["updated"] = scores["updated"]
-        data["board"] = Standings.new(scores["players"], pars: data["pars"], par: data["par"]).to_h
+        players = Corrections.apply(scores["players"], data["corrections"])
+        data["board"] = Standings.new(players, pars: data["pars"], par: data["par"]).to_h
       end
     end
   end
