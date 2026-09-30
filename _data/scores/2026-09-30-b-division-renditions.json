@@ -1,4 +1,197 @@
 {
-  "updated": "2026-09-30T02:25:24-04:00",
-  "players": []
+  "updated": "2026-09-30T14:19:13-04:00",
+  "players": [
+    {
+      "name": "Kallan Falls",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ryan Devers",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Caleb Dickerson",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Xander Bacasnot",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Auron Cuza",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Luke Morgan",
+      "school": "Arundel",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Owen Zelenakas",
+      "school": "Annapolis",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Thomas Carpita",
+      "school": "Annapolis",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brian Hyde",
+      "school": "Northeast",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Mason Kolodziejski",
+      "school": "Northeast",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Owen Hice",
+      "school": "Northeast",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Jameson Hice",
+      "school": "Northeast",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Joseph Clendening",
+      "school": "Northeast",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ethan Goughenour",
+      "school": "Old Mill",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Finn Beeman",
+      "school": "Old Mill",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Tenley Raymond",
+      "school": "Old Mill",
+      "group": null,
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Levani McVane",
+      "school": "Old Mill",
+      "group": null,
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Chase Youmans",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Owen Moon",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Hunter Mahoney",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Jackson O'Donnell",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Cooper Graves",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Will White",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Quinn Jarboe",
+      "school": "Southern",
+      "group": null,
+      "total": null,
+      "gender": "M",
+      "team": false
+    }
+  ]
 }
