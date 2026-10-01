@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30T18:30:03-04:00",
+  "updated": "2026-09-30T21:30:19-04:00",
   "players": [
     {
       "name": "Kallan Falls",
@@ -13,7 +13,7 @@
       "name": "Ryan Devers",
       "school": "Arundel",
       "group": null,
-      "total": null,
+      "total": 60,
       "gender": "M",
       "team": false
     },
@@ -21,7 +21,7 @@
       "name": "Caleb Dickerson",
       "school": "Arundel",
       "group": null,
-      "total": null,
+      "total": 51,
       "gender": "M",
       "team": false
     },
@@ -29,7 +29,7 @@
       "name": "Xander Bacasnot",
       "school": "Arundel",
       "group": null,
-      "total": null,
+      "total": 58,
       "gender": "M",
       "team": false
     },
@@ -53,7 +53,7 @@
       "name": "Owen Zelenakas",
       "school": "Annapolis",
       "group": null,
-      "total": null,
+      "total": 60,
       "gender": "M",
       "team": false
     },
@@ -61,7 +61,7 @@
       "name": "Thomas Carpita",
       "school": "Annapolis",
       "group": null,
-      "total": null,
+      "total": 65,
       "gender": "M",
       "team": false
     },
@@ -77,7 +77,7 @@
       "name": "Mason Kolodziejski",
       "school": "Northeast",
       "group": null,
-      "total": null,
+      "total": 55,
       "gender": "M",
       "team": false
     },
@@ -85,7 +85,7 @@
       "name": "Owen Hice",
       "school": "Northeast",
       "group": null,
-      "total": null,
+      "total": 65,
       "gender": "M",
       "team": false
     },
@@ -93,7 +93,7 @@
       "name": "Jameson Hice",
       "school": "Northeast",
       "group": null,
-      "total": null,
+      "total": 60,
       "gender": "M",
       "team": false
     },
@@ -101,7 +101,7 @@
       "name": "Joseph Clendening",
       "school": "Northeast",
       "group": null,
-      "total": null,
+      "total": 50,
       "gender": "M",
       "team": false
     },
@@ -118,6 +118,7 @@
       "school": "Old Mill",
       "group": null,
       "total": null,
+      "status": "DNS",
       "gender": "M",
       "team": false
     },
@@ -126,6 +127,7 @@
       "school": "Old Mill",
       "group": null,
       "total": null,
+      "status": "DNF",
       "gender": "F",
       "team": false
     },
@@ -134,6 +136,7 @@
       "school": "Old Mill",
       "group": null,
       "total": null,
+      "status": "DNF",
       "gender": "F",
       "team": false
     },
@@ -143,31 +146,31 @@
       "group": null,
       "total": 39,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Owen Moon",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 42,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Hunter Mahoney",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 47,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Jackson O'Donnell",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 47,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Cooper Graves",
@@ -175,21 +178,21 @@
       "group": null,
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Will White",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 53,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Quinn Jarboe",
       "school": "Southern",
       "group": null,
-      "total": null,
+      "total": 51,
       "gender": "M",
       "team": false
     }
