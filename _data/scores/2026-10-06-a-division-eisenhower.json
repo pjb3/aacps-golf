@@ -1,4 +1,229 @@
 {
-  "updated": "2026-10-06T02:44:16-04:00",
-  "players": []
+  "updated": "2026-10-06T17:10:31-04:00",
+  "players": [
+    {
+      "name": "Michael Peterson",
+      "school": "Broadneck",
+      "group": "1",
+      "total": 42,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "James Jonker",
+      "school": "Broadneck",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Micah Gossard",
+      "school": "Broadneck",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Harada",
+      "school": "Broadneck",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Will Robison",
+      "school": "Broadneck",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Garrett Cardone-Luyben",
+      "school": "Broadneck",
+      "group": "7",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nolan Behler",
+      "school": "Chesapeake",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ryan Jubb",
+      "school": "Chesapeake",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Stauffer",
+      "school": "Chesapeake",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Christian Morrison",
+      "school": "Chesapeake",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nic Digiorgio",
+      "school": "Chesapeake",
+      "group": "7",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ben Cunningham",
+      "school": "Crofton",
+      "group": "1",
+      "total": 44,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ethan Kelly",
+      "school": "Crofton",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Austen Kelly",
+      "school": "Crofton",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Dylan Miller",
+      "school": "Crofton",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Julien Gomez",
+      "school": "Crofton",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Aaryan Sripada",
+      "school": "Crofton",
+      "group": "7",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Chase Connell",
+      "school": "Severna Park",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Davis Balderston",
+      "school": "Severna Park",
+      "group": "8",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Chris Jenkins",
+      "school": "Severna Park",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Colin Barry",
+      "school": "Severna Park",
+      "group": "4",
+      "total": 41,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Knoepfle",
+      "school": "Severna Park",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "KJ Flanagan",
+      "school": "Severna Park",
+      "group": "1",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ethan Berry",
+      "school": "South River",
+      "group": null,
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Bradlee Bungato",
+      "school": "South River",
+      "group": null,
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Zander Asbury",
+      "school": "South River",
+      "group": null,
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Brennan DeVito",
+      "school": "South River",
+      "group": null,
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Coy Long",
+      "school": "South River",
+      "group": null,
+      "total": null,
+      "gender": null,
+      "team": false
+    }
+  ]
 }
