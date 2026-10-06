@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T17:22:02-04:00",
+  "updated": "2026-10-06T17:44:37-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -21,7 +21,7 @@
       "name": "Micah Gossard",
       "school": "Broadneck",
       "group": "3",
-      "total": null,
+      "total": 38,
       "gender": "M",
       "team": true
     },
@@ -29,7 +29,7 @@
       "name": "Max Harada",
       "school": "Broadneck",
       "group": "4",
-      "total": null,
+      "total": 40,
       "gender": "M",
       "team": true
     },
@@ -61,7 +61,7 @@
       "name": "Ryan Jubb",
       "school": "Chesapeake",
       "group": "3",
-      "total": null,
+      "total": 48,
       "gender": "M",
       "team": true
     },
@@ -125,7 +125,7 @@
       "name": "Julien Gomez",
       "school": "Crofton",
       "group": "6",
-      "total": null,
+      "total": 52,
       "gender": "M",
       "team": true
     },
@@ -158,7 +158,7 @@
       "name": "Chris Jenkins",
       "school": "Severna Park",
       "group": "3",
-      "total": null,
+      "total": 38,
       "gender": "M",
       "team": true
     },
@@ -174,7 +174,7 @@
       "name": "Max Knoepfle",
       "school": "Severna Park",
       "group": "5",
-      "total": null,
+      "total": 39,
       "gender": "M",
       "team": true
     },
@@ -182,7 +182,7 @@
       "name": "KJ Flanagan",
       "school": "Severna Park",
       "group": "1",
-      "total": null,
+      "total": 40,
       "gender": "M",
       "team": true
     },
@@ -214,7 +214,7 @@
       "name": "Brennan DeVito",
       "school": "South River",
       "group": null,
-      "total": null,
+      "total": 62,
       "gender": null,
       "team": true
     },
