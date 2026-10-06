@@ -42,12 +42,12 @@ module Golf
 
     module_function
 
-    def extract(path)
+    def extract(path, team_event: false)
       book = RubyXL::Parser.parse(path)
       if book.worksheets.any? { |s| s.sheet_name.match?(GROUP_TAB) }
         extract_holes(book)
       elsif book["RESULTS"]
-        extract_totals(book)
+        extract_totals(book, team_event: team_event)
       else
         raise "#{path}: no group tabs (1A, 1B, ...) or RESULTS tab"
       end
@@ -62,7 +62,7 @@ module Golf
       players.values.map { |p| with_entry(p, entries) { |e| e["bordered"] } }
     end
 
-    def extract_totals(book)
+    def extract_totals(book, team_event: false)
       entries = read_entries(tab(book, "ENTRIES"))
       groups = read_pairings(book["PAIRINGS"])
       results = tab(book, "RESULTS")
@@ -71,6 +71,8 @@ module Golf
       raise "RESULTS: no Score column" unless score_c
 
       team_schools = read_team_totals(results, first_header, cols["Place"])
+      # Live team matches may not populate TEAM TOTALS until play is over.
+      team_schools = entries.map { |e| e["school"] }.reject(&:empty?).to_set if team_event && team_schools.empty?
       footnotes = read_footnotes(results, header, name_c)
       players = []
       results.each_with_index do |row, r|

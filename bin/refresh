@@ -56,7 +56,7 @@ names.each do |name|
 
   # One unreadable sheet shouldn't stop the others from updating.
   players = begin
-    Golf::Sheet.extract(xlsx)
+    Golf::Sheet.extract(xlsx, team_event: events[name]["team_event"] == true)
   rescue => e
     warn "#{name}: couldn't read sheet: #{e.message}"
     failed << name

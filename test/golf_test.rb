@@ -74,6 +74,26 @@ class GolfTest < Minitest::Test
     assert_equal ["1", "Liam Finnegan", 37], board["individuals"].first.values_at("pos", "name", "strokes")
   end
 
+  def test_live_team_match_with_blank_team_totals
+    book = RubyXL::Parser.parse(CHARTWELL)
+    results = book["RESULTS"]
+    header, _, cols = Golf::Sheet.header_rows(results)
+    results.each_with_index do |row, r|
+      row[cols["Place"] + 1]&.change_contents(nil) if row && r > header
+    end
+    refute Golf::Standings.new(Golf::Sheet.extract_totals(book), par: 36).to_h["has_teams"]
+    players = Golf::Sheet.extract_totals(book, team_event: true)
+    board = Golf::Standings.new(players, par: 36).to_h
+    assert board["has_teams"]
+    assert_equal 5, board["teams"].size
+    assert_equal ["Campbell Jones", "Max Knoepfle"], players.reject { |p| p["team"] }.map { |p| p["name"] }
+    players.each { |p| p["total"] = nil }
+    waiting = Golf::Standings.new(players, par: 36).to_h
+    assert waiting["has_teams"]
+    assert_empty waiting["teams"]
+    assert_equal 5, waiting["short_teams"].size
+  end
+
   def test_invite_dns_and_lost_cards
     board = Golf::Standings.new(invite_players).to_h
     assert_equal [["Devin Crabbe", "DNS"], ["Marick Norton", "DNS"]], board["waiting"].map { |p| p.values_at("name", "status") }

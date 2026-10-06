@@ -63,6 +63,8 @@ Event files can also be written or edited by hand:
   `live: true` keeps refreshing it on other days.
 - `live_until: "2026-10-06T19:00:00-04:00"` stops live refreshes after a
   specific time, including its UTC offset.
+- `team_event: true` uses ENTRIES rosters when a live match's TEAM TOTALS
+  list is still blank, so both individual and team leaderboards appear.
 
 The homepage splits events into Today, Upcoming and Past, opening on Today
 when there's a match that day. On a match day, the 15-minute build refreshes

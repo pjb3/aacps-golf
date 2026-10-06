@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T17:10:31-04:00",
+  "updated": "2026-10-06T17:15:47-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -7,7 +7,7 @@
       "group": "1",
       "total": 42,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "James Jonker",
@@ -15,7 +15,7 @@
       "group": "2",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Micah Gossard",
@@ -23,7 +23,7 @@
       "group": "3",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Max Harada",
@@ -31,7 +31,7 @@
       "group": "4",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Will Robison",
@@ -39,7 +39,7 @@
       "group": "6",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Garrett Cardone-Luyben",
@@ -47,7 +47,7 @@
       "group": "7",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Nolan Behler",
@@ -55,7 +55,7 @@
       "group": "2",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Ryan Jubb",
@@ -63,7 +63,7 @@
       "group": "3",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Max Stauffer",
@@ -71,7 +71,7 @@
       "group": "5",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Christian Morrison",
@@ -79,7 +79,7 @@
       "group": "6",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Nic Digiorgio",
@@ -87,7 +87,7 @@
       "group": "7",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Ben Cunningham",
@@ -95,7 +95,7 @@
       "group": "1",
       "total": 44,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Ethan Kelly",
@@ -103,7 +103,7 @@
       "group": "2",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Austen Kelly",
@@ -111,7 +111,7 @@
       "group": "4",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Dylan Miller",
@@ -119,7 +119,7 @@
       "group": "5",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Julien Gomez",
@@ -127,7 +127,7 @@
       "group": "6",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Aaryan Sripada",
@@ -135,7 +135,7 @@
       "group": "7",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Chase Connell",
@@ -143,7 +143,7 @@
       "group": "6",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Davis Balderston",
@@ -151,7 +151,7 @@
       "group": "8",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Chris Jenkins",
@@ -159,7 +159,7 @@
       "group": "3",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Colin Barry",
@@ -167,7 +167,7 @@
       "group": "4",
       "total": 41,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Max Knoepfle",
@@ -175,7 +175,7 @@
       "group": "5",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "KJ Flanagan",
@@ -183,7 +183,7 @@
       "group": "1",
       "total": null,
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Ethan Berry",
@@ -191,7 +191,7 @@
       "group": null,
       "total": null,
       "gender": null,
-      "team": false
+      "team": true
     },
     {
       "name": "Bradlee Bungato",
@@ -199,7 +199,7 @@
       "group": null,
       "total": null,
       "gender": null,
-      "team": false
+      "team": true
     },
     {
       "name": "Zander Asbury",
@@ -207,7 +207,7 @@
       "group": null,
       "total": null,
       "gender": null,
-      "team": false
+      "team": true
     },
     {
       "name": "Brennan DeVito",
@@ -215,7 +215,7 @@
       "group": null,
       "total": null,
       "gender": null,
-      "team": false
+      "team": true
     },
     {
       "name": "Coy Long",
@@ -223,7 +223,7 @@
       "group": null,
       "total": null,
       "gender": null,
-      "team": false
+      "team": true
     }
   ]
 }

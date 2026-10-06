@@ -42,8 +42,9 @@ layout: default
 {%- for f in b.footnotes %} {{ f.mark }} {{ f.note | escape }}.{% endfor %}</p></section>
 {%- if b.has_teams %}
 <section id="team" hidden><div class="scroll"><table><thead><tr><th>Pos</th><th>School and counting scores</th>{% if b.to_par %}<th class="r">To par</th>{% endif %}<th class="r">Strokes</th></tr></thead><tbody>
-{%- for t in b.teams %}
-<tr class="team"><td class="pos">{{ t.pos }}</td><td class="nm">{{ t.school | escape }}</td>{% if b.to_par %}<td class="tp {{ t.to_par | to_par_class }}">{{ t.to_par | to_par }}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{{ t.strokes }}</td></tr>
+{%- assign all_teams = b.teams | concat: b.short_teams %}
+{%- for t in all_teams %}
+<tr class="team"><td class="pos">{{ t.pos | default: "–" }}</td><td class="nm">{{ t.school | escape }}</td>{% if b.to_par %}<td class="tp{% if t.scored >= 4 %} {{ t.to_par | to_par_class }}{% endif %}">{% if t.scored >= 4 %}{{ t.to_par | to_par }}{% else %}–{% endif %}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{% if t.scored >= 4 %}{{ t.strokes }}{% else %}–{% endif %}</td></tr>
 <tr class="roster"><td></td><td colspan="{% if b.to_par %}3{% else %}2{% endif %}"><ul>{% for x in t.players %}<li class="{% if x.counting %}cnt{% else %}drop{% endif %}"><span>{{ x.name | escape }}</span>
 {%- if x.started %}{% if b.to_par %}<b class="{{ x.to_par | to_par_class }}">{{ x.to_par | to_par }}</b>{% endif %}{% if x.finished %}<i class="fin">{{ x.strokes }}</i>{% else %}<i>{{ x.thru }}</i>{% endif %}
 {%- else %}{% if b.to_par %}<b>–</b>{% endif %}<i>–</i>{% endif %}</li>{% endfor %}</ul></td></tr>
