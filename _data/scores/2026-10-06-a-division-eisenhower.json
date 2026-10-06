@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T17:44:37-04:00",
+  "updated": "2026-10-06T17:59:32-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -37,7 +37,7 @@
       "name": "Will Robison",
       "school": "Broadneck",
       "group": "6",
-      "total": null,
+      "total": 41,
       "gender": "M",
       "team": true
     },
@@ -45,8 +45,16 @@
       "name": "Garrett Cardone-Luyben",
       "school": "Broadneck",
       "group": "7",
-      "total": null,
+      "total": 46,
       "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Gage",
+      "school": "Chesapeake",
+      "group": null,
+      "total": 58,
+      "gender": null,
       "team": true
     },
     {
@@ -69,7 +77,7 @@
       "name": "Max Stauffer",
       "school": "Chesapeake",
       "group": "5",
-      "total": null,
+      "total": 51,
       "gender": "M",
       "team": true
     },
@@ -77,7 +85,7 @@
       "name": "Christian Morrison",
       "school": "Chesapeake",
       "group": "6",
-      "total": null,
+      "total": 47,
       "gender": "M",
       "team": true
     },
@@ -85,7 +93,7 @@
       "name": "Nic Digiorgio",
       "school": "Chesapeake",
       "group": "7",
-      "total": null,
+      "total": 48,
       "gender": "M",
       "team": true
     },
@@ -198,7 +206,7 @@
       "name": "Bradlee Bungato",
       "school": "South River",
       "group": null,
-      "total": null,
+      "total": 55,
       "gender": null,
       "team": true
     },
@@ -206,7 +214,7 @@
       "name": "Zander Asbury",
       "school": "South River",
       "group": null,
-      "total": null,
+      "total": 51,
       "gender": null,
       "team": true
     },
@@ -222,7 +230,7 @@
       "name": "Coy Long",
       "school": "South River",
       "group": null,
-      "total": null,
+      "total": 66,
       "gender": null,
       "team": true
     }
