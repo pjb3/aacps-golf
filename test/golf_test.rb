@@ -156,11 +156,37 @@ class GolfTest < Minitest::Test
     assert_equal %w[D], s.waiting.map { |p| p["name"] }
   end
 
-  def test_team_needs_four_scores
+  def test_team_partial_scores_are_ranked
     players = (1..5).map { |i| { "name" => "P#{i}", "school" => "X", "group" => "1", "team" => true, "total" => i < 4 ? 40 : nil } }
     s = Golf::Standings.new(players, par: 36)
-    assert_empty s.ranked_teams
+    assert_equal [["1", "X", 12, 120]], s.ranked_teams.map { |t| t.values_at("pos", "school", "to_par", "strokes") }
     assert_equal [["X", 3]], s.short_teams.map { |t| t.values_at("school", "scored") }
+  end
+
+  def test_team_order_and_minimum_roster_size
+    totals = { "Full" => [37, 37, 37, 37, 50], "Partial" => [35, 36, nil, nil],
+               "Tie" => [35, nil, nil, nil], "Empty" => [nil, nil, nil, nil],
+               "Small" => [30, 31, 32] }
+    players = totals.flat_map do |school, scores|
+      scores.each_with_index.map { |total, i| { "name" => "#{school} #{i}", "school" => school, "team" => true, "total" => total } }
+    end
+    board = Golf::Standings.new(players, par: 36).to_h
+    assert_equal [["T1", "Partial", -1, 71], ["T1", "Tie", -1, 35], ["3", "Full", 4, 148]],
+                 board["teams"].map { |t| t.values_at("pos", "school", "to_par", "strokes") }
+    assert_equal ["Empty"], board["unstarted_teams"].map { |t| t["school"] }
+    assert_equal 3, board["individuals"].count { |p| p["school"] == "Small" }
+    small = Golf::Standings.new(players.select { |p| p["school"] == "Small" }, par: 36).to_h
+    refute small["has_teams"]
+    assert_empty small["teams"]
+    assert_empty small["short_teams"]
+  end
+
+  def test_partial_hole_scores_rank_by_par_played
+    players = { "Birdie" => { "1" => 4 }, "Par" => { "2" => 3 } }.flat_map do |school, scores|
+      (1..4).map { |i| { "name" => "#{school} #{i}", "school" => school, "team" => true, "scores" => i == 1 ? scores : {} } }
+    end
+    assert_equal [["Birdie", -1], ["Par", 0]],
+                 Golf::Standings.new(players, pars: PARS).ranked_teams.map { |t| t.values_at("school", "to_par") }
   end
 
   def test_totals_without_par_rank_by_strokes

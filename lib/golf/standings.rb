@@ -13,7 +13,8 @@ module Golf
   #   raw stroke totals are misleading mid-round). Without a par, players are
   #   ranked by strokes.
   # - Team score is the sum of the four best scores among roster players who
-  #   have posted one. Teams with fewer than four scores are left unranked.
+  #   have posted one. Partial totals are ranked during play; rosters with
+  #   fewer than four tournament players are excluded from team standings.
   class Standings
     TEAM_COUNTING = 4
     GENDERS = { "M" => "boys", "F" => "girls" }.freeze
@@ -35,13 +36,14 @@ module Golf
         "to_par" => !par.nil?,
         "cards" => cards?,
         "gender_filter" => (@players.map { |p| p["gender_key"] } & %w[boys girls]).size == 2,
-        "has_teams" => @players.any? { |p| p["team"] },
+        "has_teams" => teams.any?,
         "footnotes" => @players.filter_map { |p| { "mark" => p["mark"], "note" => p["note"] } if p["mark"] }.uniq,
         "started_count" => started.size,
         "player_count" => @players.size,
         "individuals" => individuals,
         "waiting" => waiting,
         "teams" => ranked_teams,
+        "unstarted_teams" => teams.select { |t| t["scored"].zero? }.sort_by { |t| t["school"] },
         "short_teams" => short_teams
       }
     end
@@ -58,8 +60,8 @@ module Golf
     end
 
     def ranked_teams
-      full = teams.select { |t| t["scored"] >= TEAM_COUNTING }
-      ranked = stable_sort(full) { |t| [t["rank"], t["school"]] }
+      scored = teams.select { |t| t["scored"].positive? }
+      ranked = stable_sort(scored) { |t| [t["rank"], t["school"]] }
       with_positions(ranked) { |t| t["rank"] }.map { |pos, t| t.merge("pos" => pos) }
     end
 
@@ -100,7 +102,8 @@ module Golf
     def started = @players.select { |p| started?(p) }
 
     def teams
-      @teams ||= @players.select { |p| p["team"] }.group_by { |p| p["school"] }.map do |school, roster|
+      @teams ||= @players.select { |p| p["team"] }.group_by { |p| p["school"] }.filter_map do |school, roster|
+        next if roster.size < TEAM_COUNTING
         scored = stable_sort(roster.select { |p| started?(p) }) { |p| [p["rank"], -p["thru"]] }
         best = scored.first(TEAM_COUNTING)
         to_par = par && best.sum { |p| p["to_par"] }
