@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T17:15:47-04:00",
+  "updated": "2026-10-06T17:22:02-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -13,7 +13,7 @@
       "name": "James Jonker",
       "school": "Broadneck",
       "group": "2",
-      "total": null,
+      "total": 34,
       "gender": "M",
       "team": true
     },
@@ -53,7 +53,7 @@
       "name": "Nolan Behler",
       "school": "Chesapeake",
       "group": "2",
-      "total": null,
+      "total": 49,
       "gender": "M",
       "team": true
     },
@@ -134,6 +134,7 @@
       "school": "Crofton",
       "group": "7",
       "total": null,
+      "status": "DQ",
       "gender": "M",
       "team": true
     },
@@ -189,7 +190,7 @@
       "name": "Ethan Berry",
       "school": "South River",
       "group": null,
-      "total": null,
+      "total": 46,
       "gender": null,
       "team": true
     },
