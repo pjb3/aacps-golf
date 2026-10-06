@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T17:59:32-04:00",
+  "updated": "2026-10-06T18:04:26-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -150,7 +150,7 @@
       "name": "Chase Connell",
       "school": "Severna Park",
       "group": "6",
-      "total": null,
+      "total": 35,
       "gender": "M",
       "team": true
     },
@@ -158,7 +158,7 @@
       "name": "Davis Balderston",
       "school": "Severna Park",
       "group": "8",
-      "total": null,
+      "total": 35,
       "gender": "M",
       "team": true
     },
