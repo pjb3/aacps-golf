@@ -61,6 +61,8 @@ Event files can also be written or edited by hand:
   or `Jane Doe: { total: 41 }`.
 - `live: false` stops refreshing a match on its day (results confirmed final);
   `live: true` keeps refreshing it on other days.
+- `live_until: "2026-10-06T19:00:00-04:00"` stops live refreshes after a
+  specific time, including its UTC offset.
 
 The homepage splits events into Today, Upcoming and Past, opening on Today
 when there's a match that day. On a match day, the 15-minute build refreshes

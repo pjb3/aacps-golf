@@ -98,6 +98,11 @@ class GolfTest < Minitest::Test
     refute Golf::Schedule.live?({ "date" => today, "live" => false }, today)
     refute Golf::Schedule.live?({ "date" => today, "cancelled" => true }, today)
     refute Golf::Schedule.live?({ "date" => Date.new(2026, 9, 28) }, today)
+
+    event = { "date" => Date.new(2026, 10, 6), "live_until" => "2026-10-06T19:00:00-04:00" }
+    assert Golf::Schedule.live?(event, event["date"], Time.iso8601("2026-10-06T18:59:59-04:00"))
+    assert Golf::Schedule.live?(event, event["date"], Time.iso8601("2026-10-06T19:00:00-04:00"))
+    refute Golf::Schedule.live?(event, event["date"], Time.iso8601("2026-10-06T23:00:01Z"))
   end
 
   def test_school_names

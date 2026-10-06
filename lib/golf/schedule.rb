@@ -1,4 +1,5 @@
 require "date"
+require "time"
 
 module Golf
   # When an event happens, from its front matter (date, optional end_date,
@@ -22,8 +23,9 @@ module Golf
     # Live events get the Live badge and are re-downloaded by the scheduled
     # build. That's every event happening today, unless its file says
     # `live: false` (e.g. results confirmed final); `live: true` forces it.
-    def live?(event, today = Date.today)
+    def live?(event, today = Date.today, now = Time.now)
       return false if event["cancelled"]
+      return false if event["live_until"] && now > Time.iso8601(event["live_until"])
       return event["live"] unless event["live"].nil?
       section(event, today) == "today"
     end
