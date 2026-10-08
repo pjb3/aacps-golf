@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08T17:20:25-04:00",
+  "updated": "2026-10-08T17:30:27-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -45,7 +45,7 @@
       "name": "Caroline Viscardi",
       "school": "Broadneck",
       "group": "7",
-      "total": null,
+      "total": 48,
       "gender": "F",
       "team": true
     },
@@ -53,7 +53,7 @@
       "name": "Eli Harley",
       "school": "Chesapeake",
       "group": "1",
-      "total": null,
+      "total": 48,
       "gender": "M",
       "team": true
     },
@@ -133,7 +133,7 @@
       "name": "Gianni Gallow",
       "school": "Crofton",
       "group": "4",
-      "total": null,
+      "total": 46,
       "gender": "M",
       "team": true
     },
@@ -237,7 +237,7 @@
       "name": "Audrey Nicely",
       "school": "South River",
       "group": "7",
-      "total": null,
+      "total": 57,
       "gender": "F",
       "team": true
     }
