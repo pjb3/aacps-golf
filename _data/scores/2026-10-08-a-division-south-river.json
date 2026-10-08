@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-08T17:30:27-04:00",
+  "updated": "2026-10-08T17:40:26-04:00",
   "players": [
     {
       "name": "Michael Peterson",
       "school": "Broadneck",
       "group": "1",
-      "total": null,
+      "total": 37,
       "gender": "M",
       "team": true
     },
@@ -69,7 +69,7 @@
       "name": "David Wheeler",
       "school": "Chesapeake",
       "group": "3",
-      "total": null,
+      "total": 52,
       "gender": "M",
       "team": true
     },
@@ -197,7 +197,7 @@
       "name": "CJ Burke",
       "school": "South River",
       "group": "2",
-      "total": null,
+      "total": 40,
       "gender": "M",
       "team": true
     },
@@ -205,7 +205,7 @@
       "name": "Jaden Thompson",
       "school": "South River",
       "group": "3",
-      "total": null,
+      "total": 56,
       "gender": "M",
       "team": true
     },
