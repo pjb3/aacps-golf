@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08T15:27:05-04:00",
+  "updated": "2026-10-08T17:20:25-04:00",
   "players": [
     {
       "name": "Michael Peterson",
@@ -13,7 +13,7 @@
       "name": "James Jonker",
       "school": "Broadneck",
       "group": "2",
-      "total": null,
+      "total": 33,
       "gender": "M",
       "team": true
     },
@@ -61,7 +61,7 @@
       "name": "Brayden Parker",
       "school": "Chesapeake",
       "group": "2",
-      "total": null,
+      "total": 57,
       "gender": "M",
       "team": true
     },
@@ -141,7 +141,7 @@
       "name": "Nate Fine",
       "school": "Crofton",
       "group": "5",
-      "total": null,
+      "total": 52,
       "gender": "M",
       "team": true
     },
@@ -173,7 +173,7 @@
       "name": "Colin Barry",
       "school": "Severna Park",
       "group": "3",
-      "total": null,
+      "total": 44,
       "gender": "M",
       "team": true
     },
@@ -210,12 +210,12 @@
       "team": true
     },
     {
-      "name": "Brooks Bailey",
+      "name": "Christopher Andre",
       "school": "South River",
-      "group": "4",
+      "group": "8",
       "total": null,
-      "gender": "M",
-      "team": true
+      "gender": null,
+      "team": false
     },
     {
       "name": "Marick Norton",
@@ -223,22 +223,6 @@
       "group": "5",
       "total": null,
       "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Nate Adkins",
-      "school": "South River",
-      "group": "8",
-      "total": null,
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Audrey Nicely",
-      "school": "South River",
-      "group": "7",
-      "total": null,
-      "gender": "F",
       "team": true
     },
     {
@@ -250,12 +234,12 @@
       "team": false
     },
     {
-      "name": "Christopher Andre",
+      "name": "Audrey Nicely",
       "school": "South River",
-      "group": "8",
+      "group": "7",
       "total": null,
-      "gender": null,
-      "team": false
+      "gender": "F",
+      "team": true
     }
   ]
 }
