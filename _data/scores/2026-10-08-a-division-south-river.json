@@ -1,0 +1,261 @@
+{
+  "updated": "2026-10-08T06:23:05-04:00",
+  "players": [
+    {
+      "name": "Michael Peterson",
+      "school": "Broadneck",
+      "group": "1",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "James Jonker",
+      "school": "Broadneck",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Micah Gossard",
+      "school": "Broadneck",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Harada",
+      "school": "Broadneck",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Jack Smith",
+      "school": "Broadneck",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Caroline Viscardi",
+      "school": "Broadneck",
+      "group": "7",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Eli Harley",
+      "school": "Chesapeake",
+      "group": "1",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brayden Parker",
+      "school": "Chesapeake",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "David Wheeler",
+      "school": "Chesapeake",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Christian Morrison",
+      "school": "Chesapeake",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Stauffer",
+      "school": "Chesapeake",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nic Digiorgio",
+      "school": "Chesapeake",
+      "group": "7",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Ethan Kelly",
+      "school": "Crofton",
+      "group": "7",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Austen Kelly",
+      "school": "Crofton",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Julien Gomez",
+      "school": "Crofton",
+      "group": "1",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Aaryan Sripada",
+      "school": "Crofton",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Gianni Gallow",
+      "school": "Crofton",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nate Fine",
+      "school": "Crofton",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Davis Balderston",
+      "school": "Severna Park",
+      "group": "8",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Chase Connell",
+      "school": "Severna Park",
+      "group": "6",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Chris Jenkins",
+      "school": "Severna Park",
+      "group": "1",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Colin Barry",
+      "school": "Severna Park",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Max Knoepfle",
+      "school": "Severna Park",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "KJ Flanagan",
+      "school": "Severna Park",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "CJ Burke",
+      "school": "South River",
+      "group": "2",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Jaden Thompson",
+      "school": "South River",
+      "group": "3",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Brooks Bailey",
+      "school": "South River",
+      "group": "4",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Marick Norton",
+      "school": "South River",
+      "group": "5",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Nate Adkins",
+      "school": "South River",
+      "group": "8",
+      "total": null,
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Audrey Nicely",
+      "school": "South River",
+      "group": "7",
+      "total": null,
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Ethan Berry",
+      "school": "South River",
+      "group": "8",
+      "total": null,
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Christopher Andre",
+      "school": "South River",
+      "group": "8",
+      "total": null,
+      "gender": null,
+      "team": false
+    }
+  ]
+}
