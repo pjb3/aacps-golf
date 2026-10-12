@@ -39,6 +39,7 @@ module Golf
     TEAM_BORDERS = %w[medium thick].freeze
     TEAM_SIZE = 4..6
     NAME = "First and Last Name"
+    ERROR_VALUE = /\A#(?:NULL!|DIV\/0!|VALUE!|REF!|NAME\?|NUM!|N\/A|ERROR!|GETTING_DATA|SPILL!|CALC!|FIELD!|BLOCKED!|UNKNOWN!|CONNECT!|PYTHON!|BUSY!|CYCLE!|CIRCULAR(?:_DEPENDENCY)?)\z/i
 
     module_function
 
@@ -165,7 +166,17 @@ module Golf
     end
 
     def cell(row, col)
-      col && row[col]&.value
+      cell_value(col && row[col])
+    end
+
+    # XLSX error-typed cells usually return nil from RubyXL. Some exported
+    # spreadsheets instead store the visible error token as ordinary text.
+    def cell_value(cell)
+      return nil unless cell
+      return nil if cell.respond_to?(:error?) && cell.error?
+
+      value = cell.value
+      value.is_a?(String) && ERROR_VALUE.match?(value.strip) ? nil : value
     end
 
     HEADER_LABELS = [NAME, "Grade", "School", "M/F", "Score", "Place", "Start"].freeze
@@ -178,7 +189,7 @@ module Golf
       rows = []
       sheet.each_with_index do |row, r|
         next unless row
-        labels = (0...row.cells.size).map { |c| norm(row[c]&.value) }
+        labels = (0...row.cells.size).map { |c| norm(cell_value(row[c])) }
         rows << [r, labels] if labels.include?(NAME)
       end
       raise "#{sheet.sheet_name}: no '#{NAME}' header row" if rows.empty?
@@ -198,18 +209,18 @@ module Golf
       holes = nil
       sheet.each do |row|
         next unless row
-        first = row[0]&.value
+        first = cell_value(row[0])
         if first == "Name"
-          holes = (2..10).map { |c| v = row[c]&.value; v.is_a?(Numeric) ? v.to_i : nil }
+          holes = (2..10).map { |c| v = cell_value(row[c]); v.is_a?(Numeric) ? v.to_i : nil }
           next
         end
         name = clean_name(first)
         next unless holes && !name.empty? && !SKIP_NAMES.include?(name)
 
-        school = clean_school(row[1]&.value)
+        school = clean_school(cell_value(row[1]))
         player = players[[name, school]] ||= { "name" => name, "school" => school, "group" => sheet.sheet_name, "scores" => {} }
         holes.each_with_index do |hole, i|
-          v = row[i + 2]&.value
+          v = cell_value(row[i + 2])
           player["scores"][hole.to_s] = v.to_i if hole && v.is_a?(Numeric) && v > 0
         end
       end
