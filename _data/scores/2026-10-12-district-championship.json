@@ -1,0 +1,773 @@
+{
+  "updated": "2026-10-12T02:36:37-04:00",
+  "players": [
+    {
+      "name": "Davis Balderson",
+      "school": "Severna Park",
+      "group": "1A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Robert Glockner",
+      "school": "Reservoir",
+      "group": "1A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "James Jonker",
+      "school": "Broadneck",
+      "group": "1A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Justin Zhao",
+      "school": "River Hill",
+      "group": "1A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ty Swann",
+      "school": "Crofton",
+      "group": "1B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Dhruv Kasargod",
+      "school": "River Hill",
+      "group": "1B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Gavin Allison",
+      "school": "Chesapeake",
+      "group": "1B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Kevin Ho",
+      "school": "Glenelg",
+      "group": "1B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alan Higgins",
+      "school": "Chesapeake",
+      "group": "18A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nico Levy",
+      "school": "Glenelg",
+      "group": "18A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Michael Peterson",
+      "school": "Broadneck",
+      "group": "18A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Kabir Gandhi",
+      "school": "Centennial",
+      "group": "18A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Micah Gossard",
+      "school": "Broadneck",
+      "group": "18B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ben Joo",
+      "school": "Centennial",
+      "group": "18B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ewan Ivey",
+      "school": "Southern",
+      "group": "18B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Dhilan Patel",
+      "school": "Reservoir",
+      "group": "18B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ben Cunningham",
+      "school": "Crofton",
+      "group": "17A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jacob Stevens",
+      "school": "Mount Hebron",
+      "group": "17A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chase Connell",
+      "school": "Severna Park",
+      "group": "17A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Logan Napolitano",
+      "school": "Glenelg",
+      "group": "17A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Colin Barry",
+      "school": "Severna Park",
+      "group": "17B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Zach Briggs",
+      "school": "Howard",
+      "group": "17B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chase Youmans",
+      "school": "Southern",
+      "group": "17B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "A.J. Lioi",
+      "school": "Glenelg",
+      "group": "17B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Max Harada",
+      "school": "Broadneck",
+      "group": "16A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brady Stocksdale",
+      "school": "Centennial",
+      "group": "16A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chris Jenkins",
+      "school": "Severna Park",
+      "group": "16A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Greyson Punsalon",
+      "school": "Long Reach",
+      "group": "16A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "CJ Burke",
+      "school": "South River",
+      "group": "16B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Lucas Daproza",
+      "school": "Long Reach",
+      "group": "16B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Kaden Wyatt",
+      "school": "Northeast",
+      "group": "16B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Weston Garner",
+      "school": "Howard",
+      "group": "16B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Liam Finnegan",
+      "school": "Chesapeake",
+      "group": "15A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Colton Chicorelli",
+      "school": "Long Reach",
+      "group": "15A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Owen Moon",
+      "school": "Southern",
+      "group": "15A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jaden Bang",
+      "school": "Reservoir",
+      "group": "15A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Luca Vendemia",
+      "school": "Southern",
+      "group": "15B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Justin Caporaletti",
+      "school": "Long Reach",
+      "group": "15B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "KJ Flanagan",
+      "school": "Severna Park",
+      "group": "15B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Grant Noggle",
+      "school": "Mount Hebron",
+      "group": "15B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brooks Bailey",
+      "school": "South River",
+      "group": "14A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jude Ro",
+      "school": "Marriotts Ridge",
+      "group": "14A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brody McCafferty",
+      "school": "Southern",
+      "group": "14A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Matt Ulrich",
+      "school": "Reservoir",
+      "group": "14A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nathan Reil",
+      "school": "Chesapeake",
+      "group": "14B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Hyeongu Son",
+      "school": "Marriotts Ridge",
+      "group": "14B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Charlie Ward",
+      "school": "Crofton",
+      "group": "14B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nathan Alter",
+      "school": "Mount Hebron",
+      "group": "14B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Mason Bombard",
+      "school": "Chesapeake",
+      "group": "13A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Colgan Hauf",
+      "school": "Mount Hebron",
+      "group": "13A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "William Meyer",
+      "school": "Annapolis",
+      "group": "13A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Colin Fagan",
+      "school": "Howard",
+      "group": "13A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Paolo Maggio",
+      "school": "South River",
+      "group": "13B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jaden Kim",
+      "school": "Mount Hebron",
+      "group": "13B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nate FIne",
+      "school": "Crofton",
+      "group": "13B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Aiden Altizer",
+      "school": "Guilford Park",
+      "group": "13B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Elisha Yim",
+      "school": "River Hill",
+      "group": "10A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Caroline Viscardi",
+      "school": "Broadneck",
+      "group": "10A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Mattie Weeks",
+      "school": "Glenelg",
+      "group": "10A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Sarah Valencia",
+      "school": "South River",
+      "group": "10A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Michelle Yeung",
+      "school": "River Hill",
+      "group": "10B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Makayla Robinson",
+      "school": "Centennial",
+      "group": "10B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Noelle Chun",
+      "school": "Marriotts Ridge",
+      "group": "10B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Audrey Nicely",
+      "school": "South River",
+      "group": "10B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Evelyn Park",
+      "school": "River Hill",
+      "group": "9A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Cloe Kim",
+      "school": "Marriotts Ridge",
+      "group": "9A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Jeanni Cho",
+      "school": "Reservoir",
+      "group": "9A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Madison Day",
+      "school": "Howard",
+      "group": "9A",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Ellis Maroney",
+      "school": "River Hill",
+      "group": "9B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Hannah Chung",
+      "school": "Marriotts Ridge",
+      "group": "9B",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Ava Shay",
+      "school": "Arundel",
+      "group": "9B",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Noelle Lee",
+      "school": "Howard",
+      "group": "9B",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Abigail Lee",
+      "school": "Marriotts Ridge",
+      "group": "8A",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Faith Grandier",
+      "school": "Atholton",
+      "group": "8A",
+      "scores": {},
+      "gender": "F",
+      "team": true
+    },
+    {
+      "name": "Grace Chun",
+      "school": "Marriotts Ridge",
+      "group": "8A",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "Lucy Luman",
+      "school": "Oakland Mills",
+      "group": "8A",
+      "scores": {},
+      "gender": "F",
+      "team": false
+    },
+    {
+      "name": "REF",
+      "school": "#REF!",
+      "group": "8B",
+      "scores": {},
+      "gender": null,
+      "team": false
+    },
+    {
+      "name": "Jaden Thompson",
+      "school": "South River",
+      "group": "7A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Luke O'Connor",
+      "school": "Atholton",
+      "group": "7A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Gianni Gallow",
+      "school": "Crofton",
+      "group": "7A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Ronin Holmes",
+      "school": "Guilford Park",
+      "group": "7A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Chase Fortescue",
+      "school": "Arundel",
+      "group": "7B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Kai Hajj-Mak",
+      "school": "Atholton",
+      "group": "7B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "James Posey",
+      "school": "North County",
+      "group": "7B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Luke Farah",
+      "school": "Howard",
+      "group": "7B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brandon Rochon",
+      "school": "Severn Run",
+      "group": "6A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Pierce Walker",
+      "school": "Atholton",
+      "group": "6A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Aidan Pelkey",
+      "school": "Arundel",
+      "group": "6A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Joey Dadurka",
+      "school": "Guilford Park",
+      "group": "6A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Cam Kellner",
+      "school": "Severn Run",
+      "group": "6B",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Evan Weinberg",
+      "school": "Howard",
+      "group": "6B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alex Harkness",
+      "school": "Guilford Park",
+      "group": "6B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Trevor Lloyd",
+      "school": "Centennial",
+      "group": "6B",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Collin Stryker",
+      "school": "Hammond",
+      "group": "5A",
+      "scores": {},
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Owen Landers",
+      "school": "Atholton",
+      "group": "5A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Rovani Clark",
+      "school": "Reservoir",
+      "group": "5A",
+      "scores": {},
+      "gender": "M",
+      "team": true
+    }
+  ]
+}
