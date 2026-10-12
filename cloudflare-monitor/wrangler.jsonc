@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "aacps-golf-build-monitor",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-12",
+  "triggers": {
+    "crons": ["*/10 * * * *"]
+  },
+  "vars": {
+    "GITHUB_OWNER": "pjb3",
+    "GITHUB_REPO": "aacps-golf",
+    "WORKFLOW_ID": "pages.yml",
+    "BRANCH": "main"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
