@@ -100,6 +100,7 @@ module Golf
     def with_entry(player, entries)
       entry = find_entry(player, entries)
       player.merge(
+        "name" => entry && entry["key"] == player["name"].downcase ? entry["name"] : player["name"],
         "gender" => entry&.fetch("gender"),
         "team" => !entry.nil? && entry["team"] && yield(entry)
       )
@@ -218,7 +219,9 @@ module Golf
         next unless holes && !name.empty? && !SKIP_NAMES.include?(name)
 
         school = clean_school(cell_value(row[1]))
-        player = players[[name, school]] ||= { "name" => name, "school" => school, "group" => sheet.sheet_name, "scores" => {} }
+        # Score sheets can vary a player's capitalization between rows/tabs.
+        # Merge those records so one player has one combined scorecard.
+        player = players[[name.downcase, school]] ||= { "name" => name, "school" => school, "group" => sheet.sheet_name, "scores" => {} }
         holes.each_with_index do |hole, i|
           v = cell_value(row[i + 2])
           player["scores"][hole.to_s] = v.to_i if hole && v.is_a?(Numeric) && v > 0
