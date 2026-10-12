@@ -3,15 +3,15 @@ name: Build and deploy
 on:
   push:
     branches: [main]
-  # Every 15 minutes: re-download the sheets for today's events (see
+  # Every 10 minutes: re-download the sheets for today's events (see
   # Golf::Schedule.live?). GitHub may delay scheduled runs by several minutes;
   # use "Run workflow" for an immediate refresh.
   # Nightly, just after midnight Eastern (EDT and EST): add new matches from
   # the results page, pull results still missing, and rebuild so the
   # homepage's Today/Upcoming/Past sections roll over.
   schedule:
-    # Offset from the busy quarter-hour marks to reduce scheduling delays.
-    - cron: "7,22,37,52 * * * *"
+    # Offset from the busy hour marks to reduce scheduling delays.
+    - cron: "3,13,23,33,43,53 * * * *"
     - cron: "5 4 * * *"
     - cron: "5 5 * * *"
   workflow_dispatch:
@@ -26,7 +26,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NIGHTLY: ${{ github.event_name == 'schedule' && github.event.schedule != '7,22,37,52 * * * *' }}
+  NIGHTLY: ${{ github.event_name == 'schedule' && github.event.schedule != '3,13,23,33,43,53 * * * *' }}
 
 jobs:
   build:
@@ -62,7 +62,7 @@ jobs:
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      # 15-minute runs only redeploy when something changed.
+      # 10-minute runs only redeploy when something changed.
       - name: Decide whether to deploy
         id: decide
         run: echo "deploy=${{ github.event_name != 'schedule' || env.NIGHTLY == 'true' || steps.commit.outputs.changed == 'true' }}" >> "$GITHUB_OUTPUT"
