@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T09:33:46-04:00",
+  "updated": "2026-10-12T09:44:19-04:00",
   "players": [
     {
       "name": "Davis Balderson",
@@ -7,7 +7,8 @@
       "group": "1A",
       "scores": {
         "1": 3,
-        "2": 4
+        "2": 4,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -18,7 +19,8 @@
       "group": "1A",
       "scores": {
         "1": 6,
-        "2": 5
+        "2": 5,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -29,7 +31,8 @@
       "group": "1A",
       "scores": {
         "1": 3,
-        "2": 4
+        "2": 4,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -40,7 +43,8 @@
       "group": "1A",
       "scores": {
         "1": 5,
-        "2": 4
+        "2": 4,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -50,7 +54,9 @@
       "school": "Crofton",
       "group": "1B",
       "scores": {
-        "1": 3
+        "1": 3,
+        "2": 4,
+        "3": 6
       },
       "gender": "M",
       "team": true
@@ -60,7 +66,9 @@
       "school": "River Hill",
       "group": "1B",
       "scores": {
-        "1": 5
+        "1": 5,
+        "2": 4,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -70,7 +78,9 @@
       "school": "Chesapeake",
       "group": "1B",
       "scores": {
-        "1": 7
+        "1": 7,
+        "2": 4,
+        "3": 4
       },
       "gender": "M",
       "team": true
@@ -80,7 +90,9 @@
       "school": "Glenelg",
       "group": "1B",
       "scores": {
-        "1": 3
+        "1": 3,
+        "2": 4,
+        "3": 8
       },
       "gender": "M",
       "team": true
@@ -139,6 +151,7 @@
       "group": "18B",
       "scores": {
         "1": 4,
+        "2": 5,
         "18": 5
       },
       "gender": "M",
@@ -150,6 +163,7 @@
       "group": "18B",
       "scores": {
         "1": 4,
+        "2": 5,
         "18": 5
       },
       "gender": "M",
@@ -161,6 +175,7 @@
       "group": "18B",
       "scores": {
         "1": 4,
+        "2": 6,
         "18": 4
       },
       "gender": "M",
@@ -230,7 +245,9 @@
       "school": "Severna Park",
       "group": "17B",
       "scores": {
-        "17": 4
+        "1": 4,
+        "17": 4,
+        "18": 4
       },
       "gender": "M",
       "team": true
@@ -240,7 +257,9 @@
       "school": "Howard",
       "group": "17B",
       "scores": {
-        "17": 5
+        "1": 6,
+        "17": 5,
+        "18": 5
       },
       "gender": "M",
       "team": true
@@ -250,7 +269,9 @@
       "school": "Southern",
       "group": "17B",
       "scores": {
-        "17": 6
+        "1": 6,
+        "17": 6,
+        "18": 6
       },
       "gender": "M",
       "team": true
@@ -260,7 +281,9 @@
       "school": "Glenelg",
       "group": "17B",
       "scores": {
-        "17": 6
+        "1": 4,
+        "17": 6,
+        "18": 5
       },
       "gender": "M",
       "team": true
@@ -271,7 +294,8 @@
       "group": "16A",
       "scores": {
         "16": 6,
-        "17": 6
+        "17": 6,
+        "18": 6
       },
       "gender": "M",
       "team": true
@@ -282,7 +306,8 @@
       "group": "16A",
       "scores": {
         "16": 5,
-        "17": 8
+        "17": 8,
+        "18": 6
       },
       "gender": "M",
       "team": true
@@ -293,7 +318,8 @@
       "group": "16A",
       "scores": {
         "16": 6,
-        "17": 5
+        "17": 5,
+        "18": 5
       },
       "gender": "M",
       "team": true
@@ -304,7 +330,8 @@
       "group": "16A",
       "scores": {
         "16": 4,
-        "17": 5
+        "17": 5,
+        "18": 5
       },
       "gender": "M",
       "team": false
@@ -379,7 +406,8 @@
       "school": "Reservoir",
       "group": "15A",
       "scores": {
-        "15": 4
+        "15": 4,
+        "16": 4
       },
       "gender": "M",
       "team": true
@@ -583,7 +611,8 @@
       "scores": {
         "10": 4,
         "11": 3,
-        "12": 5
+        "12": 5,
+        "13": 4
       },
       "gender": "F",
       "team": true
@@ -595,7 +624,8 @@
       "scores": {
         "10": 5,
         "11": 5,
-        "12": 7
+        "12": 7,
+        "13": 6
       },
       "gender": "F",
       "team": true
@@ -607,7 +637,8 @@
       "scores": {
         "10": 7,
         "11": 3,
-        "12": 7
+        "12": 7,
+        "13": 4
       },
       "gender": "F",
       "team": true
@@ -619,7 +650,8 @@
       "scores": {
         "10": 6,
         "11": 4,
-        "12": 6
+        "12": 6,
+        "13": 4
       },
       "gender": "F",
       "team": true
@@ -630,7 +662,8 @@
       "group": "10B",
       "scores": {
         "10": 4,
-        "11": 3
+        "11": 3,
+        "12": 6
       },
       "gender": "F",
       "team": true
@@ -641,7 +674,8 @@
       "group": "10B",
       "scores": {
         "10": 5,
-        "11": 3
+        "11": 3,
+        "12": 7
       },
       "gender": "F",
       "team": true
@@ -652,7 +686,8 @@
       "group": "10B",
       "scores": {
         "10": 7,
-        "11": 3
+        "11": 3,
+        "12": 5
       },
       "gender": "F",
       "team": true
@@ -663,7 +698,8 @@
       "group": "10B",
       "scores": {
         "10": 9,
-        "11": 9
+        "11": 9,
+        "12": 9
       },
       "gender": "F",
       "team": true
@@ -721,7 +757,8 @@
       "school": "River Hill",
       "group": "9B",
       "scores": {
-        "1": 7
+        "1": 7,
+        "10": 5
       },
       "gender": "F",
       "team": true
@@ -731,7 +768,8 @@
       "school": "Marriotts Ridge",
       "group": "9B",
       "scores": {
-        "1": 6
+        "1": 6,
+        "10": 5
       },
       "gender": "F",
       "team": true
@@ -741,7 +779,8 @@
       "school": "Arundel",
       "group": "9B",
       "scores": {
-        "1": 9
+        "1": 9,
+        "10": 8
       },
       "gender": "F",
       "team": false
@@ -751,7 +790,8 @@
       "school": "Howard",
       "group": "9B",
       "scores": {
-        "1": 10
+        "1": 10,
+        "10": 10
       },
       "gender": "F",
       "team": false
