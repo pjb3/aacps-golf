@@ -1,12 +1,13 @@
 {
-  "updated": "2026-10-12T09:08:05-04:00",
+  "updated": "2026-10-12T09:24:52-04:00",
   "players": [
     {
       "name": "Davis Balderson",
       "school": "Severna Park",
       "group": "1A",
       "scores": {
-        "1": 3
+        "1": 3,
+        "2": 4
       },
       "gender": "M",
       "team": true
@@ -16,7 +17,8 @@
       "school": "Reservoir",
       "group": "1A",
       "scores": {
-        "1": 6
+        "1": 6,
+        "2": 5
       },
       "gender": "M",
       "team": true
@@ -26,7 +28,8 @@
       "school": "Broadneck",
       "group": "1A",
       "scores": {
-        "1": 3
+        "1": 3,
+        "2": 4
       },
       "gender": "M",
       "team": true
@@ -36,7 +39,8 @@
       "school": "River Hill",
       "group": "1A",
       "scores": {
-        "1": 5
+        "1": 5,
+        "2": 4
       },
       "gender": "M",
       "team": true
@@ -129,7 +133,10 @@
       "name": "Micah Gossard",
       "school": "Broadneck",
       "group": "18B",
-      "scores": {},
+      "scores": {
+        "1": 4,
+        "18": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -137,7 +144,10 @@
       "name": "Ben Joo",
       "school": "Centennial",
       "group": "18B",
-      "scores": {},
+      "scores": {
+        "1": 4,
+        "18": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -145,7 +155,10 @@
       "name": "Ewan Ivey",
       "school": "Southern",
       "group": "18B",
-      "scores": {},
+      "scores": {
+        "1": 4,
+        "18": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -153,7 +166,10 @@
       "name": "Dhilan Patel",
       "school": "Reservoir",
       "group": "18B",
-      "scores": {},
+      "scores": {
+        "1": 3,
+        "18": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -193,7 +209,9 @@
       "name": "Colin Barry",
       "school": "Severna Park",
       "group": "17B",
-      "scores": {},
+      "scores": {
+        "17": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -201,7 +219,9 @@
       "name": "Zach Briggs",
       "school": "Howard",
       "group": "17B",
-      "scores": {},
+      "scores": {
+        "17": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -209,7 +229,9 @@
       "name": "Chase Youmans",
       "school": "Southern",
       "group": "17B",
-      "scores": {},
+      "scores": {
+        "17": 6
+      },
       "gender": "M",
       "team": true
     },
@@ -217,7 +239,9 @@
       "name": "A.J. Lioi",
       "school": "Glenelg",
       "group": "17B",
-      "scores": {},
+      "scores": {
+        "17": 6
+      },
       "gender": "M",
       "team": true
     },
@@ -225,7 +249,10 @@
       "name": "Max Harada",
       "school": "Broadneck",
       "group": "16A",
-      "scores": {},
+      "scores": {
+        "16": 6,
+        "17": 6
+      },
       "gender": "M",
       "team": true
     },
@@ -233,7 +260,10 @@
       "name": "Brady Stocksdale",
       "school": "Centennial",
       "group": "16A",
-      "scores": {},
+      "scores": {
+        "16": 5,
+        "17": 8
+      },
       "gender": "M",
       "team": true
     },
@@ -241,7 +271,10 @@
       "name": "Chris Jenkins",
       "school": "Severna Park",
       "group": "16A",
-      "scores": {},
+      "scores": {
+        "16": 6,
+        "17": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -249,7 +282,10 @@
       "name": "Greyson Punsalon",
       "school": "Long Reach",
       "group": "16A",
-      "scores": {},
+      "scores": {
+        "16": 4,
+        "17": 5
+      },
       "gender": "M",
       "team": false
     },
@@ -290,7 +326,8 @@
       "school": "Chesapeake",
       "group": "15A",
       "scores": {
-        "15": 4
+        "15": 4,
+        "16": 5
       },
       "gender": "M",
       "team": true
@@ -300,7 +337,8 @@
       "school": "Long Reach",
       "group": "15A",
       "scores": {
-        "15": 5
+        "15": 5,
+        "16": 7
       },
       "gender": "M",
       "team": false
@@ -310,7 +348,8 @@
       "school": "Southern",
       "group": "15A",
       "scores": {
-        "15": 6
+        "15": 6,
+        "16": 4
       },
       "gender": "M",
       "team": true
@@ -329,7 +368,9 @@
       "name": "Luca Vendemia",
       "school": "Southern",
       "group": "15B",
-      "scores": {},
+      "scores": {
+        "15": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -337,7 +378,9 @@
       "name": "Justin Caporaletti",
       "school": "Long Reach",
       "group": "15B",
-      "scores": {},
+      "scores": {
+        "15": 6
+      },
       "gender": "M",
       "team": false
     },
@@ -345,7 +388,9 @@
       "name": "KJ Flanagan",
       "school": "Severna Park",
       "group": "15B",
-      "scores": {},
+      "scores": {
+        "15": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -353,7 +398,9 @@
       "name": "Grant Noggle",
       "school": "Mount Hebron",
       "group": "15B",
-      "scores": {},
+      "scores": {
+        "15": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -506,7 +553,8 @@
       "school": "River Hill",
       "group": "10A",
       "scores": {
-        "10": 4
+        "10": 4,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -516,7 +564,8 @@
       "school": "Broadneck",
       "group": "10A",
       "scores": {
-        "10": 5
+        "10": 5,
+        "11": 5
       },
       "gender": "F",
       "team": true
@@ -526,7 +575,8 @@
       "school": "Glenelg",
       "group": "10A",
       "scores": {
-        "10": 7
+        "10": 7,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -536,7 +586,8 @@
       "school": "South River",
       "group": "10A",
       "scores": {
-        "10": 6
+        "10": 6,
+        "11": 4
       },
       "gender": "F",
       "team": true
@@ -546,7 +597,8 @@
       "school": "River Hill",
       "group": "10B",
       "scores": {
-        "10": 4
+        "10": 4,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -556,7 +608,8 @@
       "school": "Centennial",
       "group": "10B",
       "scores": {
-        "10": 5
+        "10": 5,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -566,7 +619,8 @@
       "school": "Marriotts Ridge",
       "group": "10B",
       "scores": {
-        "10": 7
+        "10": 7,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -576,7 +630,8 @@
       "school": "South River",
       "group": "10B",
       "scores": {
-        "10": 9
+        "10": 9,
+        "11": 9
       },
       "gender": "F",
       "team": true
@@ -586,7 +641,8 @@
       "school": "River Hill",
       "group": "9A",
       "scores": {
-        "9": 6
+        "9": 6,
+        "10": 5
       },
       "gender": "F",
       "team": true
@@ -596,7 +652,8 @@
       "school": "Marriotts Ridge",
       "group": "9A",
       "scores": {
-        "9": 7
+        "9": 7,
+        "10": 6
       },
       "gender": "F",
       "team": true
@@ -606,7 +663,8 @@
       "school": "Reservoir",
       "group": "9A",
       "scores": {
-        "9": 7
+        "9": 7,
+        "10": 5
       },
       "gender": "F",
       "team": true
@@ -616,7 +674,8 @@
       "school": "Howard",
       "group": "9A",
       "scores": {
-        "9": 8
+        "9": 8,
+        "10": 7
       },
       "gender": "F",
       "team": false
@@ -625,7 +684,9 @@
       "name": "Ellis Maroney",
       "school": "River Hill",
       "group": "9B",
-      "scores": {},
+      "scores": {
+        "1": 7
+      },
       "gender": "F",
       "team": true
     },
@@ -633,7 +694,9 @@
       "name": "Hannah Chung",
       "school": "Marriotts Ridge",
       "group": "9B",
-      "scores": {},
+      "scores": {
+        "1": 6
+      },
       "gender": "F",
       "team": true
     },
@@ -641,7 +704,9 @@
       "name": "Ava Shay",
       "school": "Arundel",
       "group": "9B",
-      "scores": {},
+      "scores": {
+        "1": 9
+      },
       "gender": "F",
       "team": false
     },
@@ -649,7 +714,9 @@
       "name": "Noelle Lee",
       "school": "Howard",
       "group": "9B",
-      "scores": {},
+      "scores": {
+        "1": 10
+      },
       "gender": "F",
       "team": false
     },
@@ -658,7 +725,8 @@
       "school": "Marriotts Ridge",
       "group": "8A",
       "scores": {
-        "8": 4
+        "8": 4,
+        "9": 7
       },
       "gender": "F",
       "team": false
@@ -668,7 +736,8 @@
       "school": "Atholton",
       "group": "8A",
       "scores": {
-        "8": 3
+        "8": 3,
+        "9": 8
       },
       "gender": "F",
       "team": true
@@ -678,7 +747,8 @@
       "school": "Marriotts Ridge",
       "group": "8A",
       "scores": {
-        "8": 5
+        "8": 5,
+        "9": 6
       },
       "gender": "F",
       "team": false
@@ -688,7 +758,8 @@
       "school": "Oakland Mills",
       "group": "8A",
       "scores": {
-        "8": 6
+        "8": 6,
+        "9": 13
       },
       "gender": "F",
       "team": false
@@ -698,7 +769,8 @@
       "school": "South River",
       "group": "7A",
       "scores": {
-        "7": 4
+        "7": 4,
+        "8": 4
       },
       "gender": "M",
       "team": true
@@ -708,7 +780,8 @@
       "school": "Atholton",
       "group": "7A",
       "scores": {
-        "7": 4
+        "7": 4,
+        "8": 3
       },
       "gender": "M",
       "team": true
@@ -718,7 +791,8 @@
       "school": "Crofton",
       "group": "7A",
       "scores": {
-        "7": 3
+        "7": 3,
+        "8": 4
       },
       "gender": "M",
       "team": true
@@ -728,7 +802,8 @@
       "school": "Guilford Park",
       "group": "7A",
       "scores": {
-        "7": 5
+        "7": 5,
+        "8": 4
       },
       "gender": "M",
       "team": true
@@ -782,7 +857,9 @@
       "school": "Severn Run",
       "group": "6A",
       "scores": {
-        "6": 6
+        "6": 6,
+        "7": 4,
+        "8": 4
       },
       "gender": "M",
       "team": false
@@ -792,7 +869,9 @@
       "school": "Atholton",
       "group": "6A",
       "scores": {
-        "6": 5
+        "6": 5,
+        "7": 7,
+        "8": 5
       },
       "gender": "M",
       "team": true
@@ -802,7 +881,9 @@
       "school": "Arundel",
       "group": "6A",
       "scores": {
-        "6": 6
+        "6": 6,
+        "7": 8,
+        "8": 4
       },
       "gender": "M",
       "team": false
@@ -812,7 +893,8 @@
       "school": "Guilford Park",
       "group": "6A",
       "scores": {
-        "6": 5
+        "6": 5,
+        "7": 5
       },
       "gender": "M",
       "team": true
@@ -821,7 +903,10 @@
       "name": "Cam Kellner",
       "school": "Severn Run",
       "group": "6B",
-      "scores": {},
+      "scores": {
+        "6": 5,
+        "7": 6
+      },
       "gender": "M",
       "team": false
     },
@@ -829,7 +914,10 @@
       "name": "Evan Weinberg",
       "school": "Howard",
       "group": "6B",
-      "scores": {},
+      "scores": {
+        "6": 4,
+        "7": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -837,7 +925,10 @@
       "name": "Alex Harkness",
       "school": "Guilford Park",
       "group": "6B",
-      "scores": {},
+      "scores": {
+        "6": 5,
+        "7": 8
+      },
       "gender": "M",
       "team": true
     },
@@ -845,7 +936,10 @@
       "name": "Trevor Lloyd",
       "school": "Centennial",
       "group": "6B",
-      "scores": {},
+      "scores": {
+        "6": 5,
+        "7": 6
+      },
       "gender": "M",
       "team": true
     },
@@ -853,7 +947,10 @@
       "name": "Collin Stryker",
       "school": "Hammond",
       "group": "5A",
-      "scores": {},
+      "scores": {
+        "5": 5,
+        "6": 6
+      },
       "gender": "M",
       "team": false
     },
@@ -861,7 +958,10 @@
       "name": "Owen Landers",
       "school": "Atholton",
       "group": "5A",
-      "scores": {},
+      "scores": {
+        "5": 6,
+        "6": 7
+      },
       "gender": "M",
       "team": true
     },
@@ -869,7 +969,10 @@
       "name": "Rovani Clark",
       "school": "Reservoir",
       "group": "5A",
-      "scores": {},
+      "scores": {
+        "5": 3,
+        "6": 5
+      },
       "gender": "M",
       "team": true
     }
