@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T08:59:29-04:00",
+  "updated": "2026-10-12T09:00:47-04:00",
   "players": [
     {
       "name": "Davis Balderson",
@@ -45,7 +45,9 @@
       "name": "Ty Swann",
       "school": "Crofton",
       "group": "1B",
-      "scores": {},
+      "scores": {
+        "1": 3
+      },
       "gender": "M",
       "team": true
     },
@@ -53,7 +55,9 @@
       "name": "Dhruv Kasargod",
       "school": "River Hill",
       "group": "1B",
-      "scores": {},
+      "scores": {
+        "1": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -61,7 +65,9 @@
       "name": "Gavin Allison",
       "school": "Chesapeake",
       "group": "1B",
-      "scores": {},
+      "scores": {
+        "1": 7
+      },
       "gender": "M",
       "team": true
     },
@@ -69,7 +75,9 @@
       "name": "Kevin Ho",
       "school": "Glenelg",
       "group": "1B",
-      "scores": {},
+      "scores": {
+        "1": 3
+      },
       "gender": "M",
       "team": true
     },
@@ -381,7 +389,9 @@
       "name": "Nathan Reil",
       "school": "Chesapeake",
       "group": "14B",
-      "scores": {},
+      "scores": {
+        "14": 3
+      },
       "gender": "M",
       "team": true
     },
@@ -389,7 +399,9 @@
       "name": "Hyeongu Son",
       "school": "Marriotts Ridge",
       "group": "14B",
-      "scores": {},
+      "scores": {
+        "14": 3
+      },
       "gender": "M",
       "team": true
     },
@@ -397,7 +409,9 @@
       "name": "Charlie Ward",
       "school": "Crofton",
       "group": "14B",
-      "scores": {},
+      "scores": {
+        "14": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -405,7 +419,9 @@
       "name": "Nathan Alter",
       "school": "Mount Hebron",
       "group": "14B",
-      "scores": {},
+      "scores": {
+        "14": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -677,7 +693,9 @@
       "name": "Jaden Thompson",
       "school": "South River",
       "group": "7A",
-      "scores": {},
+      "scores": {
+        "7": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -685,7 +703,9 @@
       "name": "Luke O'Connor",
       "school": "Atholton",
       "group": "7A",
-      "scores": {},
+      "scores": {
+        "7": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -693,7 +713,9 @@
       "name": "Gianni Gallow",
       "school": "Crofton",
       "group": "7A",
-      "scores": {},
+      "scores": {
+        "7": 3
+      },
       "gender": "M",
       "team": true
     },
@@ -701,7 +723,9 @@
       "name": "Ronin Holmes",
       "school": "Guilford Park",
       "group": "7A",
-      "scores": {},
+      "scores": {
+        "7": 5
+      },
       "gender": "M",
       "team": true
     },
