@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T09:00:47-04:00",
+  "updated": "2026-10-12T09:04:23-04:00",
   "players": [
     {
       "name": "Davis Balderson",
@@ -285,7 +285,9 @@
       "name": "Liam Finnegan",
       "school": "Chesapeake",
       "group": "15A",
-      "scores": {},
+      "scores": {
+        "15": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -293,7 +295,9 @@
       "name": "Colton Chicorelli",
       "school": "Long Reach",
       "group": "15A",
-      "scores": {},
+      "scores": {
+        "15": 5
+      },
       "gender": "M",
       "team": false
     },
@@ -301,7 +305,9 @@
       "name": "Owen Moon",
       "school": "Southern",
       "group": "15A",
-      "scores": {},
+      "scores": {
+        "15": 6
+      },
       "gender": "M",
       "team": true
     },
@@ -309,7 +315,9 @@
       "name": "Jaden Bang",
       "school": "Reservoir",
       "group": "15A",
-      "scores": {},
+      "scores": {
+        "15": 4
+      },
       "gender": "M",
       "team": true
     },
