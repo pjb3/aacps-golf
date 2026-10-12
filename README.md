@@ -97,18 +97,14 @@ after editing the Ruby code.
 ## Publishing
 
 `.github/workflows/pages.yml` builds and deploys on every push to `main`, on
-demand ("Run workflow"), every 10 minutes (refreshing today's matches; it
-redeploys only if scores changed), and nightly just after midnight Eastern
-(importing new matches and rolling the homepage over to the new day). In the repo settings, set **Pages → Source** to
-**GitHub Actions**.
+demand ("Run workflow"), and nightly at 5:05 UTC (12:05 a.m. EST / 1:05 a.m.
+EDT), importing new matches and rolling the homepage over to the new day. In
+the repo settings, set **Pages → Source** to **GitHub Actions**.
 
 ### Cloud scheduler monitor
 
-`cloudflare-monitor/` contains an optional Cloudflare Worker that dispatches
-the existing `pages.yml` workflow every 10 minutes. It runs independently of
-your computer. To activate it, create a Cloudflare Worker, set the
-`GITHUB_TOKEN` secret to a fine-grained GitHub token with Actions read and
-write access for `pjb3/aacps-golf`, and configure the `GITHUB_OWNER`, `GITHUB_REPO`, and
-`WORKFLOW_ID` variables. `WORKFLOW_ID` is `pages.yml`. Configure the Cron
-Trigger as `*/10 * * * *`. The Worker only requests a workflow dispatch; the
-build and deployment still run on GitHub Actions.
+`cloudflare-monitor/` contains the Cloudflare Worker source for an independent
+GitHub Actions trigger. Its Cron Trigger and `GITHUB_TOKEN` secret are currently
+removed. To reactivate it, restore the `*/10 * * * *` Cron Trigger and configure
+a fine-grained GitHub token with Actions read and write access for
+`pjb3/aacps-golf` as the `GITHUB_TOKEN` secret.

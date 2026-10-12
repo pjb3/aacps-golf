@@ -61,7 +61,8 @@ export default {
 
   // Read-only health endpoint. No dispatch can be triggered over HTTP.
   async fetch() {
-    return new Response("AACPS Golf build monitor is active. Dispatches run on the configured schedule.", {
+    return new Response("AACPS Golf build monitor is disabled.", {
+      status: 503,
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   },
