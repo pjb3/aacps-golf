@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T09:24:52-04:00",
+  "updated": "2026-10-12T09:33:46-04:00",
   "players": [
     {
       "name": "Davis Balderson",
@@ -91,6 +91,7 @@
       "group": "18A",
       "scores": {
         "1": 5,
+        "2": 5,
         "18": 4
       },
       "gender": "M",
@@ -102,6 +103,7 @@
       "group": "18A",
       "scores": {
         "1": 4,
+        "2": 5,
         "18": 4
       },
       "gender": "M",
@@ -113,6 +115,7 @@
       "group": "18A",
       "scores": {
         "1": 3,
+        "2": 4,
         "18": 4
       },
       "gender": "M",
@@ -124,6 +127,7 @@
       "group": "18A",
       "scores": {
         "1": 4,
+        "2": 4,
         "18": 4
       },
       "gender": "M",
@@ -177,7 +181,11 @@
       "name": "Ben Cunningham",
       "school": "Crofton",
       "group": "17A",
-      "scores": {},
+      "scores": {
+        "1": 3,
+        "17": 6,
+        "18": 7
+      },
       "gender": "M",
       "team": true
     },
@@ -185,7 +193,11 @@
       "name": "Jacob Stevens",
       "school": "Mount Hebron",
       "group": "17A",
-      "scores": {},
+      "scores": {
+        "1": 5,
+        "17": 5,
+        "18": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -193,7 +205,11 @@
       "name": "Chase Connell",
       "school": "Severna Park",
       "group": "17A",
-      "scores": {},
+      "scores": {
+        "1": 4,
+        "17": 5,
+        "18": 4
+      },
       "gender": "M",
       "team": true
     },
@@ -201,7 +217,11 @@
       "name": "Logan Napolitano",
       "school": "Glenelg",
       "group": "17A",
-      "scores": {},
+      "scores": {
+        "1": 5,
+        "17": 4,
+        "18": 5
+      },
       "gender": "M",
       "team": true
     },
@@ -369,7 +389,8 @@
       "school": "Southern",
       "group": "15B",
       "scores": {
-        "15": 4
+        "15": 4,
+        "16": 7
       },
       "gender": "M",
       "team": true
@@ -379,7 +400,8 @@
       "school": "Long Reach",
       "group": "15B",
       "scores": {
-        "15": 6
+        "15": 6,
+        "16": 5
       },
       "gender": "M",
       "team": false
@@ -389,7 +411,8 @@
       "school": "Severna Park",
       "group": "15B",
       "scores": {
-        "15": 4
+        "15": 4,
+        "16": 5
       },
       "gender": "M",
       "team": true
@@ -399,7 +422,8 @@
       "school": "Mount Hebron",
       "group": "15B",
       "scores": {
-        "15": 4
+        "15": 4,
+        "16": 7
       },
       "gender": "M",
       "team": true
@@ -449,7 +473,8 @@
       "school": "Chesapeake",
       "group": "14B",
       "scores": {
-        "14": 3
+        "14": 3,
+        "15": 5
       },
       "gender": "M",
       "team": true
@@ -459,7 +484,8 @@
       "school": "Marriotts Ridge",
       "group": "14B",
       "scores": {
-        "14": 3
+        "14": 3,
+        "15": 4
       },
       "gender": "M",
       "team": true
@@ -469,7 +495,8 @@
       "school": "Crofton",
       "group": "14B",
       "scores": {
-        "14": 4
+        "14": 4,
+        "15": 5
       },
       "gender": "M",
       "team": true
@@ -479,7 +506,8 @@
       "school": "Mount Hebron",
       "group": "14B",
       "scores": {
-        "14": 4
+        "14": 4,
+        "15": 5
       },
       "gender": "M",
       "team": true
@@ -554,7 +582,8 @@
       "group": "10A",
       "scores": {
         "10": 4,
-        "11": 3
+        "11": 3,
+        "12": 5
       },
       "gender": "F",
       "team": true
@@ -565,7 +594,8 @@
       "group": "10A",
       "scores": {
         "10": 5,
-        "11": 5
+        "11": 5,
+        "12": 7
       },
       "gender": "F",
       "team": true
@@ -576,7 +606,8 @@
       "group": "10A",
       "scores": {
         "10": 7,
-        "11": 3
+        "11": 3,
+        "12": 7
       },
       "gender": "F",
       "team": true
@@ -587,7 +618,8 @@
       "group": "10A",
       "scores": {
         "10": 6,
-        "11": 4
+        "11": 4,
+        "12": 6
       },
       "gender": "F",
       "team": true
@@ -642,7 +674,8 @@
       "group": "9A",
       "scores": {
         "9": 6,
-        "10": 5
+        "10": 5,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -653,7 +686,8 @@
       "group": "9A",
       "scores": {
         "9": 7,
-        "10": 6
+        "10": 6,
+        "11": 5
       },
       "gender": "F",
       "team": true
@@ -664,7 +698,8 @@
       "group": "9A",
       "scores": {
         "9": 7,
-        "10": 5
+        "10": 5,
+        "11": 3
       },
       "gender": "F",
       "team": true
@@ -675,7 +710,8 @@
       "group": "9A",
       "scores": {
         "9": 8,
-        "10": 7
+        "10": 7,
+        "11": 6
       },
       "gender": "F",
       "team": false
@@ -814,7 +850,8 @@
       "group": "7B",
       "scores": {
         "7": 4,
-        "8": 4
+        "8": 4,
+        "9": 8
       },
       "gender": "M",
       "team": false
@@ -825,7 +862,8 @@
       "group": "7B",
       "scores": {
         "7": 7,
-        "8": 3
+        "8": 3,
+        "9": 6
       },
       "gender": "M",
       "team": true
@@ -836,7 +874,8 @@
       "group": "7B",
       "scores": {
         "7": 5,
-        "8": 5
+        "8": 5,
+        "9": 5
       },
       "gender": "M",
       "team": false
@@ -847,7 +886,8 @@
       "group": "7B",
       "scores": {
         "7": 5,
-        "8": 4
+        "8": 4,
+        "9": 7
       },
       "gender": "M",
       "team": true
@@ -949,7 +989,8 @@
       "group": "5A",
       "scores": {
         "5": 5,
-        "6": 6
+        "6": 6,
+        "7": 7
       },
       "gender": "M",
       "team": false
@@ -960,7 +1001,8 @@
       "group": "5A",
       "scores": {
         "5": 6,
-        "6": 7
+        "6": 7,
+        "7": 7
       },
       "gender": "M",
       "team": true
@@ -971,7 +1013,8 @@
       "group": "5A",
       "scores": {
         "5": 3,
-        "6": 5
+        "6": 5,
+        "7": 4
       },
       "gender": "M",
       "team": true
