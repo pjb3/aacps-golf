@@ -19,19 +19,19 @@ layout: default
  {%- endif %}
 </div>
 {%- endif %}
-<section id="ind"><div class="scroll"><table><thead><tr><th>Pos</th><th>Player</th>{% if b.to_par %}<th class="r">To par</th>{% endif %}{% if b.cards %}<th class="r">Thru</th>{% endif %}<th class="r">Strokes</th></tr></thead><tbody id="ibody">
+<section id="ind"><div class="scroll"><table><thead><tr><th class="fav-col"></th><th>Pos</th><th>Player</th>{% if b.to_par %}<th class="r">To par</th>{% endif %}{% if b.cards %}<th class="r">Thru</th>{% endif %}<th class="r">Strokes</th></tr></thead><tbody id="fbody"><tr class="favorites-heading" hidden><th colspan="{% if b.to_par %}{% if b.cards %}6{% else %}5{% endif %}{% else %}{% if b.cards %}5{% else %}4{% endif %}{% endif %}">Favorites</th></tr></tbody><tbody id="ibody"><tr class="leaderboard-heading" hidden><th colspan="{% if b.to_par %}{% if b.cards %}6{% else %}5{% endif %}{% else %}{% if b.cards %}5{% else %}4{% endif %}{% endif %}">Leaderboard</th></tr>
 {%- for p in b.individuals %}
 {%- if b.cards %}
-<tr data-g="{{ p.gender_key }}" class="pl" tabindex="0" role="button" aria-expanded="false" aria-controls="c{{ forloop.index }}">
+<tr data-g="{{ p.gender_key }}" data-favorite-key="{{ p.name | downcase | strip | escape }}::{{ p.school | downcase | strip | escape }}" class="pl" tabindex="0" aria-label="Show scorecard for {{ p.name | escape }}" aria-expanded="false" aria-controls="c{{ forloop.index }}">
 {%- else %}
-<tr data-g="{{ p.gender_key }}">
-{%- endif %}<td class="pos">{{ p.pos }}</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp {{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</td>{% endif %}{% if b.cards %}<td class="num">{% if p.finished %}F{% else %}{{ p.thru }}{% endif %}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{{ p.strokes }}{% if p.mark %}<sup class="fn">{{ p.mark }}</sup>{% endif %}</td></tr>
+<tr data-g="{{ p.gender_key }}" data-favorite-key="{{ p.name | downcase | strip | escape }}::{{ p.school | downcase | strip | escape }}">
+{%- endif %}<td class="fav-cell"><button class="fav-toggle" type="button" aria-pressed="false" aria-label="Add {{ p.name | escape }} to Favorites"><span aria-hidden="true">☆</span></button></td><td class="pos">{{ p.pos }}</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp {{ p.to_par | to_par_class }}">{{ p.to_par | to_par }}</td>{% endif %}{% if b.cards %}<td class="num">{% if p.finished %}F{% else %}{{ p.thru }}{% endif %}</td>{% endif %}<td class="num{% if b.to_par %} dim{% else %} strokes{% endif %}">{{ p.strokes }}{% if p.mark %}<sup class="fn">{{ p.mark }}</sup>{% endif %}</td></tr>
 {%- if b.cards %}
-<tr data-g="{{ p.gender_key }}" class="cardrow" id="c{{ forloop.index }}" hidden><td colspan="{{ cols }}"><div class="scroll">{% include scorecard.html player=p %}</div><p class="legend">Starting hole {{ p.start_hole }}. <span class="s birdie">3</span> birdie or better, <span class="s bogey">5</span> bogey, <span class="s dbl">6</span> double or worse.</p></td></tr>
+<tr data-g="{{ p.gender_key }}" data-favorite-key="{{ p.name | downcase | strip | escape }}::{{ p.school | downcase | strip | escape }}" class="cardrow" id="c{{ forloop.index }}" hidden><td colspan="{{ cols | plus: 1 }}"><div class="scroll">{% include scorecard.html player=p %}</div><p class="legend">Starting hole {{ p.start_hole }}. <span class="s birdie">3</span> birdie or better, <span class="s bogey">5</span> bogey, <span class="s dbl">6</span> double or worse.</p></td></tr>
 {%- endif %}
 {%- endfor %}
 {%- for p in b.waiting %}
-<tr data-g="{{ p.gender_key }}" class="wait"><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp">–</td>{% endif %}{% if b.cards %}<td class="num">{% if page.is_live %}{{ p.group }}{% else %}–{% endif %}</td>{% endif %}<td class="num dim">{{ p.status | default: "–" }}</td></tr>
+<tr data-g="{{ p.gender_key }}" data-favorite-key="{{ p.name | downcase | strip | escape }}::{{ p.school | downcase | strip | escape }}" class="wait"><td class="fav-cell"><button class="fav-toggle" type="button" aria-pressed="false" aria-label="Add {{ p.name | escape }} to Favorites"><span aria-hidden="true">☆</span></button></td><td class="pos">–</td><td class="nm">{{ p.name | escape }}<span class="sch">{{ p.school | escape }}</span></td>{% if b.to_par %}<td class="tp">–</td>{% endif %}{% if b.cards %}<td class="num">{% if page.is_live %}{{ p.group }}{% else %}–{% endif %}</td>{% endif %}<td class="num dim">{{ p.status | default: "–" }}</td></tr>
 {%- endfor %}
 </tbody></table></div>
 <p class="note">
@@ -60,12 +60,53 @@ const views=document.querySelectorAll('[data-view]'),gf=document.getElementById(
 views.forEach(b=>b.onclick=()=>{views.forEach(x=>x.setAttribute('aria-pressed',x===b));
  document.getElementById('ind').hidden=b.dataset.view!=='ind';document.getElementById('team').hidden=b.dataset.view!=='team';
  if(gf)gf.style.visibility=b.dataset.view==='ind'?'visible':'hidden';});
-document.querySelectorAll('tr.pl').forEach(r=>{const t=()=>{const c=document.getElementById(r.getAttribute('aria-controls'));const o=r.getAttribute('aria-expanded')!=='true';r.setAttribute('aria-expanded',o);c.hidden=!o;};
- r.onclick=t;r.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}};});
+const favoriteStorageKey='aacps-golf-favorites-v1';
+let favoriteKeys=new Set();
+try{const saved=JSON.parse(localStorage.getItem(favoriteStorageKey)||'[]');if(Array.isArray(saved))favoriteKeys=new Set(saved.filter(x=>typeof x==='string'));}catch{}
+const favoritesBody=document.getElementById('fbody'),individualBody=document.getElementById('ibody');
+const favoriteHeading=favoritesBody.querySelector('.favorites-heading');
+const playerRows=[...individualBody.querySelectorAll('tr[data-favorite-key]')].filter(r=>!r.classList.contains('cardrow'));
+const playerCards=new Map(playerRows.map(r=>[r,r.nextElementSibling?.classList.contains('cardrow')?r.nextElementSibling:null]));
+let selectedGender='all';
+function renderFavoriteRows(){
+ let count=0;
+ playerRows.forEach(r=>{
+  const favorite=favoriteKeys.has(r.dataset.favoriteKey),target=favorite?favoritesBody:individualBody;
+  if(favorite)count++;
+  const button=r.querySelector('.fav-toggle');
+  button.setAttribute('aria-pressed',String(favorite));
+  button.setAttribute('aria-label',`${favorite?'Remove':'Add'} ${r.querySelector('.nm').childNodes[0].textContent.trim()} ${favorite?'from':'to'} Favorites`);
+  button.firstElementChild.textContent=favorite?'★':'☆';
+  target.appendChild(r);
+  const card=playerCards.get(r);if(card)target.appendChild(card);
+ });
+ favoriteHeading.hidden=count===0;
+ document.querySelector('.leaderboard-heading').hidden=count===0;
+ applyGenderFilter(selectedGender);
+}
+function applyGenderFilter(g){
+ selectedGender=g;let visibleFavorites=0;
+ playerRows.forEach(r=>{
+  const out=g!=='all'&&r.dataset.g!==g;
+  r.hidden=out;
+  if(favoriteKeys.has(r.dataset.favoriteKey)&&!out)visibleFavorites++;
+  const card=playerCards.get(r);
+  if(card)card.hidden=out||r.getAttribute('aria-expanded')!=='true';
+ });
+ favoriteHeading.hidden=visibleFavorites===0;
+ document.querySelector('.leaderboard-heading').hidden=visibleFavorites===0;
+}
+playerRows.forEach(r=>{
+ const toggleCard=()=>{const c=playerCards.get(r);if(!c)return;const o=r.getAttribute('aria-expanded')!=='true';r.setAttribute('aria-expanded',String(o));c.hidden=!o||r.hidden;};
+ if(r.classList.contains('pl')){r.onclick=toggleCard;r.onkeydown=e=>{if(e.target.closest('.fav-toggle'))return;if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard();}};}
+ const button=r.querySelector('.fav-toggle');
+ button.onclick=e=>{e.stopPropagation();const key=r.dataset.favoriteKey;if(favoriteKeys.has(key))favoriteKeys.delete(key);else favoriteKeys.add(key);
+  try{localStorage.setItem(favoriteStorageKey,JSON.stringify([...favoriteKeys]));}catch{}
+  renderFavoriteRows();};
+});
+renderFavoriteRows();
 const gs=document.querySelectorAll('#gfilter button');
-gs.forEach(b=>b.onclick=()=>{gs.forEach(x=>x.setAttribute('aria-pressed',x===b));const g=b.dataset.g;
- const rows=[...document.querySelectorAll('#ibody tr')];rows.forEach(r=>{const out=g!=='all'&&r.dataset.g!==g;
- if(r.classList.contains('cardrow')){const p=r.previousElementSibling;r.hidden=out||p.getAttribute('aria-expanded')!=='true';}else r.hidden=out;});});
+gs.forEach(b=>b.onclick=()=>{gs.forEach(x=>x.setAttribute('aria-pressed',x===b));applyGenderFilter(b.dataset.g);});
 {%- if page.is_live %}
 // Live events: add "(N min ago)" after the timestamp.
 const u=document.querySelector('time.updated');
