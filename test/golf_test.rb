@@ -215,6 +215,8 @@ class GolfTest < Minitest::Test
     assert_equal [3, 2], board["cut"]["boys"].values_at("projected", "advance")
     assert_equal %w[B1 B2 G1 G2], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }.sort
     assert_equal %w[B2 G2], board["individuals"].select { |p| p["cut_after"] }.map { |p| p["name"] }.sort
+    assert_equal [["B1", "1", "1"], ["B2", "2", "2"], ["G1", "3", "1"], ["G2", "4", "2"], ["G3", "5", "3"]],
+                 board["individuals"].map { |p| p.values_at("name", "pos", "gender_pos") }
   end
 
   # 40% of 4 teams rounds down to 1, but at least 3 advance.

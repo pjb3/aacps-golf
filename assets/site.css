@@ -113,3 +113,5 @@ section[hidden]{display:none}
 tr.cutline td{padding:6px 16px;border-top:2px dashed var(--red);border-bottom:0;color:var(--red);font:600 14px "Barlow Condensed",sans-serif;letter-spacing:.02em;text-transform:uppercase}
 #team tr[data-out] td,#ind[data-g="boys"] tr[data-out] td,#ind[data-g="girls"] tr[data-out] td{opacity:.6}
 #team tr[data-out]+tr.roster td{opacity:.6}
+.pos-g,#ind[data-g="boys"] .pos-all,#ind[data-g="girls"] .pos-all{display:none}
+#ind[data-g="boys"] .pos-g,#ind[data-g="girls"] .pos-g{display:inline}

@@ -62,7 +62,8 @@ module Golf
       }
     end
 
-    # With a cut, each player's "in_cut", and "cut_after" (gender key) on the
+    # Each player's "pos" in the whole field and "gender_pos" among their own
+    # gender. With a cut, also "in_cut", and "cut_after" (gender key) on the
     # last player in for their gender, where the page draws the cut line.
     def individuals
       @individuals ||= begin
@@ -70,7 +71,10 @@ module Golf
         rows = with_positions(ranked) { |p| p["rank"] }.map do |pos, p|
           p.merge("pos" => pos, "card" => cards? ? card(p) : nil, "projected" => projected(p))
         end
-        mark_cut(rows) { |p| p["gender_key"] }
+        # "gender_pos": place among the player's own gender, for the Boys and
+        # Girls filters.
+        gender_pos = rows.group_by { |p| p["gender_key"] }.flat_map { |_, ps| with_positions(ps) { |p| p["rank"] }.map { |pos, p| [p["name"], pos] } }.to_h
+        mark_cut(rows.map { |p| p.merge("gender_pos" => gender_pos[p["name"]]) }) { |p| p["gender_key"] }
       end
     end
 
