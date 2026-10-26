@@ -4,7 +4,7 @@ layout: default
 {%- assign b = page.board -%}
 {%- if b.cards %}{% assign cols = 5 %}{% else %}{% assign cols = 4 %}{% endif -%}
 <a class="back" href="{{ '/' | relative_url }}">← All tournaments</a>
-<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d" }}{% if page.end_date %}–{{ page.end_date | date: "%-d" }}{% endif %}, {{ page.date | date: "%Y" }}{% if page.makeup_for %} (makeup of the {{ page.makeup_for | date: "%B %-d" }} match){% endif %}{% assign par = b.par | default: page.par %}{% if par and page.cancelled != true %}, par {{ par }}{% endif %}.{% if b %}{% if page.is_live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p></header>
+<header><h1>{{ page.title | escape }}</h1><p class="sub">{{ page.course | escape }}, {{ page.date | date: "%B %-d" }}{% if page.end_date %}–{{ page.end_date | date: "%-d" }}{% endif %}, {{ page.date | date: "%Y" }}{% if page.makeup_for %} (makeup of the {{ page.makeup_for | date: "%B %-d" }} match){% endif %}{% assign par = b.par | default: page.par %}{% if par and page.cancelled != true %}, par {{ par }}{% endif %}.{% if b %}{% if page.is_live and page.updated %} Scores as of <time class="updated" datetime="{{ page.updated }}">{{ page.updated | date: "%-I:%M %p ET, %b %-d" }}</time>.{% endif %}{% endif %}</p>{% if page.is_live %}<p class="sub checked" aria-live="polite">Checking for new scores every minute.</p>{% endif %}</header>
 <div class="board">
 {%- unless b %}
 <p class="empty">{% if page.cancelled %}This match was cancelled.{% if page.made_up_on %} It was made up on {{ page.made_up_on | date: "%B %-d" }}.{% endif %}{% elsif page.results_url %}Results are posted on the <a href="{{ page.results_url }}">MPSSAA site</a>.{% else %}Scores will appear here once play begins.{% endif %}</p>
@@ -54,64 +54,103 @@ layout: default
 {%- endif %}
 {%- endunless %}
 </div>
-{%- if b %}
+{%- if b or page.is_live %}
 <script>
-const views=document.querySelectorAll('[data-view]'),gf=document.getElementById('gfilter');
-views.forEach(b=>b.onclick=()=>{views.forEach(x=>x.setAttribute('aria-pressed',x===b));
- document.getElementById('ind').hidden=b.dataset.view!=='ind';document.getElementById('team').hidden=b.dataset.view!=='team';
- if(gf)gf.style.visibility=b.dataset.view==='ind'?'visible':'hidden';});
+// Everything that wires up the board lives in setup(), so a live page can
+// swap in a fresh board (see refresh below) and keep the viewer's place:
+// Individual/Team, the Boys/Girls filter and open scorecards.
 const favoriteStorageKey='aacps-golf-favorites-v1';
 let favoriteKeys=new Set();
 try{const saved=JSON.parse(localStorage.getItem(favoriteStorageKey)||'[]');if(Array.isArray(saved))favoriteKeys=new Set(saved.filter(x=>typeof x==='string'));}catch{}
-const favoritesBody=document.getElementById('fbody'),individualBody=document.getElementById('ibody');
-const favoriteHeading=favoritesBody.querySelector('.favorites-heading');
-const playerRows=[...individualBody.querySelectorAll('tr[data-favorite-key]')].filter(r=>!r.classList.contains('cardrow'));
-const playerCards=new Map(playerRows.map(r=>[r,r.nextElementSibling?.classList.contains('cardrow')?r.nextElementSibling:null]));
-let selectedGender='all';
-function renderFavoriteRows(){
- let count=0;
+let view='ind',selectedGender='all';
+function setup(open=new Set()){
+ const individualBody=document.getElementById('ibody');
+ if(!individualBody)return;
+ const views=document.querySelectorAll('[data-view]'),gf=document.getElementById('gfilter'),team=document.getElementById('team');
+ if(!team)view='ind';
+ const showView=()=>{views.forEach(x=>x.setAttribute('aria-pressed',x.dataset.view===view));
+  document.getElementById('ind').hidden=view!=='ind';if(team)team.hidden=view!=='team';
+  if(gf)gf.style.visibility=view==='ind'?'visible':'hidden';};
+ views.forEach(b=>b.onclick=()=>{view=b.dataset.view;showView();});
+ showView();
+ const favoritesBody=document.getElementById('fbody');
+ const favoriteHeading=favoritesBody.querySelector('.favorites-heading');
+ const playerRows=[...individualBody.querySelectorAll('tr[data-favorite-key]')].filter(r=>!r.classList.contains('cardrow'));
+ const playerCards=new Map(playerRows.map(r=>[r,r.nextElementSibling?.classList.contains('cardrow')?r.nextElementSibling:null]));
+ function renderFavoriteRows(){
+  let count=0;
+  playerRows.forEach(r=>{
+   const favorite=favoriteKeys.has(r.dataset.favoriteKey),target=favorite?favoritesBody:individualBody;
+   if(favorite)count++;
+   const button=r.querySelector('.fav-toggle');
+   button.setAttribute('aria-pressed',String(favorite));
+   button.setAttribute('aria-label',`${favorite?'Remove':'Add'} ${r.querySelector('.nm').childNodes[0].textContent.trim()} ${favorite?'from':'to'} Favorites`);
+   button.firstElementChild.textContent=favorite?'★':'☆';
+   target.appendChild(r);
+   const card=playerCards.get(r);if(card)target.appendChild(card);
+  });
+  favoriteHeading.hidden=count===0;
+  document.querySelector('.leaderboard-heading').hidden=count===0;
+  applyGenderFilter(selectedGender);
+ }
+ function applyGenderFilter(g){
+  selectedGender=g;let visibleFavorites=0;
+  playerRows.forEach(r=>{
+   const out=g!=='all'&&r.dataset.g!==g;
+   r.hidden=out;
+   if(favoriteKeys.has(r.dataset.favoriteKey)&&!out)visibleFavorites++;
+   const card=playerCards.get(r);
+   if(card)card.hidden=out||r.getAttribute('aria-expanded')!=='true';
+  });
+  favoriteHeading.hidden=visibleFavorites===0;
+  document.querySelector('.leaderboard-heading').hidden=visibleFavorites===0;
+ }
  playerRows.forEach(r=>{
-  const favorite=favoriteKeys.has(r.dataset.favoriteKey),target=favorite?favoritesBody:individualBody;
-  if(favorite)count++;
+  if(open.has(r.dataset.favoriteKey)&&playerCards.get(r))r.setAttribute('aria-expanded','true');
+  const toggleCard=()=>{const c=playerCards.get(r);if(!c)return;const o=r.getAttribute('aria-expanded')!=='true';r.setAttribute('aria-expanded',String(o));c.hidden=!o||r.hidden;};
+  if(r.classList.contains('pl')){r.onclick=toggleCard;r.onkeydown=e=>{if(e.target.closest('.fav-toggle'))return;if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard();}};}
   const button=r.querySelector('.fav-toggle');
-  button.setAttribute('aria-pressed',String(favorite));
-  button.setAttribute('aria-label',`${favorite?'Remove':'Add'} ${r.querySelector('.nm').childNodes[0].textContent.trim()} ${favorite?'from':'to'} Favorites`);
-  button.firstElementChild.textContent=favorite?'★':'☆';
-  target.appendChild(r);
-  const card=playerCards.get(r);if(card)target.appendChild(card);
+  button.onclick=e=>{e.stopPropagation();const key=r.dataset.favoriteKey;if(favoriteKeys.has(key))favoriteKeys.delete(key);else favoriteKeys.add(key);
+   try{localStorage.setItem(favoriteStorageKey,JSON.stringify([...favoriteKeys]));}catch{}
+   renderFavoriteRows();};
  });
- favoriteHeading.hidden=count===0;
- document.querySelector('.leaderboard-heading').hidden=count===0;
- applyGenderFilter(selectedGender);
+ const gs=document.querySelectorAll('#gfilter button');
+ gs.forEach(b=>{b.setAttribute('aria-pressed',b.dataset.g===selectedGender);b.onclick=()=>{gs.forEach(x=>x.setAttribute('aria-pressed',x===b));applyGenderFilter(b.dataset.g);};});
+ renderFavoriteRows();
 }
-function applyGenderFilter(g){
- selectedGender=g;let visibleFavorites=0;
- playerRows.forEach(r=>{
-  const out=g!=='all'&&r.dataset.g!==g;
-  r.hidden=out;
-  if(favoriteKeys.has(r.dataset.favoriteKey)&&!out)visibleFavorites++;
-  const card=playerCards.get(r);
-  if(card)card.hidden=out||r.getAttribute('aria-expanded')!=='true';
- });
- favoriteHeading.hidden=visibleFavorites===0;
- document.querySelector('.leaderboard-heading').hidden=visibleFavorites===0;
-}
-playerRows.forEach(r=>{
- const toggleCard=()=>{const c=playerCards.get(r);if(!c)return;const o=r.getAttribute('aria-expanded')!=='true';r.setAttribute('aria-expanded',String(o));c.hidden=!o||r.hidden;};
- if(r.classList.contains('pl')){r.onclick=toggleCard;r.onkeydown=e=>{if(e.target.closest('.fav-toggle'))return;if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleCard();}};}
- const button=r.querySelector('.fav-toggle');
- button.onclick=e=>{e.stopPropagation();const key=r.dataset.favoriteKey;if(favoriteKeys.has(key))favoriteKeys.delete(key);else favoriteKeys.add(key);
-  try{localStorage.setItem(favoriteStorageKey,JSON.stringify([...favoriteKeys]));}catch{}
-  renderFavoriteRows();};
-});
-renderFavoriteRows();
-const gs=document.querySelectorAll('#gfilter button');
-gs.forEach(b=>b.onclick=()=>{gs.forEach(x=>x.setAttribute('aria-pressed',x===b));applyGenderFilter(b.dataset.g);});
+setup();
 {%- if page.is_live %}
-// Live events: add "(N min ago)" after the timestamp.
-const u=document.querySelector('time.updated');
-if(u){const s=document.createElement('span');u.after(s);const tick=()=>{const m=Math.round((Date.now()-new Date(u.dateTime))/60000);
- s.textContent=m<1?' (just now)':m<120?` (${m} min ago)`:'';};tick();setInterval(tick,30000);}
+// Live events: add "(N min ago)" after the timestamp, and once a minute fetch
+// this page again and swap in its header line and board if they changed.
+const checked=document.querySelector('.checked');
+let lastBoard=document.querySelector('.board').outerHTML,lastSub=document.querySelector('header .sub').innerHTML;
+const tick=()=>{const u=document.querySelector('time.updated');if(!u)return;
+ let s=u.nextElementSibling;if(!s||!s.classList.contains('ago')){s=document.createElement('span');s.className='ago';u.after(s);}
+ const m=Math.round((Date.now()-new Date(u.dateTime))/60000);s.textContent=m<1?' (just now)':m<120?` (${m} min ago)`:'';};
+const clock=d=>d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit',timeZone:'America/New_York'});
+async function refresh(){
+ try{
+  const res=await fetch(`${location.pathname}?t=${Date.now()}`,{cache:'no-store'});
+  if(!res.ok)throw new Error(res.status);
+  const doc=new DOMParser().parseFromString(await res.text(),'text/html');
+  const board=doc.querySelector('.board'),sub=doc.querySelector('header .sub');
+  if(sub&&sub.innerHTML!==lastSub){lastSub=sub.innerHTML;document.querySelector('header .sub').innerHTML=sub.innerHTML;}
+  if(board&&board.outerHTML!==lastBoard){
+   lastBoard=board.outerHTML;
+   const open=new Set([...document.querySelectorAll('tr.pl[aria-expanded="true"]')].map(r=>r.dataset.favoriteKey));
+   document.querySelector('.board').replaceWith(board);
+   setup(open);
+  }
+  checked.textContent=`Last checked for new scores at ${clock(new Date())} ET; checks every minute.`;
+ }catch{
+  checked.textContent=`Couldn't check for new scores at ${clock(new Date())} ET; trying again in a minute.`;
+ }
+ tick();
+}
+tick();setInterval(tick,30000);
+checked.textContent=`Last checked for new scores at ${clock(new Date())} ET; checks every minute.`;
+setInterval(refresh,60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 {%- endif %}
 </script>
 {%- endif %}
