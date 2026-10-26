@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T12:31:04-04:00",
+  "updated": "2026-10-26T12:31:42-04:00",
   "players": [
     {
       "name": "Ryan Kim",
@@ -15,7 +15,8 @@
         "12": 4,
         "13": 5,
         "14": 3,
-        "15": 4
+        "15": 4,
+        "16": 4
       },
       "gender": "M",
       "team": true
@@ -502,26 +503,6 @@
       "team": true
     },
     {
-      "name": "Robert Glockner",
-      "school": "Reservoir",
-      "group": "6B",
-      "scores": {
-        "6": 4,
-        "7": 4,
-        "8": 4,
-        "9": 6,
-        "10": 4,
-        "11": 4,
-        "12": 4,
-        "13": 5,
-        "14": 4,
-        "15": 4,
-        "16": 6
-      },
-      "gender": "M",
-      "team": false
-    },
-    {
       "name": "Camden Forsythe",
       "school": "Urbana",
       "group": "3B",
@@ -600,6 +581,26 @@
       },
       "gender": "M",
       "team": true
+    },
+    {
+      "name": "Robert Glockner",
+      "school": "Reservoir",
+      "group": "6B",
+      "scores": {
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 6,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 5,
+        "14": 4,
+        "15": 4,
+        "16": 6
+      },
+      "gender": "M",
+      "team": false
     },
     {
       "name": "Marco Saba",
@@ -681,26 +682,6 @@
       "team": false
     },
     {
-      "name": "Colin Barry",
-      "school": "Severna Park",
-      "group": "6B",
-      "scores": {
-        "6": 4,
-        "7": 5,
-        "8": 4,
-        "9": 6,
-        "10": 4,
-        "11": 4,
-        "12": 3,
-        "13": 6,
-        "14": 4,
-        "15": 5,
-        "16": 6
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
       "name": "Frankie Singleton",
       "school": "Sherwood",
       "group": "12",
@@ -778,6 +759,26 @@
       },
       "gender": "M",
       "team": false
+    },
+    {
+      "name": "Colin Barry",
+      "school": "Severna Park",
+      "group": "6B",
+      "scores": {
+        "6": 4,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 4,
+        "11": 4,
+        "12": 3,
+        "13": 6,
+        "14": 4,
+        "15": 5,
+        "16": 6
+      },
+      "gender": "M",
+      "team": true
     },
     {
       "name": "Karl Meredith",
@@ -1162,6 +1163,26 @@
       "team": true
     },
     {
+      "name": "Ben Joo",
+      "school": "Centennial",
+      "group": "6B",
+      "scores": {
+        "6": 4,
+        "7": 6,
+        "8": 3,
+        "9": 7,
+        "10": 4,
+        "11": 5,
+        "12": 6,
+        "13": 5,
+        "14": 6,
+        "15": 4,
+        "16": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Tristan Stiffler",
       "school": "North Hagerstown",
       "group": "7B",
@@ -1255,26 +1276,6 @@
         "11": 5,
         "12": 4,
         "13": 7
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Ben Joo",
-      "school": "Centennial",
-      "group": "6B",
-      "scores": {
-        "6": 4,
-        "7": 6,
-        "8": 3,
-        "9": 7,
-        "10": 4,
-        "11": 5,
-        "12": 6,
-        "13": 5,
-        "14": 6,
-        "15": 4,
-        "16": 5
       },
       "gender": "M",
       "team": true
