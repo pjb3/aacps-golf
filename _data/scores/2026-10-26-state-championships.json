@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T11:53:25-04:00",
+  "updated": "2026-10-26T11:54:04-04:00",
   "players": [
     {
       "name": "Ryan Kim",
@@ -142,7 +142,8 @@
         "14": 3,
         "15": 4,
         "16": 4,
-        "17": 4
+        "17": 4,
+        "18": 4
       },
       "gender": "M",
       "team": true
@@ -382,6 +383,24 @@
       "team": false
     },
     {
+      "name": "Greydon Caldwell",
+      "school": "Damascus",
+      "group": "10B",
+      "scores": {
+        "10": 3,
+        "11": 3,
+        "12": 4,
+        "13": 6,
+        "14": 3,
+        "15": 6,
+        "16": 7,
+        "17": 3,
+        "18": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Griffin Hottel",
       "school": null,
       "group": "8B",
@@ -411,57 +430,6 @@
         "14": 6,
         "15": 4,
         "16": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Greydon Caldwell",
-      "school": "Damascus",
-      "group": "10B",
-      "scores": {
-        "10": 3,
-        "11": 3,
-        "12": 4,
-        "13": 6,
-        "14": 3,
-        "15": 6,
-        "16": 7,
-        "17": 3
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Aman De Silva",
-      "school": "Winston Churchill",
-      "group": "5A",
-      "scores": {
-        "5": 3,
-        "6": 5,
-        "7": 5,
-        "8": 4,
-        "9": 3,
-        "10": 6,
-        "11": 4,
-        "12": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Graham Kosnar",
-      "school": "Walter Johnson",
-      "group": "5A",
-      "scores": {
-        "5": 6,
-        "6": 4,
-        "7": 5,
-        "8": 4,
-        "9": 3,
-        "10": 3,
-        "11": 5,
-        "12": 6
       },
       "gender": "M",
       "team": true
@@ -559,6 +527,41 @@
       "team": false
     },
     {
+      "name": "Jordan Wallace",
+      "school": null,
+      "group": "10B",
+      "scores": {
+        "10": 4,
+        "11": 4,
+        "12": 5,
+        "13": 5,
+        "14": 3,
+        "15": 4,
+        "16": 8,
+        "17": 4,
+        "18": 3
+      },
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Aman De Silva",
+      "school": "Winston Churchill",
+      "group": "5A",
+      "scores": {
+        "5": 3,
+        "6": 5,
+        "7": 5,
+        "8": 4,
+        "9": 3,
+        "10": 6,
+        "11": 4,
+        "12": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Karl Meredith",
       "school": "Linganore",
       "group": "8B",
@@ -647,40 +650,21 @@
       "team": true
     },
     {
-      "name": "Calen Shockley",
-      "school": "Stephen Decatur",
-      "group": "10B",
+      "name": "Graham Kosnar",
+      "school": "Walter Johnson",
+      "group": "5A",
       "scores": {
-        "10": 5,
-        "11": 4,
-        "12": 4,
-        "13": 6,
-        "14": 5,
-        "15": 4,
-        "16": 5,
-        "17": 4,
-        "18": 5
+        "5": 6,
+        "6": 4,
+        "7": 5,
+        "8": 4,
+        "9": 3,
+        "10": 3,
+        "11": 5,
+        "12": 6
       },
       "gender": "M",
       "team": true
-    },
-    {
-      "name": "Jordan Wallace",
-      "school": null,
-      "group": "10B",
-      "scores": {
-        "10": 4,
-        "11": 4,
-        "12": 5,
-        "13": 5,
-        "14": 3,
-        "15": 4,
-        "16": 8,
-        "17": 4,
-        "18": 3
-      },
-      "gender": "M",
-      "team": false
     },
     {
       "name": "Evan Goldsborough",
@@ -700,18 +684,18 @@
       "team": true
     },
     {
-      "name": "Creighton Lin",
-      "school": "Thomas S. Wootton",
-      "group": "12",
+      "name": "Calen Shockley",
+      "school": "Stephen Decatur",
+      "group": "10B",
       "scores": {
-        "1": 4,
-        "2": 5,
-        "12": 5,
+        "10": 5,
+        "11": 4,
+        "12": 4,
         "13": 6,
-        "14": 3,
-        "15": 5,
-        "16": 6,
-        "17": 5,
+        "14": 5,
+        "15": 4,
+        "16": 5,
+        "17": 4,
         "18": 5
       },
       "gender": "M",
@@ -733,23 +717,6 @@
       },
       "gender": "M",
       "team": true
-    },
-    {
-      "name": "Alan Higgins",
-      "school": "Chesapeake",
-      "group": "5A",
-      "scores": {
-        "5": 3,
-        "6": 6,
-        "7": 5,
-        "8": 6,
-        "9": 4,
-        "10": 4,
-        "11": 5,
-        "12": 6
-      },
-      "gender": "M",
-      "team": false
     },
     {
       "name": "Austin Brennan",
@@ -784,6 +751,60 @@
         "9": 5,
         "10": 4,
         "11": 3
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Brady Stocksdale",
+      "school": "Centennial",
+      "group": "12",
+      "scores": {
+        "1": 5,
+        "2": 4,
+        "12": 7,
+        "13": 6,
+        "14": 3,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Creighton Lin",
+      "school": "Thomas S. Wootton",
+      "group": "12",
+      "scores": {
+        "1": 4,
+        "2": 5,
+        "12": 5,
+        "13": 6,
+        "14": 3,
+        "15": 5,
+        "16": 6,
+        "17": 5,
+        "18": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Frankie Singleton",
+      "school": "Sherwood",
+      "group": "12",
+      "scores": {
+        "1": 4,
+        "2": 4,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 6,
+        "18": 5
       },
       "gender": "M",
       "team": true
@@ -835,42 +856,6 @@
         "13": 5,
         "14": 3,
         "15": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Brady Stocksdale",
-      "school": "Centennial",
-      "group": "12",
-      "scores": {
-        "1": 5,
-        "2": 4,
-        "12": 7,
-        "13": 6,
-        "14": 3,
-        "15": 5,
-        "16": 5,
-        "17": 4,
-        "18": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Frankie Singleton",
-      "school": "Sherwood",
-      "group": "12",
-      "scores": {
-        "1": 4,
-        "2": 4,
-        "12": 5,
-        "13": 5,
-        "14": 5,
-        "15": 5,
-        "16": 5,
-        "17": 6,
-        "18": 5
       },
       "gender": "M",
       "team": true
@@ -963,6 +948,23 @@
       "team": true
     },
     {
+      "name": "Alan Higgins",
+      "school": "Chesapeake",
+      "group": "5A",
+      "scores": {
+        "5": 3,
+        "6": 6,
+        "7": 5,
+        "8": 6,
+        "9": 4,
+        "10": 4,
+        "11": 5,
+        "12": 6
+      },
+      "gender": "M",
+      "team": false
+    },
+    {
       "name": "Heath Detterline",
       "school": "Oakdale",
       "group": "5B",
@@ -992,24 +994,6 @@
         "14": 4,
         "15": 6,
         "16": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Sebastian Kogan",
-      "school": "Montgomery Blair",
-      "group": "12",
-      "scores": {
-        "1": 7,
-        "2": 5,
-        "12": 4,
-        "13": 6,
-        "14": 3,
-        "15": 5,
-        "16": 5,
-        "17": 6,
-        "18": 5
       },
       "gender": "M",
       "team": true
@@ -1100,6 +1084,24 @@
         "13": 5,
         "14": 4,
         "15": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Sebastian Kogan",
+      "school": "Montgomery Blair",
+      "group": "12",
+      "scores": {
+        "1": 7,
+        "2": 5,
+        "12": 4,
+        "13": 6,
+        "14": 3,
+        "15": 5,
+        "16": 5,
+        "17": 6,
+        "18": 5
       },
       "gender": "M",
       "team": true
@@ -1245,23 +1247,6 @@
       "team": true
     },
     {
-      "name": "Vinnie DiPietro",
-      "school": "Towson",
-      "group": "5A",
-      "scores": {
-        "5": 6,
-        "6": 7,
-        "7": 6,
-        "8": 6,
-        "9": 6,
-        "10": 3,
-        "11": 6,
-        "12": 10
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
       "name": "Liam Gladden",
       "school": null,
       "group": "2",
@@ -1293,6 +1278,23 @@
         "16": 7,
         "17": 7,
         "18": 7
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Vinnie DiPietro",
+      "school": "Towson",
+      "group": "5A",
+      "scores": {
+        "5": 6,
+        "6": 7,
+        "7": 6,
+        "8": 6,
+        "9": 6,
+        "10": 3,
+        "11": 6,
+        "12": 10
       },
       "gender": "M",
       "team": true
