@@ -201,7 +201,7 @@ class GolfTest < Minitest::Test
   def test_cut_takes_top_share_and_ties
     boys = [70, 71, 72, 73, 73, 74, 75, 76, 77, nil].each_with_index.map { |t, i| { "name" => "B#{i}", "school" => "S", "gender" => "M", "total" => t } }
     board = Golf::Standings.new(boys, par: 72, cut: CUT).to_h
-    assert_equal({ "projected" => 1, "advance" => 4 }, board["cut"]["boys"])
+    assert_equal({ "rank" => 1, "projected" => 1, "advance" => 4 }, board["cut"]["boys"])
     assert_equal %w[B0 B1 B2 B3 B4], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }
     assert_equal ["B4"], board["individuals"].select { |p| p["cut_after"] }.map { |p| p["name"] }
   end
@@ -232,8 +232,9 @@ class GolfTest < Minitest::Test
     refute county.individuals.first.key?("in_cut")
   end
 
-  # Projections add the field's average to par on each hole a player has
-  # left: B2 is ahead now, but the hole he has left averages a double bogey.
+  # Who's in goes by current position; the projected cut adds the field's
+  # average to par on each hole a player has left (B2's last hole averages a
+  # double bogey).
   def test_cut_uses_projected_18_hole_scores
     pars = [4, 4]
     players = [
@@ -244,7 +245,7 @@ class GolfTest < Minitest::Test
     board = Golf::Standings.new(players, pars: pars, cut: { "share" => 0.4, "teams_min" => 3, "players_min" => 1 }).to_h
     assert_equal %w[B2 B1 B3], board["individuals"].map { |p| p["name"] }
     assert_equal [2, 1, 6], board["individuals"].map { |p| p["projected"] }
-    assert_equal 1, board["cut"]["boys"]["projected"]
-    assert_equal %w[B1], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }
+    assert_equal({ "rank" => 0, "projected" => 1, "advance" => 1 }, board["cut"]["boys"])
+    assert_equal %w[B2], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }
   end
 end
