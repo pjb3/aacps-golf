@@ -18,8 +18,11 @@ module Golf
   # - With a cut (the State Championship semifinals, see the MPSSAA golf
   #   bulletin), the top `share` of teams, and of boys and girls separately,
   #   make it, rounded down but at least `teams_min` / `players_min`; ties at
-  #   the cutoff are in. During play this is the projected cut, on current
-  #   scores.
+  #   the cutoff are in. Places come from each player's projected 18-hole
+  #   score: their score so far plus the field's average to par (same gender,
+  #   since boys and girls play different tees) on each hole they have left,
+  #   rounded to a whole stroke. A team's projection is the sum of its best
+  #   four. Once everyone finishes, projections are the final scores.
   class Standings
     TEAM_COUNTING = 4
     GENDERS = { "M" => "boys", "F" => "girls" }.freeze
@@ -63,7 +66,7 @@ module Golf
       @individuals ||= begin
         ranked = stable_sort(started) { |p| [p["rank"], -p["thru"], p["name"]] }
         rows = with_positions(ranked) { |p| p["rank"] }.map do |pos, p|
-          p.merge("pos" => pos, "card" => cards? ? card(p) : nil)
+          p.merge("pos" => pos, "card" => cards? ? card(p) : nil, "projected" => projected(p))
         end
         mark_cut(rows) { |p| p["gender_key"] }
       end
@@ -82,8 +85,9 @@ module Golf
       end
     end
 
-    # {"teams" / "boys" / "girls" => {"rank" => cut score, "advance" => how
-    # many make it}}, for those with anyone ranked; nil without a cut.
+    # {"teams" / "boys" / "girls" => {"projected" => projected cut score,
+    # "advance" => how many make it}}, for those with anyone ranked; nil
+    # without a cut.
     def cut_lines
       return unless @cut
       ranked = { "teams" => ranked_teams }.merge(individuals.group_by { |p| p["gender_key"] }.slice("boys", "girls"))
@@ -110,14 +114,35 @@ module Golf
     def cut_line(group, rows)
       return if rows.empty?
       advance = cut_size(group)
-      { "rank" => rows[[advance, rows.size].min - 1]["rank"], "advance" => advance }
+      scores = rows.map { |r| r["projected"] }.sort
+      { "projected" => scores[[advance, scores.size].min - 1], "advance" => advance }
+    end
+
+    # Projected final score (to par, or strokes without a par), as a whole
+    # number. See the class comment.
+    def projected(p)
+      return p["rank"] unless pars && !p["finished"]
+      left = (1..pars.size).reject { |h| p["scores"].key?(h) }
+      (p["to_par"] + left.sum { |h| hole_average(p["gender_key"], h) }).round
+    end
+
+    # The field's average score to par on a hole, among players of the given
+    # gender key who have played it (else anyone who has; else par).
+    def hole_average(gender_key, hole)
+      @hole_averages ||= Hash.new do |memo, (g, h)|
+        played = ->(ps) { ps.filter_map { |q| q["scores"][h] } }
+        strokes = played.call(@players.select { |q| q["gender_key"] == g })
+        strokes = played.call(@players) if strokes.empty?
+        memo[[g, h]] = strokes.empty? ? 0.0 : strokes.sum.fdiv(strokes.size) - hole_par(h)
+      end
+      @hole_averages[[gender_key, hole]]
     end
 
     def mark_cut(rows, &group_of)
       return rows unless @cut
       # Players with no gender listed have no cut.
       lines = rows.group_by(&group_of).slice(*CUT_GROUPS).to_h { |group, grows| [group, cut_line(group, grows)] }
-      in_cut = ->(r) { (line = lines[group_of.call(r)]) && r["rank"] <= line["rank"] }
+      in_cut = ->(r) { (line = lines[group_of.call(r)]) && r["projected"] <= line["projected"] }
       last_in = rows.each_with_index.select { |r, _| in_cut.call(r) }
                     .group_by { |r, _| group_of.call(r) }.transform_values { |rs| rs.last[1] }
       rows.each_with_index.map do |r, i|
@@ -170,7 +195,8 @@ module Golf
           "scored" => scored.size,
           "to_par" => to_par,
           "strokes" => strokes,
-          "rank" => to_par || strokes
+          "rank" => to_par || strokes,
+          "projected" => scored.map { |p| projected(p) }.sort.first(TEAM_COUNTING).sum
         }
       end
     end
