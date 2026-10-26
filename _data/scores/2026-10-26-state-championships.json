@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T13:11:40-04:00",
+  "updated": "2026-10-26T13:15:11-04:00",
   "players": [
     {
       "name": "Ryan Kim",
@@ -70,6 +70,30 @@
       "team": true
     },
     {
+      "name": "Landon Tudor",
+      "school": "Oakdale",
+      "group": "10A",
+      "scores": {
+        "1": 5,
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4,
+        "6": 4,
+        "10": 4,
+        "11": 3,
+        "12": 4,
+        "13": 5,
+        "14": 3,
+        "15": 4,
+        "16": 5,
+        "17": 4,
+        "18": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Alex Bruch",
       "school": "Walt Whitman",
       "group": "6A",
@@ -102,6 +126,7 @@
         "3": 3,
         "4": 4,
         "5": 4,
+        "6": 5,
         "10": 3,
         "11": 3,
         "12": 4,
@@ -116,27 +141,28 @@
       "team": true
     },
     {
-      "name": "Landon Tudor",
-      "school": "Oakdale",
+      "name": "Ty Swann",
+      "school": "Crofton",
       "group": "10A",
       "scores": {
-        "1": 5,
-        "2": 4,
+        "1": 4,
+        "2": 5,
         "3": 4,
         "4": 4,
-        "5": 4,
+        "5": 5,
+        "6": 4,
         "10": 4,
         "11": 3,
-        "12": 4,
+        "12": 3,
         "13": 5,
         "14": 3,
         "15": 4,
-        "16": 5,
+        "16": 6,
         "17": 4,
         "18": 4
       },
       "gender": "M",
-      "team": true
+      "team": false
     },
     {
       "name": "Aman De Silva",
@@ -155,33 +181,33 @@
         "14": 3,
         "15": 4,
         "16": 5,
-        "17": 4
+        "17": 4,
+        "18": 5
       },
       "gender": "M",
       "team": true
     },
     {
-      "name": "Ty Swann",
-      "school": "Crofton",
-      "group": "10A",
+      "name": "Miles Simpson",
+      "school": "Walt Whitman",
+      "group": "3B",
       "scores": {
-        "1": 4,
-        "2": 5,
-        "3": 4,
-        "4": 4,
-        "5": 5,
-        "10": 4,
-        "11": 3,
-        "12": 3,
+        "3": 5,
+        "4": 2,
+        "5": 4,
+        "6": 4,
+        "7": 5,
+        "8": 3,
+        "9": 5,
+        "10": 5,
+        "11": 4,
+        "12": 4,
         "13": 5,
         "14": 3,
-        "15": 4,
-        "16": 6,
-        "17": 4,
-        "18": 4
+        "15": 4
       },
       "gender": "M",
-      "team": false
+      "team": true
     },
     {
       "name": "Grant Pugh",
@@ -206,25 +232,28 @@
       "team": true
     },
     {
-      "name": "Miles Simpson",
-      "school": "Walt Whitman",
-      "group": "3B",
+      "name": "Emmett Russell",
+      "school": null,
+      "group": "8A",
       "scores": {
-        "3": 5,
-        "4": 2,
-        "5": 4,
-        "6": 4,
-        "7": 5,
+        "1": 5,
+        "2": 5,
+        "3": 4,
+        "4": 3,
         "8": 3,
         "9": 5,
-        "10": 5,
-        "11": 4,
-        "12": 4,
-        "13": 5,
-        "14": 3
+        "10": 4,
+        "11": 3,
+        "12": 6,
+        "13": 6,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 3,
+        "18": 4
       },
       "gender": "M",
-      "team": true
+      "team": false
     },
     {
       "name": "Johann Aguillon",
@@ -248,29 +277,6 @@
       },
       "gender": "M",
       "team": true
-    },
-    {
-      "name": "Emmett Russell",
-      "school": null,
-      "group": "8A",
-      "scores": {
-        "1": 5,
-        "2": 5,
-        "3": 4,
-        "8": 3,
-        "9": 5,
-        "10": 4,
-        "11": 3,
-        "12": 6,
-        "13": 6,
-        "14": 4,
-        "15": 4,
-        "16": 4,
-        "17": 3,
-        "18": 4
-      },
-      "gender": "M",
-      "team": false
     },
     {
       "name": "Davis Balderston",
@@ -314,50 +320,6 @@
         "16": 4,
         "17": 4,
         "18": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Jack Henry",
-      "school": "Sherwood",
-      "group": "2",
-      "scores": {
-        "2": 4,
-        "3": 4,
-        "4": 4,
-        "5": 4,
-        "6": 4,
-        "7": 4,
-        "8": 3,
-        "9": 6,
-        "10": 3,
-        "11": 4,
-        "12": 4,
-        "13": 6,
-        "14": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Graham Kosnar",
-      "school": "Walter Johnson",
-      "group": "5A",
-      "scores": {
-        "5": 6,
-        "6": 4,
-        "7": 5,
-        "8": 3,
-        "9": 4,
-        "10": 3,
-        "11": 3,
-        "12": 5,
-        "13": 6,
-        "14": 4,
-        "15": 5,
-        "16": 4,
-        "17": 4
       },
       "gender": "M",
       "team": true
@@ -473,6 +435,76 @@
       "team": true
     },
     {
+      "name": "Gavin Lewis",
+      "school": "Stephen Decatur",
+      "group": "8A",
+      "scores": {
+        "1": 4,
+        "2": 5,
+        "3": 5,
+        "4": 3,
+        "8": 2,
+        "9": 4,
+        "10": 5,
+        "11": 4,
+        "12": 5,
+        "13": 5,
+        "14": 4,
+        "15": 4,
+        "16": 4,
+        "17": 5,
+        "18": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Jack Henry",
+      "school": "Sherwood",
+      "group": "2",
+      "scores": {
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4,
+        "6": 4,
+        "7": 4,
+        "8": 3,
+        "9": 6,
+        "10": 3,
+        "11": 4,
+        "12": 4,
+        "13": 6,
+        "14": 4,
+        "15": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Graham Kosnar",
+      "school": "Walter Johnson",
+      "group": "5A",
+      "scores": {
+        "5": 6,
+        "6": 4,
+        "7": 5,
+        "8": 3,
+        "9": 4,
+        "10": 3,
+        "11": 3,
+        "12": 5,
+        "13": 6,
+        "14": 4,
+        "15": 5,
+        "16": 4,
+        "17": 4,
+        "18": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Jackson Stanley",
       "school": "Linganore",
       "group": "7A",
@@ -491,29 +523,6 @@
         "16": 4,
         "17": 4,
         "18": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Gavin Lewis",
-      "school": "Stephen Decatur",
-      "group": "8A",
-      "scores": {
-        "1": 4,
-        "2": 5,
-        "3": 5,
-        "8": 2,
-        "9": 4,
-        "10": 5,
-        "11": 4,
-        "12": 5,
-        "13": 5,
-        "14": 4,
-        "15": 4,
-        "16": 4,
-        "17": 5,
-        "18": 5
       },
       "gender": "M",
       "team": true
@@ -541,49 +550,6 @@
       "team": true
     },
     {
-      "name": "Camden Forsythe",
-      "school": "Urbana",
-      "group": "3B",
-      "scores": {
-        "3": 4,
-        "4": 3,
-        "5": 6,
-        "6": 4,
-        "7": 3,
-        "8": 3,
-        "9": 5,
-        "10": 5,
-        "11": 5,
-        "12": 4,
-        "13": 5,
-        "14": 4,
-        "15": 6
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Marco Saba",
-      "school": null,
-      "group": "14",
-      "scores": {
-        "1": 4,
-        "2": 6,
-        "3": 4,
-        "4": 5,
-        "5": 5,
-        "6": 4,
-        "7": 4,
-        "14": 2,
-        "15": 4,
-        "16": 5,
-        "17": 4,
-        "18": 5
-      },
-      "gender": "M",
-      "team": false
-    },
-    {
       "name": "Charlie Finnegan",
       "school": null,
       "group": "6A",
@@ -602,51 +568,6 @@
         "16": 7,
         "17": 4,
         "18": 3
-      },
-      "gender": "M",
-      "team": false
-    },
-    {
-      "name": "Palmer Freed",
-      "school": "Sherwood",
-      "group": "8A",
-      "scores": {
-        "1": 5,
-        "2": 5,
-        "3": 4,
-        "8": 3,
-        "9": 5,
-        "10": 4,
-        "11": 4,
-        "12": 4,
-        "13": 6,
-        "14": 4,
-        "15": 5,
-        "16": 5,
-        "17": 4,
-        "18": 4
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Alan Higgins",
-      "school": "Chesapeake",
-      "group": "5A",
-      "scores": {
-        "5": 3,
-        "6": 6,
-        "7": 5,
-        "8": 2,
-        "9": 6,
-        "10": 4,
-        "11": 4,
-        "12": 5,
-        "13": 6,
-        "14": 3,
-        "15": 5,
-        "16": 5,
-        "17": 4
       },
       "gender": "M",
       "team": false
@@ -696,6 +617,53 @@
       "team": false
     },
     {
+      "name": "Palmer Freed",
+      "school": "Sherwood",
+      "group": "8A",
+      "scores": {
+        "1": 5,
+        "2": 5,
+        "3": 4,
+        "4": 4,
+        "8": 3,
+        "9": 5,
+        "10": 4,
+        "11": 4,
+        "12": 4,
+        "13": 6,
+        "14": 4,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Alan Higgins",
+      "school": "Chesapeake",
+      "group": "5A",
+      "scores": {
+        "5": 3,
+        "6": 6,
+        "7": 5,
+        "8": 2,
+        "9": 6,
+        "10": 4,
+        "11": 4,
+        "12": 5,
+        "13": 6,
+        "14": 3,
+        "15": 5,
+        "16": 5,
+        "17": 4,
+        "18": 5
+      },
+      "gender": "M",
+      "team": false
+    },
+    {
       "name": "Griffin Hottel",
       "school": null,
       "group": "8B",
@@ -719,29 +687,6 @@
       "team": false
     },
     {
-      "name": "Michael Peterson",
-      "school": "Broadneck",
-      "group": "8A",
-      "scores": {
-        "1": 4,
-        "2": 6,
-        "3": 4,
-        "8": 4,
-        "9": 6,
-        "10": 4,
-        "11": 3,
-        "12": 4,
-        "13": 6,
-        "14": 3,
-        "15": 5,
-        "16": 5,
-        "17": 3,
-        "18": 6
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
       "name": "Lucas Kohut",
       "school": "Stephen Decatur",
       "group": "8B",
@@ -760,6 +705,28 @@
         "16": 4,
         "17": 5,
         "18": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Camden Forsythe",
+      "school": "Urbana",
+      "group": "3B",
+      "scores": {
+        "3": 4,
+        "4": 3,
+        "5": 6,
+        "6": 4,
+        "7": 3,
+        "8": 3,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 4,
+        "13": 5,
+        "14": 4,
+        "15": 6
       },
       "gender": "M",
       "team": true
@@ -900,29 +867,6 @@
       "team": true
     },
     {
-      "name": "Dustin Vallandingham",
-      "school": "Leonardtown",
-      "group": "2",
-      "scores": {
-        "2": 4,
-        "3": 5,
-        "4": 3,
-        "5": 6,
-        "6": 4,
-        "7": 5,
-        "8": 3,
-        "9": 5,
-        "10": 4,
-        "11": 5,
-        "12": 5,
-        "13": 5,
-        "14": 4,
-        "15": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
       "name": "Adam Tehrani",
       "school": "Winston Churchill",
       "group": "3A",
@@ -987,6 +931,75 @@
       },
       "gender": "M",
       "team": false
+    },
+    {
+      "name": "Marco Saba",
+      "school": null,
+      "group": "14",
+      "scores": {
+        "1": 4,
+        "2": 6,
+        "3": 4,
+        "4": 5,
+        "5": 5,
+        "6": 4,
+        "7": 4,
+        "8": 6,
+        "14": 2,
+        "15": 4,
+        "16": 5,
+        "17": 4,
+        "18": 5
+      },
+      "gender": "M",
+      "team": false
+    },
+    {
+      "name": "Michael Peterson",
+      "school": "Broadneck",
+      "group": "8A",
+      "scores": {
+        "1": 4,
+        "2": 6,
+        "3": 4,
+        "4": 5,
+        "8": 4,
+        "9": 6,
+        "10": 4,
+        "11": 3,
+        "12": 4,
+        "13": 6,
+        "14": 3,
+        "15": 5,
+        "16": 5,
+        "17": 3,
+        "18": 6
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Dustin Vallandingham",
+      "school": "Leonardtown",
+      "group": "2",
+      "scores": {
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 6,
+        "6": 4,
+        "7": 5,
+        "8": 3,
+        "9": 5,
+        "10": 4,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 4,
+        "15": 5
+      },
+      "gender": "M",
+      "team": true
     },
     {
       "name": "Karl Meredith",
@@ -1079,6 +1092,28 @@
       "team": true
     },
     {
+      "name": "John Dobson",
+      "school": "Towson",
+      "group": "5B",
+      "scores": {
+        "5": 6,
+        "6": 7,
+        "7": 4,
+        "8": 2,
+        "9": 5,
+        "10": 5,
+        "11": 4,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 4,
+        "16": 6,
+        "17": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
       "name": "Lewis Takacs",
       "school": null,
       "group": "2",
@@ -1102,45 +1137,23 @@
       "team": false
     },
     {
-      "name": "Ben Cunningham",
-      "school": "Crofton",
-      "group": "5B",
+      "name": "Charlie Scarzello",
+      "school": "Oakdale",
+      "group": "3B",
       "scores": {
-        "5": 5,
-        "6": 7,
-        "7": 5,
-        "8": 4,
-        "9": 6,
-        "10": 5,
-        "11": 3,
-        "12": 5,
-        "13": 6,
-        "14": 4,
-        "15": 3,
-        "16": 5,
-        "17": 5
-      },
-      "gender": "M",
-      "team": false
-    },
-    {
-      "name": "John Dobson",
-      "school": "Towson",
-      "group": "5B",
-      "scores": {
+        "3": 5,
+        "4": 3,
         "5": 6,
-        "6": 7,
-        "7": 4,
-        "8": 2,
+        "6": 6,
+        "7": 6,
+        "8": 4,
         "9": 5,
-        "10": 5,
-        "11": 4,
+        "10": 4,
+        "11": 5,
         "12": 5,
-        "13": 5,
-        "14": 5,
-        "15": 4,
-        "16": 6,
-        "17": 4
+        "13": 4,
+        "14": 4,
+        "15": 4
       },
       "gender": "M",
       "team": true
@@ -1166,6 +1179,28 @@
       },
       "gender": "M",
       "team": true
+    },
+    {
+      "name": "Ben Cunningham",
+      "school": "Crofton",
+      "group": "5B",
+      "scores": {
+        "5": 5,
+        "6": 7,
+        "7": 5,
+        "8": 4,
+        "9": 6,
+        "10": 5,
+        "11": 3,
+        "12": 5,
+        "13": 6,
+        "14": 4,
+        "15": 3,
+        "16": 5,
+        "17": 5
+      },
+      "gender": "M",
+      "team": false
     },
     {
       "name": "Ben Joo",
@@ -1229,28 +1264,6 @@
         "16": 6,
         "17": 5,
         "18": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Charlie Scarzello",
-      "school": "Oakdale",
-      "group": "3B",
-      "scores": {
-        "3": 5,
-        "4": 3,
-        "5": 6,
-        "6": 6,
-        "7": 6,
-        "8": 4,
-        "9": 5,
-        "10": 4,
-        "11": 5,
-        "12": 5,
-        "13": 4,
-        "14": 4,
-        "15": 4
       },
       "gender": "M",
       "team": true
@@ -1324,50 +1337,6 @@
       "team": true
     },
     {
-      "name": "Chris Jenkins",
-      "school": "Severna Park",
-      "group": "3B",
-      "scores": {
-        "3": 7,
-        "4": 5,
-        "5": 6,
-        "6": 5,
-        "7": 5,
-        "8": 2,
-        "9": 6,
-        "10": 5,
-        "11": 4,
-        "12": 4,
-        "13": 5,
-        "14": 4,
-        "15": 5
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
-      "name": "Nico Arellano",
-      "school": null,
-      "group": "14",
-      "scores": {
-        "1": 4,
-        "2": 5,
-        "3": 5,
-        "4": 5,
-        "5": 6,
-        "6": 4,
-        "7": 4,
-        "8": 4,
-        "14": 4,
-        "15": 5,
-        "16": 8,
-        "17": 5,
-        "18": 4
-      },
-      "gender": "M",
-      "team": false
-    },
-    {
       "name": "Anthony Stearle",
       "school": "Oakdale",
       "group": "7A",
@@ -1414,6 +1383,50 @@
       "team": true
     },
     {
+      "name": "Chris Jenkins",
+      "school": "Severna Park",
+      "group": "3B",
+      "scores": {
+        "3": 7,
+        "4": 5,
+        "5": 6,
+        "6": 5,
+        "7": 5,
+        "8": 2,
+        "9": 6,
+        "10": 5,
+        "11": 4,
+        "12": 4,
+        "13": 5,
+        "14": 4,
+        "15": 5
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Nico Arellano",
+      "school": null,
+      "group": "14",
+      "scores": {
+        "1": 4,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 6,
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "14": 4,
+        "15": 5,
+        "16": 8,
+        "17": 5,
+        "18": 4
+      },
+      "gender": "M",
+      "team": false
+    },
+    {
       "name": "Chris Vanas",
       "school": null,
       "group": "3A",
@@ -1436,28 +1449,6 @@
       "team": false
     },
     {
-      "name": "Tristan Stiffler",
-      "school": "North Hagerstown",
-      "group": "7B",
-      "scores": {
-        "1": 5,
-        "7": 6,
-        "8": 3,
-        "9": 8,
-        "10": 4,
-        "11": 5,
-        "12": 5,
-        "13": 4,
-        "14": 5,
-        "15": 5,
-        "16": 5,
-        "17": 5,
-        "18": 6
-      },
-      "gender": "M",
-      "team": true
-    },
-    {
       "name": "Heath Detterline",
       "school": "Oakdale",
       "group": "5B",
@@ -1475,6 +1466,28 @@
         "15": 5,
         "16": 5,
         "17": 4
+      },
+      "gender": "M",
+      "team": true
+    },
+    {
+      "name": "Tristan Stiffler",
+      "school": "North Hagerstown",
+      "group": "7B",
+      "scores": {
+        "1": 5,
+        "7": 6,
+        "8": 3,
+        "9": 8,
+        "10": 4,
+        "11": 5,
+        "12": 5,
+        "13": 4,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 6
       },
       "gender": "M",
       "team": true
@@ -1610,7 +1623,8 @@
         "14": 5,
         "15": 5,
         "16": 5,
-        "17": 7
+        "17": 7,
+        "18": 7
       },
       "gender": "M",
       "team": true
