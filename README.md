@@ -22,6 +22,7 @@ bundle exec rake test
 | `_events/<date>-<name>.md` | One file per tournament: title, date, course, par (`pars` per hole, or `par` for the course), Google Sheet ID, `live` flag. |
 | `_data/scores/<same name>.json` | Raw scores pulled from the sheet (written by `bin/refresh`): hole by hole, or one total per player. |
 | `lib/golf/sheet.rb` | Reads the sheet's .xlsx export into player records. |
+| `lib/golf/golf_genius.rb` | Reads a Golf Genius round (the State Championship) into the same player records. |
 | `lib/golf/standings.rb` | Scoring rules: to par over completed holes, ties, team best-four. |
 | `lib/golf/schedule.rb` | Which events are today / upcoming / past, and which are live. |
 | `lib/golf/schools.rb` | Canonical school names ("CSP", "SP", "Glen Birnie" → the real name). |
@@ -50,6 +51,14 @@ Event files can also be written or edited by hand:
 
 - `title`, `date` (and `end_date` for multi-day events), `course`.
 - `sheet_id`, or `results_url` for results hosted elsewhere.
+- `golf_genius: { league: ..., round: ... }` instead of `sheet_id` pulls a
+  Golf Genius round (ids from its results widget URL,
+  `/leagues/<league>/widgets/tournament_results?round=<round>`). Players and
+  hole-by-hole scores come from the Male and Female leaderboards, team rosters
+  from the Team leaderboard; team scores are worked out here, since Golf
+  Genius's are wrong. Golf Genius gives no school for individual qualifiers,
+  so `bin/refresh` uses the school each name has in our other events, if any;
+  set others with `corrections`, e.g. `Marco Saba: { school: Wootton }`.
 - `par` for the course, if it isn't in `_data/courses.yml` (front-nine pars
   by course name). Hole-by-hole events (like the County Championship) need
   `pars`, a list of every hole's par, for the scorecards.

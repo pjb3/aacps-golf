@@ -1,4 +1,5 @@
 require_relative "golf/corrections"
+require_relative "golf/golf_genius"
 require_relative "golf/schedule"
 require_relative "golf/schools"
 require_relative "golf/sheet"

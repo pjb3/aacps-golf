@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-# Download events' Google Sheets and write their raw scores to
+# Download events' Google Sheets (or Golf Genius rounds, for events with
+# `golf_genius` in their file) and write their raw scores to
 # _data/scores/<event file name>.json.
 #
 #   bin/refresh                         # live events (today's, see Golf::Schedule)
@@ -35,30 +36,45 @@ events = Dir[File.join(ROOT, "_events", "*.md")].to_h do |path|
 end
 
 scores_path = ->(name) { File.join(ROOT, "_data", "scores", "#{name}.json") }
+scored = ->(e) { e["sheet_id"] || e["golf_genius"] }
 names = ARGV
 if names.empty?
-  names = events.select { |_, e| e["sheet_id"] && Golf::Schedule.live?(e) }.keys
-  names |= events.select { |n, e| e["sheet_id"] && !e["cancelled"] && Golf::Schedule.section(e) != "upcoming" && !File.exist?(scores_path[n]) }.keys if missing
+  names = events.select { |_, e| scored[e] && Golf::Schedule.live?(e) }.keys
+  names |= events.select { |n, e| scored[e] && !e["cancelled"] && Golf::Schedule.section(e) != "upcoming" && !File.exist?(scores_path[n]) }.keys if missing
 end
 unknown = names - events.keys
 abort "Unknown event(s): #{unknown.join(", ")}. Choose from: #{events.keys.join(", ")}" if unknown.any?
 abort "--file needs exactly one event name" if file && names.size != 1
 puts "Nothing to refresh." if names.empty?
 
+# Golf Genius has no schools for individual qualifiers; use the school each
+# name last played for in our other events, if any.
+known_schools = lambda do |except|
+  Dir[scores_path["*"]].sort.reject { |f| f == scores_path[except] }.each_with_object({}) do |f, schools|
+    JSON.parse(File.read(f))["players"].each { |p| schools[p["name"]] = p["school"] unless p["school"].to_s.empty? }
+  end
+end
+
 changed = false
 failed = []
 names.each do |name|
-  xlsx = file || Tempfile.create(["scores", ".xlsx"]).tap do |tmp|
-    id = events[name]["sheet_id"] or abort "#{name}: no sheet_id"
-    URI.open("https://docs.google.com/spreadsheets/d/#{id}/export?format=xlsx", "rb") { |io| IO.copy_stream(io, tmp) }
-    tmp.close
-  end.path
-
+  event = events[name]
   # One unreadable sheet shouldn't stop the others from updating.
   players = begin
-    Golf::Sheet.extract(xlsx, team_event: events[name]["team_event"] == true)
+    if (gg = event["golf_genius"]) && !file
+      known = known_schools[name]
+      Golf::GolfGenius.extract(league: gg.fetch("league"), round: gg.fetch("round"))
+        .map { |p| p["school"] ? p : p.merge("school" => known[p["name"]]) }
+    else
+      xlsx = file || Tempfile.create(["scores", ".xlsx"]).tap do |tmp|
+        id = event["sheet_id"] or abort "#{name}: no sheet_id"
+        URI.open("https://docs.google.com/spreadsheets/d/#{id}/export?format=xlsx", "rb") { |io| IO.copy_stream(io, tmp) }
+        tmp.close
+      end.path
+      Golf::Sheet.extract(xlsx, team_event: event["team_event"] == true)
+    end
   rescue => e
-    warn "#{name}: couldn't read sheet: #{e.message}"
+    warn "#{name}: couldn't read scores: #{e.message}"
     failed << name
     next
   end
