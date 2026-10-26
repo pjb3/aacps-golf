@@ -15,17 +15,25 @@ module Golf
   # - Team score is the sum of the four best scores among roster players who
   #   have posted one. Partial totals are ranked during play; rosters with
   #   fewer than four tournament players are excluded from team standings.
+  # - With a cut (the State Championship semifinals, see the MPSSAA golf
+  #   bulletin), the top `share` of teams, and of boys and girls separately,
+  #   make it, rounded down but at least `teams_min` / `players_min`; ties at
+  #   the cutoff are in. During play this is the projected cut, on current
+  #   scores.
   class Standings
     TEAM_COUNTING = 4
     GENDERS = { "M" => "boys", "F" => "girls" }.freeze
+    CUT_GROUPS = %w[teams boys girls].freeze
 
     attr_reader :pars, :par
 
     # pars: per-hole pars, hole 1 first (needed for hole-by-hole scores).
     # par: course par, for totals-only events; defaults to the sum of pars.
-    def initialize(players, pars: nil, par: nil)
+    # cut: {"share" => 0.4, "teams_min" => 3, "players_min" => 5}, or nil.
+    def initialize(players, pars: nil, par: nil, cut: nil)
       @pars = pars
       @par = par || pars&.sum
+      @cut = cut
       @players = players.map { |p| score(p) }
       raise ArgumentError, "hole-by-hole scores need per-hole pars" if cards? && !pars
     end
@@ -44,14 +52,20 @@ module Golf
         "waiting" => waiting,
         "teams" => ranked_teams,
         "unstarted_teams" => teams.select { |t| t["scored"].zero? }.sort_by { |t| t["school"] },
-        "short_teams" => short_teams
+        "short_teams" => short_teams,
+        "cut" => cut_lines
       }
     end
 
+    # With a cut, each player's "in_cut", and "cut_after" (gender key) on the
+    # last player in for their gender, where the page draws the cut line.
     def individuals
-      ranked = stable_sort(started) { |p| [p["rank"], -p["thru"], p["name"]] }
-      with_positions(ranked) { |p| p["rank"] }.map do |pos, p|
-        p.merge("pos" => pos, "card" => cards? ? card(p) : nil)
+      @individuals ||= begin
+        ranked = stable_sort(started) { |p| [p["rank"], -p["thru"], p["name"]] }
+        rows = with_positions(ranked) { |p| p["rank"] }.map do |pos, p|
+          p.merge("pos" => pos, "card" => cards? ? card(p) : nil)
+        end
+        mark_cut(rows) { |p| p["gender_key"] }
       end
     end
 
@@ -60,9 +74,23 @@ module Golf
     end
 
     def ranked_teams
-      scored = teams.select { |t| t["scored"].positive? }
-      ranked = stable_sort(scored) { |t| [t["rank"], t["school"]] }
-      with_positions(ranked) { |t| t["rank"] }.map { |pos, t| t.merge("pos" => pos) }
+      @ranked_teams ||= begin
+        scored = teams.select { |t| t["scored"].positive? }
+        ranked = stable_sort(scored) { |t| [t["rank"], t["school"]] }
+        rows = with_positions(ranked) { |t| t["rank"] }.map { |pos, t| t.merge("pos" => pos) }
+        mark_cut(rows) { "teams" }
+      end
+    end
+
+    # {"teams" / "boys" / "girls" => {"rank" => cut score, "advance" => how
+    # many make it}}, for those with anyone ranked; nil without a cut.
+    def cut_lines
+      return unless @cut
+      ranked = { "teams" => ranked_teams }.merge(individuals.group_by { |p| p["gender_key"] }.slice("boys", "girls"))
+      ranked.filter_map do |group, rows|
+        line = cut_line(group, rows) or next
+        [group, line]
+      end.to_h
     end
 
     def short_teams
@@ -70,6 +98,34 @@ module Golf
     end
 
     private
+
+    # How many make the cut in a group, from the whole field (players yet to
+    # post a score count toward its size).
+    def cut_size(group)
+      field = group == "teams" ? teams.size : @players.count { |p| p["gender_key"] == group }
+      min = @cut.fetch(group == "teams" ? "teams_min" : "players_min")
+      [(field * @cut.fetch("share")).floor, min].max
+    end
+
+    def cut_line(group, rows)
+      return if rows.empty?
+      advance = cut_size(group)
+      { "rank" => rows[[advance, rows.size].min - 1]["rank"], "advance" => advance }
+    end
+
+    def mark_cut(rows, &group_of)
+      return rows unless @cut
+      # Players with no gender listed have no cut.
+      lines = rows.group_by(&group_of).slice(*CUT_GROUPS).to_h { |group, grows| [group, cut_line(group, grows)] }
+      in_cut = ->(r) { (line = lines[group_of.call(r)]) && r["rank"] <= line["rank"] }
+      last_in = rows.each_with_index.select { |r, _| in_cut.call(r) }
+                    .group_by { |r, _| group_of.call(r) }.transform_values { |rs| rs.last[1] }
+      rows.each_with_index.map do |r, i|
+        group = group_of.call(r)
+        next r unless lines.key?(group)
+        r.merge("in_cut" => in_cut.call(r), "cut_after" => last_in[group] == i ? group : nil)
+      end
+    end
 
     def cards?
       @cards ||= @players.any? { |p| p["scores"]&.any? }

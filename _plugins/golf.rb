@@ -20,7 +20,7 @@ module Golf
         scores = site.data.dig("scores", doc.basename_without_ext) or next
         data["updated"] = scores["updated"]
         players = Corrections.apply(scores["players"], data["corrections"])
-        data["board"] = Standings.new(players, pars: data["pars"], par: data["par"]).to_h
+        data["board"] = Standings.new(players, pars: data["pars"], par: data["par"], cut: data["cut"]).to_h
       end
     end
   end

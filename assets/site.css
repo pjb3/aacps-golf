@@ -110,3 +110,6 @@ sup.fn{font-size:.6em;margin-left:1px;vertical-align:super;line-height:0}
 .events .tag{font:700 12px/1 "Source Sans 3",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--rule);border-radius:3px;padding:3px 5px;text-decoration:none;display:inline-block}
 .board>.controls:only-child{border-bottom:0}
 section[hidden]{display:none}
+tr.cutline td{padding:6px 16px;border-top:2px dashed var(--red);border-bottom:0;color:var(--red);font:600 14px "Barlow Condensed",sans-serif;letter-spacing:.02em;text-transform:uppercase}
+#team tr[data-out] td,#ind[data-g="boys"] tr[data-out] td,#ind[data-g="girls"] tr[data-out] td{opacity:.6}
+#team tr[data-out]+tr.roster td{opacity:.6}

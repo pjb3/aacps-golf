@@ -194,4 +194,41 @@ class GolfTest < Minitest::Test
     s = Golf::Standings.new(players)
     assert_equal [["1", "B", nil], ["2", "A", nil]], s.individuals.map { |p| p.values_at("pos", "name", "to_par") }
   end
+
+  CUT = { "share" => 0.4, "teams_min" => 3, "players_min" => 2 }.freeze
+
+  # Ten boys: 40% is 4, and the two tied for 4th both make it.
+  def test_cut_takes_top_share_and_ties
+    boys = [70, 71, 72, 73, 73, 74, 75, 76, 77, nil].each_with_index.map { |t, i| { "name" => "B#{i}", "school" => "S", "gender" => "M", "total" => t } }
+    board = Golf::Standings.new(boys, par: 72, cut: CUT).to_h
+    assert_equal({ "rank" => 1, "advance" => 4 }, board["cut"]["boys"])
+    assert_equal %w[B0 B1 B2 B3 B4], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }
+    assert_equal ["B4"], board["individuals"].select { |p| p["cut_after"] }.map { |p| p["name"] }
+  end
+
+  # Separate cuts for boys and girls, each with its own minimum.
+  def test_cut_is_per_gender_with_minimum
+    players = [["G1", "F", 80], ["B1", "M", 70], ["G2", "F", 81], ["G3", "F", 90], ["B2", "M", 75]]
+              .map { |n, g, t| { "name" => n, "school" => "S", "gender" => g, "total" => t } }
+    board = Golf::Standings.new(players, par: 72, cut: CUT).to_h
+    assert_equal [9, 2], board["cut"]["girls"].values_at("rank", "advance")
+    assert_equal [3, 2], board["cut"]["boys"].values_at("rank", "advance")
+    assert_equal %w[B1 B2 G1 G2], board["individuals"].select { |p| p["in_cut"] }.map { |p| p["name"] }.sort
+    assert_equal %w[B2 G2], board["individuals"].select { |p| p["cut_after"] }.map { |p| p["name"] }.sort
+  end
+
+  # 40% of 4 teams rounds down to 1, but at least 3 advance.
+  def test_team_cut_minimum
+    players = %w[A B C D].each_with_index.flat_map do |school, i|
+      4.times.map { |j| { "name" => "#{school}#{j}", "school" => school, "team" => true, "total" => 72 + i } }
+    end
+    teams = Golf::Standings.new(players, par: 72, cut: CUT).to_h["teams"]
+    assert_equal [true, true, true, false], teams.map { |t| t["in_cut"] }
+    assert_equal "C", teams.find { |t| t["cut_after"] }["school"]
+  end
+
+  def test_no_cut_by_default
+    assert_nil county.to_h["cut"]
+    refute county.individuals.first.key?("in_cut")
+  end
 end
