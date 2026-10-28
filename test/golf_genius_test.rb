@@ -76,3 +76,12 @@ class GolfGeniusTest < Minitest::Test
     assert_equal ["Severna Park", 2, 22], team.values_at("school", "to_par", "strokes")
   end
 end
+
+class GolfGeniusRoundsTest < Minitest::Test
+  def test_new_results_html_and_chronological_detail_rows
+    html = "<!DOCTYPE html><table><tr class='aggregate-row' data-aggregate-id='7' data-aggregate-name='Player'><td class='score'>+2</td></tr></table>"
+    assert_equal "Player", Golf::GolfGenius.read_results(html).first["name"]
+    detail = '<table><tr class="net-line"><td class="hole1 score"><span class="score_box">5</span></td></tr><tr class="net-line"><td class="hole1 score"><span class="score_box">4</span></td></tr></table>'
+    assert_equal [{ "1" => 4 }, { "1" => 5 }], Golf::GolfGenius.read_rounds(detail)
+  end
+end

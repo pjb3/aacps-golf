@@ -59,6 +59,21 @@ Event files can also be written or edited by hand:
   Genius's are wrong. Golf Genius gives no school for individual qualifiers,
   so `bin/refresh` uses the school each name has in our other events, if any;
   set others with `corrections`, e.g. `Marco Saba: { school: Wootton }`.
+- For a two-round championship, add `final_round` and `classification` (e.g.
+  `"3a/4a"`) under `golf_genius`. The importer keeps chronological `rounds`
+  scorecards and uses the finals tee sheet to identify qualifiers. Individual
+  totals combine rounds; team totals choose the counting four separately each
+  round. Eliminated teams keep only their first-round result.
+- A completed first-round cut uses `cut: { share: 0.4, teams_min: 3,
+  players_min: 5, final: true, boys: 12, girls: 18, teams: 37 }`; thresholds
+  are scores to par and stay fixed during finals. For 2026 3A/4A, the observed
+  qualifiers match this inferred formula: advance the top 40% of teams first
+  (six of 17, with ties), then take 40% of the remaining players separately
+  by gender, rounded down, with ties. Removing advancing team members leaves
+  54 boys (21st score: 83) and 34 girls (13th score: 89). This matches all 112
+  players' inclusion/exclusion in the [finals pairings](https://www.golfgenius.com/pages/13173425444726285106).
+  This is an inference from the published results, not confirmation from the
+  tournament committee. The old projection counted the entire individual field.
 - `par` for the course, if it isn't in `_data/courses.yml` (front-nine pars
   by course name). Hole-by-hole events (like the County Championship) need
   `pars`, a list of every hole's par, for the scorecards.
@@ -117,3 +132,15 @@ GitHub Actions trigger. Its Cron Trigger and `GITHUB_TOKEN` secret are currently
 removed. To reactivate it, restore the `*/10 * * * *` Cron Trigger and configure
 a fine-grained GitHub token with Actions read and write access for
 `pjb3/aacps-golf` as the `GITHUB_TOKEN` secret.
+
+### October 28 championship refresh
+
+GitHub Actions checks scores every ten minutes (at :03, :13, :23, :33, :43,
+:53) from 9:03 a.m. through 3:53 p.m. Eastern on October 28, 2026, plus a
+final build at 4 p.m. Scheduling is best effort and may be delayed by GitHub.
+`bin/finish-championship` sets `live: false` once every qualified player has
+18 final-round scores or at 4 p.m., whichever comes first. `live_until` also
+prevents fetching after the deadline. The temporary schedules are gated to
+October 28, 2026 and skip builds after completion; the nightly schedule is
+unchanged. This runs on GitHub and does not depend on a local computer or a
+ChatGPT session. The two October 28 cron entries can be removed afterward.

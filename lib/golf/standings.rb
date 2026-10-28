@@ -45,6 +45,8 @@ module Golf
 
     def to_h
       {
+        "round_count" => @players.map { |p| p.fetch("round_scores", [p]).size }.max || 1,
+        "cut_final" => @cut && @cut["final"],
         "par" => par,
         "to_par" => !par.nil?,
         "cards" => cards?,
@@ -67,13 +69,13 @@ module Golf
     # last player in for their gender, where the page draws the cut line.
     def individuals
       @individuals ||= begin
-        ranked = stable_sort(started) { |p| [p["rank"], -p["thru"], p["name"]] }
-        rows = with_positions(ranked) { |p| p["rank"] }.map do |pos, p|
+        ranked = stable_sort(started) { |p| [p["qualified"] == false ? 1 : 0, p["rank"], -p["thru"], p["name"]] }
+        rows = with_positions(ranked) { |p| [p["qualified"] == false, p["rank"]] }.map do |pos, p|
           p.merge("pos" => pos, "card" => cards? ? card(p) : nil, "projected" => projected(p))
         end
         # "gender_pos": place among the player's own gender, for the Boys and
         # Girls filters.
-        gender_pos = rows.group_by { |p| p["gender_key"] }.flat_map { |_, ps| with_positions(ps) { |p| p["rank"] }.map { |pos, p| [p["name"], pos] } }.to_h
+        gender_pos = rows.group_by { |p| p["gender_key"] }.flat_map { |_, ps| with_positions(ps) { |p| [p["qualified"] == false, p["rank"]] }.map { |pos, p| [p["name"], pos] } }.to_h
         mark_cut(rows.map { |p| p.merge("gender_pos" => gender_pos[p["name"]]) }) { |p| p["gender_key"] }
       end
     end
@@ -85,8 +87,8 @@ module Golf
     def ranked_teams
       @ranked_teams ||= begin
         scored = teams.select { |t| t["scored"].positive? }
-        ranked = stable_sort(scored) { |t| [t["rank"], t["school"]] }
-        rows = with_positions(ranked) { |t| t["rank"] }.map { |pos, t| t.merge("pos" => pos) }
+        ranked = stable_sort(scored) { |t| [t["qualified"] == false ? 1 : 0, t["rank"], t["school"]] }
+        rows = with_positions(ranked) { |t| [t["qualified"] == false, t["rank"]] }.map { |pos, t| t.merge("pos" => pos) }
         mark_cut(rows) { "teams" }
       end
     end
@@ -119,6 +121,10 @@ module Golf
 
     def cut_line(group, rows)
       return if rows.empty?
+      if @cut["final"]
+        value = @cut.fetch(group)
+        return { "rank" => value, "projected" => value, "advance" => rows.count { |r| r["qualified"] != false } }
+      end
       advance = cut_size(group)
       at = [advance, rows.size].min - 1
       { "rank" => rows.map { |r| r["rank"] }.sort[at], "projected" => rows.map { |r| r["projected"] }.sort[at], "advance" => advance }
@@ -148,7 +154,7 @@ module Golf
       return rows unless @cut
       # Players with no gender listed have no cut.
       lines = rows.group_by(&group_of).slice(*CUT_GROUPS).to_h { |group, grows| [group, cut_line(group, grows)] }
-      in_cut = ->(r) { (line = lines[group_of.call(r)]) && r["rank"] <= line["rank"] }
+      in_cut = ->(r) { (line = lines[group_of.call(r)]) && (@cut["final"] ? r["qualified"] != false : r["rank"] <= line["rank"]) }
       last_in = rows.each_with_index.select { |r, _| in_cut.call(r) }
                     .group_by { |r, _| group_of.call(r) }.transform_values { |rs| rs.last[1] }
       rows.each_with_index.map do |r, i|
@@ -159,10 +165,20 @@ module Golf
     end
 
     def cards?
-      @cards ||= @players.any? { |p| p["scores"]&.any? }
+      @cards ||= @players.any? { |p| p["scores"]&.any? || p["round_scores"]&.any? { |r| r["scores"].any? } }
     end
 
     def score(player)
+      if player["rounds"]
+        rounds = player["rounds"].map { |scores| score(player.reject { |k, _| k == "rounds" }.merge("scores" => scores)) }
+        current = rounds.last
+        return current.merge("round_scores" => rounds,
+          "strokes" => rounds.sum { |r| r["strokes"] },
+          "to_par" => rounds.sum { |r| r["to_par"] || 0 },
+          "rank" => rounds.sum { |r| r["rank"] },
+          "started" => rounds.any? { |r| r["started"] },
+          "finished" => player["qualified"] == false || rounds.all? { |r| r["finished"] })
+      end
       scores = player.fetch("scores", {}).to_h { |h, s| [h.to_i, s] }
       total = player["total"]
       started = !total.nil? || !scores.empty?
@@ -189,6 +205,7 @@ module Golf
     def started = @players.select { |p| started?(p) }
 
     def teams
+      return championship_teams if @players.any? { |p| p["round_scores"] }
       @teams ||= @players.select { |p| p["team"] }.group_by { |p| p["school"] }.filter_map do |school, roster|
         next if roster.size < TEAM_COUNTING
         scored = stable_sort(roster.select { |p| started?(p) }) { |p| [p["rank"], -p["thru"]] }
@@ -207,7 +224,33 @@ module Golf
       end
     end
 
+    # Counting four are selected separately each round, as required for a 36-hole team event.
+    def championship_teams
+      @championship_teams ||= begin
+        count = @players.map { |p| p["round_scores"].size }.max
+        boards = count.times.map do |i|
+          Standings.new(@players.map { |p| p["round_scores"][i] }, pars: pars).to_h
+        end
+        first = boards.first["teams"]
+        first.map do |team|
+          qualified = team["rank"] <= @cut.fetch("teams")
+          rounds = boards.each_with_index.map do |b, i|
+            t = (b["teams"] + b["unstarted_teams"]).find { |r| r["school"] == team["school"] }
+            qualified || i.zero? ? t : t.merge("scored" => 0, "strokes" => 0, "to_par" => 0, "rank" => 0, "projected" => 0)
+          end
+          team.merge("round_teams" => rounds, "qualified" => qualified,
+            "strokes" => rounds.sum { |t| t["strokes"] },
+            "to_par" => rounds.sum { |t| t["to_par"] },
+            "rank" => rounds.sum { |t| t["rank"] },
+            "projected" => rounds.sum { |t| t["projected"] })
+        end.sort_by { |t| [t["qualified"] ? 0 : 1, t["rank"], t["school"]] }
+      end
+    end
+
     def card(p)
+      if p["round_scores"]
+        return p["round_scores"].each_with_index.flat_map { |r, i| card(r).map { |nine| nine.merge("round_label" => "Round #{i + 1}") } }
+      end
       nines = pars.each_slice(9).with_index.map { |nine, i| (i * 9 + 1)..(i * 9 + nine.size) }
       labels = nines.size == 1 ? ["Total"] : %w[Out In]
       nines.zip(labels).map do |range, label|

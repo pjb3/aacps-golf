@@ -63,7 +63,11 @@ names.each do |name|
   players = begin
     if (gg = event["golf_genius"]) && !file
       known = known_schools[name]
-      Golf::GolfGenius.extract(league: gg.fetch("league"), round: gg.fetch("round"))
+      (if gg["final_round"]
+        Golf::GolfGenius.championship(league: gg.fetch("league"), round: gg.fetch("round"), final_round: gg.fetch("final_round"), classification: gg.fetch("classification"))
+      else
+        Golf::GolfGenius.extract(league: gg.fetch("league"), round: gg.fetch("round"))
+      end)
         .map { |p| p["school"] ? p : p.merge("school" => known[p["name"]]) }
     else
       xlsx = file || Tempfile.create(["scores", ".xlsx"]).tap do |tmp|

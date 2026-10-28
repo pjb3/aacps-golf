@@ -7,6 +7,11 @@ on:
   # pull results still missing, and rebuild for the new day's homepage.
   schedule:
     - cron: "5 5 * * *"
+    # Temporary finals refresh: Oct 28, 2026, 9:03 a.m.–3:53 p.m. EDT.
+    # The gate below checks the year and stops work once live is false.
+    - cron: "3,13,23,33,43,53 13-19 28 10 *"
+    # Final build at 4 p.m. EDT, even if cards remain incomplete.
+    - cron: "0 20 28 10 *"
   workflow_dispatch:
 
 permissions:
@@ -19,10 +24,32 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  NIGHTLY: ${{ github.event_name == 'schedule' }}
+  NIGHTLY: ${{ github.event_name == 'schedule' && github.event.schedule == '5 5 * * *' }}
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.gate.outputs.run }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check temporary championship refresh window
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ "$EVENT_NAME" != "schedule" ] || [ "$SCHEDULE" = "5 5 * * *" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          elif [ "$(date -u +%F)" = "2026-10-28" ] && ! grep -q '^live: false$' _events/2026-10-26-state-championships.md; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     outputs:
       deploy: ${{ steps.decide.outputs.deploy }}
@@ -39,6 +66,9 @@ jobs:
 
       - name: Refresh scores
         run: bundle exec bin/refresh ${{ env.NIGHTLY == 'true' && '--missing' || '' }}
+
+      - name: End championship refresh when complete or at 4 p.m. ET
+        run: bundle exec ruby bin/finish-championship
 
       - name: Commit changes
         id: commit

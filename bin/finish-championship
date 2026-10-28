@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require "json"
+require "date"
+require "yaml"
+require_relative "../lib/golf/championship_refresh"
+
+root = File.expand_path("..", __dir__)
+event_path = File.join(root, "_events/2026-10-26-state-championships.md")
+scores_path = File.join(root, "_data/scores/2026-10-26-state-championships.json")
+event = YAML.safe_load_file(event_path, permitted_classes: [Date])
+exit if event["live"] == false || !File.exist?(scores_path)
+players = JSON.parse(File.read(scores_path)).fetch("players")
+if Golf::ChampionshipRefresh.finished?(players, holes: event.fetch("pars").size)
+  source = File.read(event_path)
+  File.write(event_path, source.sub(/^end_date:.*$/) { |line| "#{line}\nlive: false" })
+  puts "Championship live refresh ended: all final cards complete or 4 p.m. ET deadline reached."
+end

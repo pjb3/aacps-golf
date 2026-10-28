@@ -29,7 +29,7 @@ module Golf
     # league, round: ids from the results widget URL
     # (/leagues/<league>/widgets/tournament_results?round=<round>).
     # fetch: path => response body; replaced in tests.
-    def extract(league:, round:, fetch: method(:get))
+    def extract(league:, round:, classification: nil, fetch: method(:get))
       widget = Nokogiri::HTML(fetch.call("/leagues/#{league}/widgets/tournament_results?shared=false&round=#{round}"))
       tournaments = widget.css("a.expand-tournament").map { |a| [a.text.strip, a["href"]] }
       raise "Golf Genius round #{round}: no tournaments listed" if tournaments.empty?
@@ -38,14 +38,17 @@ module Golf
       rosters = {}
       players = []
       tournaments.each do |label, href|
+        next if classification && !label.downcase.start_with?(classification.downcase)
         rows = read_results(fetch.call(href))
         if label.match?(/\bteams?\b/i)
           parallel(rows) { |row| read_roster(fetch.call(details_path(row["id"]))) }
             .zip(rows).each { |names, row| names.each { |n| rosters[n] = Schools.canonical(row["name"]) } }
         elsif (gender = GENDERS[label[/\b(?:fe)?male\b/i].to_s.downcase])
-          cards = parallel(rows) { |row| read_card(fetch.call(details_path(row["id"]))) }
-          rows.zip(cards).each do |row, scores|
+          cards = parallel(rows) { |row| read_rounds(fetch.call(details_path(row["id"]))) }
+          rows.zip(cards).each do |row, rounds|
+            scores = rounds.first || {}
             player = { "name" => row["name"], "school" => nil, "group" => groups[row["name"]], "scores" => scores, "gender" => gender }
+            player["rounds"] = rounds if rounds.size > 1
             player["status"] = row["status"] if row["status"] && scores.empty?
             players << player
           end
@@ -56,6 +59,21 @@ module Golf
       players.map do |p|
         school = rosters[p["name"]]
         p.merge("school" => school, "team" => !school.nil?)
+      end
+    end
+
+    def championship(league:, round:, final_round:, classification:, fetch: method(:get))
+      first = extract(league: league, round: round, fetch: fetch)
+      finals = extract(league: league, round: final_round, classification: classification, fetch: fetch).to_h { |p| [p["name"], p] }
+      groups = read_tee_sheet(fetch.call("/leagues/#{league}/widgets/next_round?shared=false&round=#{final_round}"))
+      raise "Finals tee sheet is empty" if groups.empty?
+      first.map do |p|
+        final = finals.fetch(p["name"]) { raise "Finals missing #{p['name']}" }
+        rounds = final.fetch("rounds", [final["scores"]])
+        raise "Round one changed for #{p['name']}" unless rounds.first == p["scores"]
+        p.merge("rounds" => [rounds.first, rounds[1] || {}],
+                "qualified" => !!(groups.key?(p["name"]) || (rounds[1] && !rounds[1].empty?)),
+                "group" => groups[p["name"]])
       end
     end
 
@@ -80,11 +98,17 @@ module Golf
 
     # A player's detail page: {"hole" => strokes} for holes played.
     def read_card(body)
-      line = js_html(body).at_css("tr.net-line") or return {}
-      line.css("td.score").each_with_object({}) do |td, scores|
-        hole = td["class"][/\bhole(\d+)\b/, 1]
-        strokes = td.at_css(".score_box")&.text.to_s.strip
-        scores[hole] = strokes.to_i if hole && strokes.match?(/\A\d+\z/) && strokes.to_i.positive?
+      read_rounds(body).first || {}
+    end
+
+    # Detail rows arrive newest first; retain chronological round order.
+    def read_rounds(body)
+      js_html(body).css("tr.net-line").to_a.reverse.map do |line|
+        line.css("td.score").each_with_object({}) do |td, scores|
+          hole = td["class"][/\bhole(\d+)\b/, 1]
+          strokes = td.at_css(".score_box")&.text.to_s.strip
+          scores[hole] = strokes.to_i if hole && strokes.match?(/\A\d+\z/) && strokes.to_i.positive?
+        end
       end
     end
 
@@ -104,6 +128,7 @@ module Golf
     # The HTML in the second argument of a toggleEvent("<id>", "<html>", ...)
     # style call.
     def js_html(body)
+      return Nokogiri::HTML(body) if body.lstrip.start_with?("<!DOCTYPE", "<html", "<table")
       literal = body[/\(\s*"\d+",\s*"((?:[^"\\]|\\.)*)"/m, 1] or raise "Golf Genius: unexpected response #{body[0, 80].inspect}"
       Nokogiri::HTML.fragment(literal.gsub(/\\(u\h{4}|.)/m) do
         esc = Regexp.last_match(1)
