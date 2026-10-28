@@ -49,7 +49,7 @@ module Golf
             scores = rounds.first || {}
             player = { "name" => row["name"], "school" => nil, "group" => groups[row["name"]], "scores" => scores, "gender" => gender }
             player["rounds"] = rounds if rounds.size > 1
-            player["status"] = row["status"] if row["status"] && scores.empty?
+            player["status"] = row["status"] if row["status"]
             players << player
           end
         end
@@ -62,18 +62,30 @@ module Golf
       end
     end
 
-    def championship(league:, round:, final_round:, classification:, fetch: method(:get))
+    def championship(league:, round:, final_round:, classification:, previous_players: [], fetch: method(:get))
       first = extract(league: league, round: round, fetch: fetch)
       finals = extract(league: league, round: final_round, classification: classification, fetch: fetch).to_h { |p| [p["name"], p] }
       groups = read_tee_sheet(fetch.call("/leagues/#{league}/widgets/next_round?shared=false&round=#{final_round}"))
       raise "Finals tee sheet is empty" if groups.empty?
+      # Results portals may remove eliminated players once finals are official.
+      # Keep their earlier cards in our championship history.
+      previous = previous_players.to_h { |p| [p["name"], p] }
+      names = first.map { |p| p["name"] }
+      first += previous_players.reject { |p| names.include?(p["name"]) }
       first.map do |p|
-        final = finals.fetch(p["name"]) { raise "Finals missing #{p['name']}" }
+        if (prior = previous[p["name"]])
+          p = p.merge("team" => prior["team"], "school" => prior["school"] || p["school"])
+        end
+        final = finals[p["name"]]
+        unless final
+          raise "Finals missing qualifier #{p['name']}" unless p["qualified"] == false
+          next p.merge("rounds" => [p["scores"], {}], "qualified" => false)
+        end
         rounds = final.fetch("rounds", [final["scores"]])
         raise "Round one changed for #{p['name']}" unless rounds.first == p["scores"]
         p.merge("rounds" => [rounds.first, rounds[1] || {}],
                 "qualified" => !!(groups.key?(p["name"]) || (rounds[1] && !rounds[1].empty?)),
-                "group" => groups[p["name"]])
+                "group" => groups[p["name"]]).tap { |record| record["status"] = final["status"] if final["status"] }
       end
     end
 
@@ -90,9 +102,9 @@ module Golf
     # A leaderboard: [{"id" => aggregate id, "name", "status" => "WD" etc.}].
     def read_results(body)
       js_html(body).css("tr.aggregate-row").map do |row|
-        score = row.at_css("td.score")&.text.to_s.strip
+        status = row.css("td.score, td.pos, td.past_round_total").map { |td| td.text.strip }.find { |text| %w[WD DQ DNS RET].include?(text) }
         { "id" => row["data-aggregate-id"], "name" => clean(row["data-aggregate-name"]),
-          "status" => score[/\A[A-Z]{2,}\z/] }
+          "status" => status }
       end
     end
 

@@ -69,13 +69,13 @@ module Golf
     # last player in for their gender, where the page draws the cut line.
     def individuals
       @individuals ||= begin
-        ranked = stable_sort(started) { |p| [p["qualified"] == false ? 1 : 0, p["rank"], -p["thru"], p["name"]] }
-        rows = with_positions(ranked) { |p| [p["qualified"] == false, p["rank"]] }.map do |pos, p|
+        ranked = stable_sort(started) { |p| [p["qualified"] == false ? 2 : (p["status"] ? 1 : 0), p["rank"], -p["thru"], p["name"]] }
+        rows = with_positions(ranked) { |p| [p["status"], p["qualified"] == false, p["rank"]] }.map do |pos, p|
           p.merge("pos" => pos, "card" => cards? ? card(p) : nil, "projected" => projected(p))
         end
         # "gender_pos": place among the player's own gender, for the Boys and
         # Girls filters.
-        gender_pos = rows.group_by { |p| p["gender_key"] }.flat_map { |_, ps| with_positions(ps) { |p| [p["qualified"] == false, p["rank"]] }.map { |pos, p| [p["name"], pos] } }.to_h
+        gender_pos = rows.group_by { |p| p["gender_key"] }.flat_map { |_, ps| with_positions(ps) { |p| [p["status"], p["qualified"] == false, p["rank"]] }.map { |pos, p| [p["name"], pos] } }.to_h
         mark_cut(rows.map { |p| p.merge("gender_pos" => gender_pos[p["name"]]) }) { |p| p["gender_key"] }
       end
     end
@@ -177,7 +177,7 @@ module Golf
           "to_par" => rounds.sum { |r| r["to_par"] || 0 },
           "rank" => rounds.sum { |r| r["rank"] },
           "started" => rounds.any? { |r| r["started"] },
-          "finished" => player["qualified"] == false || rounds.all? { |r| r["finished"] })
+          "finished" => !player["status"].nil? || player["qualified"] == false || rounds.all? { |r| r["finished"] })
       end
       scores = player.fetch("scores", {}).to_h { |h, s| [h.to_i, s] }
       total = player["total"]

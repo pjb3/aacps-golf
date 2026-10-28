@@ -7,10 +7,6 @@ on:
   # pull results still missing, and rebuild for the new day's homepage.
   schedule:
     - cron: "5 5 * * *"
-    # Temporary finals refresh: hourly, 9 a.m.–4 p.m. EDT on Oct 28, 2026.
-    # The last run finalizes live status at the 4 p.m. cutoff.
-    # The gate below checks the year and stops work once live is false.
-    - cron: "0 13-20 28 10 *"
   workflow_dispatch:
 
 permissions:

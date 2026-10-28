@@ -64,7 +64,7 @@ names.each do |name|
     if (gg = event["golf_genius"]) && !file
       known = known_schools[name]
       (if gg["final_round"]
-        Golf::GolfGenius.championship(league: gg.fetch("league"), round: gg.fetch("round"), final_round: gg.fetch("final_round"), classification: gg.fetch("classification"))
+        Golf::GolfGenius.championship(league: gg.fetch("league"), round: gg.fetch("round"), final_round: gg.fetch("final_round"), classification: gg.fetch("classification"), previous_players: File.exist?(scores_path[name]) ? JSON.parse(File.read(scores_path[name])).fetch("players") : [])
       else
         Golf::GolfGenius.extract(league: gg.fetch("league"), round: gg.fetch("round"))
       end)

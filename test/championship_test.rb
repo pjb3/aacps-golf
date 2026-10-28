@@ -80,3 +80,15 @@ class ChampionshipRefreshTest < Minitest::Test
     assert Golf::ChampionshipRefresh.finished?(players, now: Time.iso8601("2026-10-28T20:00:00Z"))
   end
 end
+
+class ChampionshipWithdrawalTest < Minitest::Test
+  def test_withdrawals_are_terminal_and_rank_after_finishers
+    complete = (1..18).to_h { |h| [h.to_s, 5] }
+    ps = [{ "name" => "Finisher", "qualified" => true, "gender" => "F", "rounds" => [complete, complete] },
+          { "name" => "Withdrawn", "qualified" => true, "gender" => "F", "status" => "WD", "rounds" => [complete, {}] }]
+    assert Golf::ChampionshipRefresh.finished?(ps, now: Time.iso8601("2026-10-28T15:00:00-04:00"))
+    board = Golf::Standings.new(ps, pars: Array.new(18, 4)).to_h
+    assert_equal %w[Finisher Withdrawn], board["individuals"].map { |p| p["name"] }
+    assert board["individuals"].last["finished"]
+  end
+end

@@ -85,3 +85,22 @@ class GolfGeniusRoundsTest < Minitest::Test
     assert_equal [{ "1" => 4 }, { "1" => 5 }], Golf::GolfGenius.read_rounds(detail)
   end
 end
+
+class GolfGeniusWithdrawalTest < Minitest::Test
+  def test_final_withdrawal_is_read_from_position_or_round_total
+    html = "<table><tr class='aggregate-row' data-aggregate-id='9' data-aggregate-name='Player'><td class='pos'>WD</td><td class='score'>-</td><td class='past_round_total'>88</td><td class='past_round_total'>WD</td></tr></table>"
+    assert_equal "WD", Golf::GolfGenius.read_results(html).first["status"]
+  end
+end
+
+class GolfGeniusTest
+  def test_championship_preserves_eliminated_players_removed_from_the_portal
+    eliminated = { "name" => "Earlier cut player", "gender" => "M", "scores" => { "1" => 6 }, "qualified" => false }
+    result = Golf::GolfGenius.championship(league: 9, round: 5, final_round: 5, classification: "3a/4a",
+      previous_players: [eliminated], fetch: ->(path) { responses.fetch(path) })
+    kept = result.find { |p| p["name"] == eliminated["name"] }
+    assert_equal false, kept["qualified"]
+    assert_equal [{ "1" => 6 }, {}], kept["rounds"]
+    assert_equal 5, result.size
+  end
+end

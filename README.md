@@ -135,14 +135,8 @@ a fine-grained GitHub token with Actions read and write access for
 
 ### October 28 championship refresh
 
-GitHub Actions checks scores at the top of each hour from 9 a.m. through
-4 p.m. Eastern on October 28, 2026; the 4 p.m. run finalizes live status.
-Scheduling is best effort and may be delayed or dropped by GitHub, especially
-at the top of the hour. The earlier ten-minute schedule produced no observed
-runs and was replaced with this hourly schedule.
-`bin/finish-championship` sets `live: false` once every qualified player has
-18 final-round scores or at 4 p.m., whichever comes first. `live_until` also
-prevents fetching after the deadline. The temporary schedules are gated to
-October 28, 2026 and skip builds after completion; the nightly schedule is
-unchanged. This runs on GitHub and does not depend on a local computer or a
-ChatGPT session. The October 28 cron entry can be removed afterward.
+The championship is final: 57 qualifiers completed round two and Golf Genius
+listed Malinda Zhu and Ivy Wang as withdrawn (WD). Withdrawals are terminal
+statuses and do not prevent the event from being finalized. The event has
+`live: false`; temporary daytime GitHub cron entries and the chat fallback
+were stopped. The normal nightly schedule remains in place.

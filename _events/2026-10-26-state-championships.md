@@ -2,6 +2,7 @@
 title: State Championship (3A/4A)
 date: 2026-10-26
 end_date: 2026-10-28
+live: false
 live_until: "2026-10-28T16:00:00-04:00"
 course: University of Maryland
 pars: [4, 4, 4, 3, 4, 4, 4, 3, 5, 4, 3, 4, 5, 3, 4, 5, 4, 4]

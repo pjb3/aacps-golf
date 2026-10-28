@@ -12,7 +12,7 @@ module Golf
       qualifiers = players.select { |p| p["qualified"] == true }
       qualifiers.any? && qualifiers.all? do |p|
         final = p.fetch("rounds", [])[1]
-        final && (1..holes).all? { |hole| final[hole.to_s].is_a?(Numeric) && final[hole.to_s].positive? }
+        %w[WD DQ DNS RET].include?(p["status"]) || final && (1..holes).all? { |hole| final[hole.to_s].is_a?(Numeric) && final[hole.to_s].positive? }
       end
     end
   end
