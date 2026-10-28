@@ -7,11 +7,10 @@ on:
   # pull results still missing, and rebuild for the new day's homepage.
   schedule:
     - cron: "5 5 * * *"
-    # Temporary finals refresh: Oct 28, 2026, 9:03 a.m.–3:53 p.m. EDT.
+    # Temporary finals refresh: hourly, 9 a.m.–4 p.m. EDT on Oct 28, 2026.
+    # The last run finalizes live status at the 4 p.m. cutoff.
     # The gate below checks the year and stops work once live is false.
-    - cron: "3,13,23,33,43,53 13-19 28 10 *"
-    # Final build at 4 p.m. EDT, even if cards remain incomplete.
-    - cron: "0 20 28 10 *"
+    - cron: "0 13-20 28 10 *"
   workflow_dispatch:
 
 permissions:

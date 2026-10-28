@@ -135,12 +135,14 @@ a fine-grained GitHub token with Actions read and write access for
 
 ### October 28 championship refresh
 
-GitHub Actions checks scores every ten minutes (at :03, :13, :23, :33, :43,
-:53) from 9:03 a.m. through 3:53 p.m. Eastern on October 28, 2026, plus a
-final build at 4 p.m. Scheduling is best effort and may be delayed by GitHub.
+GitHub Actions checks scores at the top of each hour from 9 a.m. through
+4 p.m. Eastern on October 28, 2026; the 4 p.m. run finalizes live status.
+Scheduling is best effort and may be delayed or dropped by GitHub, especially
+at the top of the hour. The earlier ten-minute schedule produced no observed
+runs and was replaced with this hourly schedule.
 `bin/finish-championship` sets `live: false` once every qualified player has
 18 final-round scores or at 4 p.m., whichever comes first. `live_until` also
 prevents fetching after the deadline. The temporary schedules are gated to
 October 28, 2026 and skip builds after completion; the nightly schedule is
 unchanged. This runs on GitHub and does not depend on a local computer or a
-ChatGPT session. The two October 28 cron entries can be removed afterward.
+ChatGPT session. The October 28 cron entry can be removed afterward.
