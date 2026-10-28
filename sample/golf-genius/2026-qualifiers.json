@@ -1,0 +1,898 @@
+[
+  {
+    "name": "Ryan Kim",
+    "school": "Walter Johnson",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 68
+  },
+  {
+    "name": "Ty Swann",
+    "school": "Crofton",
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 71
+  },
+  {
+    "name": "Leo Zelaya",
+    "school": "Walt Whitman",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 71
+  },
+  {
+    "name": "Alex Bruch",
+    "school": "Walt Whitman",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 73
+  },
+  {
+    "name": "Landon Tudor",
+    "school": "Oakdale",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 74
+  },
+  {
+    "name": "Chase Connell",
+    "school": "Severna Park",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 75
+  },
+  {
+    "name": "Grant Pugh",
+    "school": "Sherwood",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 75
+  },
+  {
+    "name": "Aman De Silva",
+    "school": "Winston Churchill",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 75
+  },
+  {
+    "name": "Nirvaan De Silva",
+    "school": "Winston Churchill",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "James Jonker",
+    "school": "Broadneck",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "Emmett Russell",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "Johann Aguillon",
+    "school": "Linganore",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "Miles Simpson",
+    "school": "Walt Whitman",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "Jackson Stanley",
+    "school": "Linganore",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 77
+  },
+  {
+    "name": "Gavin Lewis",
+    "school": "Stephen Decatur",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 77
+  },
+  {
+    "name": "Gavin Allison",
+    "school": "Chesapeake",
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 77
+  },
+  {
+    "name": "Jake Stanley",
+    "school": "Linganore",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 77
+  },
+  {
+    "name": "Jack Henry",
+    "school": "Sherwood",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 77
+  },
+  {
+    "name": "Joseph Pearson",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 78
+  },
+  {
+    "name": "Johnny LaViola",
+    "school": "Stephen Decatur",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 78
+  },
+  {
+    "name": "Alan Higgins",
+    "school": "Chesapeake",
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 78
+  },
+  {
+    "name": "Greydon Caldwell",
+    "school": "Damascus",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 78
+  },
+  {
+    "name": "Charlie Finnegan",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Ryan Waxman",
+    "school": "Thomas S. Wootton",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Graham Kosnar",
+    "school": "Walter Johnson",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Calen Shockley",
+    "school": "Stephen Decatur",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Jordan Wallace",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Luke Gladfelter",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 79
+  },
+  {
+    "name": "Frankie Singleton",
+    "school": "Sherwood",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Lucas Kohut",
+    "school": "Stephen Decatur",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Michael Peterson",
+    "school": "Broadneck",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Davis Balderston",
+    "school": "Severna Park",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Camden Forsythe",
+    "school": "Urbana",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Palmer Freed",
+    "school": "Sherwood",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Creighton Lin",
+    "school": "Thomas S. Wootton",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 81
+  },
+  {
+    "name": "Evan Goldsborough",
+    "school": "Winston Churchill",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 81
+  },
+  {
+    "name": "Shalin Mehta",
+    "school": "Damascus",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 82
+  },
+  {
+    "name": "Adam Tehrani",
+    "school": "Winston Churchill",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 82
+  },
+  {
+    "name": "Robert Glockner",
+    "school": "Reservoir",
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Colin Barry",
+    "school": "Severna Park",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Karl Meredith",
+    "school": "Linganore",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Austin Brennan",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Connor Dombrosky",
+    "school": "Leonardtown",
+    "gender": "M",
+    "team": true,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Ayden Haller",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 84
+  },
+  {
+    "name": "Brady Stocksdale",
+    "school": "Centennial",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 84
+  },
+  {
+    "name": "Jonas Duran",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 84
+  },
+  {
+    "name": "Marco Saba",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 84
+  },
+  {
+    "name": "John Dobson",
+    "school": "Towson",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 85
+  },
+  {
+    "name": "Griffin Hottel",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 85
+  },
+  {
+    "name": "Kabir Gandhi",
+    "school": "Centennial",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 85
+  },
+  {
+    "name": "Micah Gossard",
+    "school": "Broadneck",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 85
+  },
+  {
+    "name": "Dustin Vallandingham",
+    "school": "Leonardtown",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 86
+  },
+  {
+    "name": "Lewis Takacs",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 86
+  },
+  {
+    "name": "Dylan Maloney",
+    "school": "Urbana",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 86
+  },
+  {
+    "name": "Ben Cunningham",
+    "school": "Crofton",
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 86
+  },
+  {
+    "name": "Ben Joo",
+    "school": "Centennial",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 87
+  },
+  {
+    "name": "RJ Harrigan",
+    "school": "Urbana",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 87
+  },
+  {
+    "name": "Keiren Garrett",
+    "school": "Walter Johnson",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 87
+  },
+  {
+    "name": "Nico Arellano",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 87
+  },
+  {
+    "name": "Charlie Scarzello",
+    "school": "Oakdale",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 88
+  },
+  {
+    "name": "Chris Vanas",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 89
+  },
+  {
+    "name": "Chris Jenkins",
+    "school": "Severna Park",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 89
+  },
+  {
+    "name": "Heath Detterline",
+    "school": "Oakdale",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 89
+  },
+  {
+    "name": "Anthony Stearle",
+    "school": "Oakdale",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 90
+  },
+  {
+    "name": "Sebastian Kogan",
+    "school": "Montgomery Blair",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 91
+  },
+  {
+    "name": "Tristan Stiffler",
+    "school": "North Hagerstown",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 92
+  },
+  {
+    "name": "Everett Snyder",
+    "school": "Towson",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 92
+  },
+  {
+    "name": "Luke Guy",
+    "school": "Leonardtown",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 92
+  },
+  {
+    "name": "Liam Gladden",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 93
+  },
+  {
+    "name": "Landon Raley",
+    "school": "Leonardtown",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 93
+  },
+  {
+    "name": "Max Harada",
+    "school": "Broadneck",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 98
+  },
+  {
+    "name": "Vinnie DiPietro",
+    "school": "Towson",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 108
+  },
+  {
+    "name": "Styles Eyler",
+    "school": "North Hagerstown",
+    "gender": "M",
+    "team": true,
+    "qualified": false,
+    "total": 112
+  },
+  {
+    "name": "Ethan Domaingue",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 126
+  },
+  {
+    "name": "Evyn Tinio",
+    "school": null,
+    "gender": "M",
+    "team": false,
+    "qualified": false,
+    "total": 128
+  },
+  {
+    "name": "Andie Greenberg",
+    "school": "Walt Whitman",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 76
+  },
+  {
+    "name": "Holland Musser",
+    "school": "Damascus",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 80
+  },
+  {
+    "name": "Sy Shafie",
+    "school": "Damascus",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 81
+  },
+  {
+    "name": "Ella Si",
+    "school": "Montgomery Blair",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 83
+  },
+  {
+    "name": "Claire Son",
+    "school": "Urbana",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 84
+  },
+  {
+    "name": "Carrington Faulkner",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 85
+  },
+  {
+    "name": "Delaney Fuss",
+    "school": "North Hagerstown",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 86
+  },
+  {
+    "name": "Hannah Hwa",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 86
+  },
+  {
+    "name": "Evelyn Dobbs-Sohn",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 87
+  },
+  {
+    "name": "Sophie Zhao",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 88
+  },
+  {
+    "name": "Noelle Chun",
+    "school": "Howard",
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 88
+  },
+  {
+    "name": "Serena Huang",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 89
+  },
+  {
+    "name": "Olivia Zheng",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": true,
+    "total": 89
+  },
+  {
+    "name": "Allison Cheung",
+    "school": "Thomas S. Wootton",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 89
+  },
+  {
+    "name": "Lexi Rodriguez",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 90
+  },
+  {
+    "name": "Freya Stilp",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 91
+  },
+  {
+    "name": "Elizabeth Yoon",
+    "school": "Thomas S. Wootton",
+    "gender": "F",
+    "team": true,
+    "qualified": false,
+    "total": 91
+  },
+  {
+    "name": "Rahini Sharma",
+    "school": "Walter Johnson",
+    "gender": "F",
+    "team": true,
+    "qualified": false,
+    "total": 91
+  },
+  {
+    "name": "Keegan Van Valkenburg",
+    "school": "Towson",
+    "gender": "F",
+    "team": true,
+    "qualified": false,
+    "total": 92
+  },
+  {
+    "name": "Laura Lee",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 93
+  },
+  {
+    "name": "Sarah Valencia",
+    "school": "South River",
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 94
+  },
+  {
+    "name": "Jordan Isenberg",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 95
+  },
+  {
+    "name": "Sophia Epstein",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 95
+  },
+  {
+    "name": "Sadie Morton",
+    "school": "North Hagerstown",
+    "gender": "F",
+    "team": true,
+    "qualified": false,
+    "total": 96
+  },
+  {
+    "name": "Sasha Paquiry",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 96
+  },
+  {
+    "name": "Hannah Chung",
+    "school": "Marriotts Ridge",
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 97
+  },
+  {
+    "name": "Megha Mohanty",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 99
+  },
+  {
+    "name": "Makayla Robinson",
+    "school": "Centennial",
+    "gender": "F",
+    "team": true,
+    "qualified": false,
+    "total": 99
+  },
+  {
+    "name": "Leanne Conklin",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 100
+  },
+  {
+    "name": "Maia Losada",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 102
+  },
+  {
+    "name": "Hannah Ronaghian",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 105
+  },
+  {
+    "name": "Sierra Winkey",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 108
+  },
+  {
+    "name": "Emma Hahn",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 110
+  },
+  {
+    "name": "Elena Bawden",
+    "school": null,
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 110
+  },
+  {
+    "name": "Abigail Lee",
+    "school": "Marriotts Ridge",
+    "gender": "F",
+    "team": false,
+    "qualified": false,
+    "total": 116
+  },
+  {
+    "name": "Malinda Zhu",
+    "school": "Montgomery Blair",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 88
+  },
+  {
+    "name": "Ivy Wang",
+    "school": "Montgomery Blair",
+    "gender": "F",
+    "team": true,
+    "qualified": true,
+    "total": 89
+  }
+]

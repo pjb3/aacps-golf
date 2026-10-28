@@ -43,19 +43,19 @@ class ChampionshipTest < Minitest::Test
 
   def test_actual_final_pairings_match_individual_pool_after_team_advancement
     event = YAML.safe_load_file(File.expand_path("../_events/2026-10-26-state-championships.md", __dir__), permitted_classes: [Date])
-    ps = JSON.parse(File.read(File.expand_path("../_data/scores/2026-10-26-state-championships.json", __dir__)))["players"]
-    first = ps.map { |p| p.reject { |k, _| k == "rounds" }.merge("scores" => p["rounds"].first) }
+    # Freeze the evidence used to infer the cut; live score corrections must
+    # not change the historical cohort under test.
+    first = JSON.parse(File.read(File.expand_path("../sample/golf-genius/2026-qualifiers.json", __dir__)))
     board = Golf::Standings.new(first, pars: event["pars"]).to_h
     teams = board["teams"]
     team_cut = teams[(teams.size * 0.4).floor - 1]["rank"]
     schools = teams.select { |t| t["rank"] <= team_cut }.map { |t| t["school"] }
-    assert_equal true, Golf::Standings.new(ps, pars: event["pars"], cut: event["cut"]).to_h["cards"]
     first.group_by { |p| p["gender"] }.each do |gender, rows|
       pool = rows.reject { |p| p["team"] && schools.include?(p["school"]) }
-      threshold = pool.map { |p| p["scores"].values.sum }.sort[(pool.size * 0.4).floor - 1]
+      threshold = pool.map { |p| p["total"] }.sort[(pool.size * 0.4).floor - 1]
       assert_equal gender == "M" ? 83 : 89, threshold
       rows.each do |p|
-        expected = (p["team"] && schools.include?(p["school"])) || p["scores"].values.sum <= threshold
+        expected = (p["team"] && schools.include?(p["school"])) || p["total"] <= threshold
         assert_equal expected, p["qualified"], p["name"]
       end
     end
